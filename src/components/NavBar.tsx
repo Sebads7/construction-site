@@ -10,10 +10,12 @@ import {
   // NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { SiHomebridge } from "react-icons/si";
 import { Link } from "react-router-dom";
 import NavSlides from "./NavSlides";
+
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const gallery = [
   "src/assets/carpentry/Carpentry.JPG",
@@ -22,6 +24,16 @@ const gallery = [
 ];
 
 const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
+  const [show, setShow] = useState(false);
+
+  const handleRightClick = () => {
+    setShow((prevShow) => !prevShow);
+  };
+
+  const handleLeftClick = () => {
+    setShow((prevShow) => !prevShow);
+  };
+
   // if window scroll is greater than 100 then add sticky the class to the navbar
   useEffect(() => {
     const handleScroll = () => {
@@ -49,9 +61,9 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
         <NavigationMenu>
           <NavigationMenuList>
             {/* HOME ------- ITEM */}
-            <NavigationMenuItem className="px-4 text-sm">
+            <NavigationMenuItem className="px-4 text-sm ">
               <NavigationMenuLink>
-                <Link to="/" className="bg-transparent text-white">
+                <Link to="/" className="bg-transparent text-white ">
                   HOME
                 </Link>
               </NavigationMenuLink>
@@ -63,53 +75,115 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                 WHAT WE DO
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="  gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                <div className=" gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] h-[270px]">
                   <ul className="flex flex-row gap-3">
-                    <li className="flex">
-                      {/* CARPENTRY ITEM */}
-                      <NavigationMenuLink
-                        asChild
-                        className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
-                      >
-                        <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md
-                            
-                        
-                            "
-                          href="/"
-                        >
-                          <div className="mb-2 mt-4 text-lg font-medium">
-                            Carpentry
-                          </div>
-                          <p className="text-sm leading-tight text-muted-foreground">
-                            Beautifully designed components that you can copy
-                            and paste into your apps. Accessible. Customizable.
-                            Open Source.
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    {/* PAINTING ITEM */}
-                    <li className="flex">
-                      <NavigationMenuLink
-                        asChild
-                        className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
-                      >
-                        <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/"
-                        >
-                          <div className="mb-2 mt-4 text-lg font-medium">
-                            Painting
-                          </div>
-                          <p className="text-sm leading-tight text-muted-foreground">
-                            Beautifully designed components that you can copy
-                            and paste into your apps. Accessible. Customizable.
-                            Open Source.
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
+                    <div className="flex justify-center items-center">
+                      <FaAngleLeft
+                        size={30}
+                        className="flex justify-center items-center cursor-pointer"
+                        onClick={() => {
+                          handleLeftClick();
+                        }}
+                      />
+                    </div>
+
+                    {show ? (
+                      <>
+                        {/* CARPENTRY ITEM */}
+                        <li className="flex">
+                          <NavigationMenuLink
+                            asChild
+                            className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
+                          >
+                            <Link
+                              className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                              to="/"
+                            >
+                              <div className="mb-2 mt-4 text-lg font-medium">
+                                Carpentry
+                              </div>
+                              <p className="text-sm leading-tight text-muted-foreground">
+                                Beautifully designed components that you can
+                                copy and paste into your apps.
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                        {/* PAINTING ITEM */}
+                        <li className="flex">
+                          <NavigationMenuLink
+                            asChild
+                            className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
+                          >
+                            <Link
+                              className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                              to="/"
+                            >
+                              <div className="mb-2 mt-4 text-lg font-medium">
+                                Painting
+                              </div>
+                              <p className="text-sm leading-tight text-muted-foreground">
+                                Beautifully designed components that you can
+                                copy and paste into your apps.
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        {/* Bathroom Remodeling */}
+                        <li className="">
+                          <NavigationMenuLink
+                            asChild
+                            className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
+                          >
+                            <Link
+                              className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                              to="/"
+                            >
+                              <div className="mb-2 mt-4 text-lg font-medium">
+                                Bathroom Remodeling
+                              </div>
+                              <p className="text-sm leading-tight text-muted-foreground">
+                                Beautifully designed components that you can
+                                copy and paste into your apps.
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                        {/* Kitchent Remodeling */}
+                        <li className="">
+                          <NavigationMenuLink
+                            asChild
+                            className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
+                          >
+                            <Link
+                              className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                              to="/"
+                            >
+                              <div className="mb-2 mt-4 text-lg font-medium">
+                                Kitchen Remodeling
+                              </div>
+                              <p className="text-sm leading-tight text-muted-foreground">
+                                Beautifully designed components that you can
+                                copy and paste into your apps.
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      </>
+                    )}
+
+                    <div className="flex justify-center items-center">
+                      <FaAngleRight
+                        size={30}
+                        className="flex justify-center items-center cursor-pointer"
+                        onClick={() => {
+                          handleRightClick();
+                        }}
+                      />
+                    </div>
                   </ul>
                 </div>
               </NavigationMenuContent>
@@ -141,7 +215,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     </NavigationMenuLink>
                   </li>
                   <li className="flex h-full w-full select-none items-center justify-center">
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center ">
                       <NavSlides images={gallery} />
                     </div>
                   </li>

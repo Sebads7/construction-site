@@ -18,7 +18,7 @@ const PopUp = ({ handleShowModal }: { handleShowModal: () => void }) => {
         </div>
         <h1 className="text-3xl font-bold text-center  ">Contact Us</h1>
         <div className=" flex items-center h-full mb-4">
-          <ContactForm />
+          <ContactForm showComponent={false} />
         </div>
       </div>
     </div>

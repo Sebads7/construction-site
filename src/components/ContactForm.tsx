@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 import {
   Select,
@@ -38,9 +39,24 @@ const formSchema = z.object({
   email: z.string().min(2, {
     message: "Please enter your email.",
   }),
+  textarea: z.string().min(2, {
+    message: "Please enter your message.",
+  }),
+  bio: z
+    .string()
+    .min(10, {
+      message: "Please enter your bio.",
+    })
+    .max(100, {
+      message: "Bio should be less than 100 characters.",
+    }),
 });
 
-const ContactForm = () => {
+type ContactFormProps = {
+  showComponent: boolean;
+};
+
+const ContactForm: React.FC<ContactFormProps> = ({ showComponent }) => {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -114,18 +130,44 @@ const ContactForm = () => {
               )}
             />
 
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Project Type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="light">Painting</SelectItem>
-                <SelectItem value="dark">Carpentry</SelectItem>
-                <SelectItem value="system">General Remodeling</SelectItem>
-              </SelectContent>
-            </Select>
+            {showComponent ? (
+              <FormField
+                control={form.control}
+                name="bio"
+                render={({ field }) => (
+                  <FormItem className="col-span-2">
+                    <FormControl>
+                      <Textarea
+                        placeholder="Please, enter your message"
+                        className="h-[200px]"
+                        {...field}
+                      />
+                    </FormControl>
 
-            <Button type="submit">Submit</Button>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            ) : (
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Project Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Painting</SelectItem>
+                  <SelectItem value="dark">Carpentry</SelectItem>
+                  <SelectItem value="system">General Remodeling</SelectItem>
+                </SelectContent>
+              </Select>
+            )}
+
+            {showComponent ? (
+              <Button type="submit" className="h-[50px] col-span-2">
+                Submit
+              </Button>
+            ) : (
+              <Button type="submit">Submit</Button>
+            )}
           </div>
         </form>
       </Form>
