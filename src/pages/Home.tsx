@@ -6,6 +6,7 @@ const Home = () => {
   return (
     <>
       <Container>
+        <div className="bg-black opacity-50 w-full h-[65px] flex fixed "></div>
         <img
           src="src/assets/fronthouse.jpeg"
           alt="background"

@@ -29,6 +29,16 @@ module.exports = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
+        zIndex: {
+          7: "7",
+          9: "9",
+          11: "11",
+
+          100: "100",
+          200: "200",
+          300: "300",
+          400: "400",
+        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

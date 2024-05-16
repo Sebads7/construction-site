@@ -49,19 +49,20 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
   return (
     <div
-      className={` flex justify-between items-center pl-4 fixed h-[65px]  bg-black bg-opacity-20 scroll z-10 w-full `}
+      className={` flex justify-between items-center pl-4 fixed h-[65px]  bg-black bg-opacity-20 scroll 
+      z-10  w-full `}
     >
       <div>
-        <a href="/" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-2 ">
           <SiHomebridge size={50} className=" fill-red-600" />
           <h3 className=" text-white"> Britez Remodeling</h3>
         </a>
       </div>
-      <div className="">
+      <div className=" ">
         <NavigationMenu>
           <NavigationMenuList>
             {/* HOME ------- ITEM */}
-            <NavigationMenuItem className="px-4 text-sm ">
+            <NavigationMenuItem className="px-4 text-sm  ">
               <NavigationMenuLink>
                 <Link to="/" className="bg-transparent text-white ">
                   HOME
@@ -80,7 +81,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     <div className="flex justify-center items-center">
                       <FaAngleLeft
                         size={30}
-                        className="flex justify-center items-center cursor-pointer"
+                        className="flex justify-center items-center cursor-pointer 
+                        transition-all duration-350 transform  hover:opacity-50
+                         hover:shadow-md hover:scale-110 dark:hover:shadow-black/30 dark:hover:scale-110  
+                        "
                         onClick={() => {
                           handleLeftClick();
                         }}
@@ -89,18 +93,18 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
                     {show ? (
                       <>
-                        {/* CARPENTRY ITEM */}
-                        <li className="flex">
+                        {/* Kitchent Remodeling */}
+                        <li className="">
                           <NavigationMenuLink
                             asChild
                             className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
                           >
                             <Link
                               className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                              to="/"
+                              to="/kitchenremodeling"
                             >
                               <div className="mb-2 mt-4 text-lg font-medium">
-                                Carpentry
+                                Bathroom Remodeling
                               </div>
                               <p className="text-sm leading-tight text-muted-foreground">
                                 Beautifully designed components that you can
@@ -109,6 +113,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                             </Link>
                           </NavigationMenuLink>
                         </li>
+
                         {/* PAINTING ITEM */}
                         <li className="flex">
                           <NavigationMenuLink
@@ -117,7 +122,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                           >
                             <Link
                               className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                              to="/"
+                              to="/painting"
                             >
                               <div className="mb-2 mt-4 text-lg font-medium">
                                 Painting
@@ -140,7 +145,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                           >
                             <Link
                               className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                              to="/"
+                              to="/bathremodeling"
                             >
                               <div className="mb-2 mt-4 text-lg font-medium">
                                 Bathroom Remodeling
@@ -152,18 +157,19 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                             </Link>
                           </NavigationMenuLink>
                         </li>
-                        {/* Kitchent Remodeling */}
-                        <li className="">
+
+                        {/* CARPENTRY ITEM */}
+                        <li className="flex">
                           <NavigationMenuLink
                             asChild
                             className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
                           >
                             <Link
                               className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                              to="/"
+                              to="/carpentry"
                             >
                               <div className="mb-2 mt-4 text-lg font-medium">
-                                Kitchen Remodeling
+                                Carpentry
                               </div>
                               <p className="text-sm leading-tight text-muted-foreground">
                                 Beautifully designed components that you can
@@ -178,7 +184,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     <div className="flex justify-center items-center">
                       <FaAngleRight
                         size={30}
-                        className="flex justify-center items-center cursor-pointer"
+                        className="flex justify-center items-center cursor-pointer 
+                        transition-all duration-350 transform  hover:opacity-50
+                        hover:shadow-md hover:scale-110 dark:hover:shadow-black/30 dark:hover:scale-110
+                        "
                         onClick={() => {
                           handleRightClick();
                         }}

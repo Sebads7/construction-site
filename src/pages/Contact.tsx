@@ -1,4 +1,6 @@
 import ContactForm from "@/components/ContactForm";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 const Contact = () => {
   return (
@@ -18,6 +20,16 @@ const Contact = () => {
             <h1 className="flex  text-center justify-center text-white font-bold outline  outline-offset-8 outline-red-300  ">
               Contact Us
             </h1>
+          </div>
+        </div>
+        <div className="flex flex-row justify-evenly ">
+          <div className="flex flex-row gap-2 justify-center items-center ">
+            <FaPhoneAlt size={20} />
+            <h3> 444-444-444</h3>
+          </div>
+          <div className="flex flex-row gap-2 justify-center items-center ">
+            <MdEmail size={25} />
+            <h3> britez@gmail.com</h3>
           </div>
         </div>
 

@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
 html,
@@ -16,6 +17,10 @@ body {
   width: 100vw;
   /* overflow: scroll; */
   overflow-x: hidden;
+}
+
+.custom-z-20 {
+  z-index: 20 !important;
 }
 
 @layer base {

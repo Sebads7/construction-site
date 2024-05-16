@@ -1,4 +1,5 @@
 import { Carrousel } from "@/components/Carrousel";
+import { Link } from "react-router-dom";
 
 const slides1 = [
   "src/assets/carpentry/Carpentry.JPG",
@@ -33,12 +34,14 @@ const WhatWeDo = () => {
             dedicated Project Superintendent will make sure everything runs
             smoothly, all the way through to the final inspection.
           </h2>
-          <button
-            type="button"
-            className="flex justify-center w-[400px] rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-600 shadow-light-3 transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
-          >
-            View more of our work
-          </button>
+          <Link to="carpentry">
+            <button
+              type="button"
+              className="flex justify-center w-[400px] rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-600 shadow-light-3 transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+            >
+              View more of our work
+            </button>
+          </Link>
         </div>
       </div>
       <hr className=" w-full" />
@@ -57,12 +60,14 @@ const WhatWeDo = () => {
             dedicated Project Superintendent will make sure everything runs
             smoothly, all the way through to the final inspection.
           </h2>
-          <button
-            type="button"
-            className="flex justify-center w-[400px] rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-600 shadow-light-3 transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
-          >
-            View more of our work
-          </button>
+          <Link to="bathremodeling">
+            <button
+              type="button"
+              className="flex justify-center w-[400px] rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-600 shadow-light-3 transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+            >
+              View more of our work
+            </button>
+          </Link>
         </div>
         <Carrousel images={slides2} imageSize={"300px"} />
       </div>
@@ -83,12 +88,14 @@ const WhatWeDo = () => {
             dedicated Project Superintendent will make sure everything runs
             smoothly, all the way through to the final inspection.
           </h2>
-          <button
-            type="button"
-            className="flex justify-center w-[400px] rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-600 shadow-light-3 transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong "
-          >
-            View more of our work
-          </button>
+          <Link to="painting">
+            <button
+              type="button"
+              className="flex justify-center w-[400px] rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-600 shadow-light-3 transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong "
+            >
+              View more of our work
+            </button>
+          </Link>
         </div>
       </div>
       <hr className=" w-full" />

@@ -35,23 +35,23 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
     setSelectedImageIndex(null);
   };
   return (
-    <div className="grid grid-cols-4 gap-8 ">
+    <div className="grid grid-cols-2 gap-8  ">
       {images &&
         images.map((image, index) => (
           <img
             key={index}
             src={image}
             alt="gallery"
-            className="h-[300px] w-[300px] object-cover hover:scale-105 transition duration-300 ease-in-out cursor-pointer border-solid border-white border-2 rounded-lg "
+            className="h-[220px] w-[420px] object-cover  transition duration-300 ease-in-out cursor-pointer border-solid border-white border-1 hover:scale-105 hover:shadow-lg"
             onClick={() => handleImageClick(index)}
           />
         ))}
 
       {selectedImageIndex !== null && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center backdrop-filter backdrop-brightness-75 backdrop-blur-md z-10">
-          <div className="flex justify-center flex-col  w-[70%] h-[98%] p-10 bg-black/80  ">
+        <div className="fixed top-0 left-0 w-full h-full  flex items-center justify-center backdrop-filter backdrop-brightness-75 backdrop-blur-md custom-z-20 ">
+          <div className="flex justify-center flex-col  w-[70%] h-[95%] p-10 bg-black/90 custom-z-20">
             {/* //////////   CloseModal BUTTON //////////////////// */}
-            <div className="flex flex-row-reverse">
+            <div className="flex flex-row-reverse ">
               <button
                 type="button"
                 onClick={handleCloseModal}
@@ -65,7 +65,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
               <img
                 src={images[selectedImageIndex]}
                 alt="selected"
-                className="  w-[950px] h-[700px]  object-cover"
+                className="  w-[900px] h-[600px]  object-cover"
               />
 
               {/* //////////         Prev BUTTON //////////////////// */}
