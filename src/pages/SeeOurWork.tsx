@@ -1,6 +1,8 @@
 import ButtonUp from "@/components/ButtonUp";
 
 import GridGallery from "@/components/GridGallery";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const grid1 = [
   "src/assets/bath-remodeling/Bathroom Remodeling1.jpeg",
@@ -17,6 +19,13 @@ const grid1 = [
 ];
 
 const SeeOurWork = () => {
+  const [activeSection, setActiveSection] = useState("bath");
+
+  const handleSectionChange = (section: string) => {
+    setTimeout(() => {
+      setActiveSection(section);
+    }, 300);
+  };
   return (
     <div>
       <div className="bg-black opacity-50 w-full h-[65px] flex fixed "></div>
@@ -30,6 +39,7 @@ const SeeOurWork = () => {
             className=" w-full h-screen object-cover"
           />
         </div>
+
         <div className="w-full left-0 h-full flex  flex-col items-center -z-10    pt-10  absolute">
           <div className=" w-full h-[423px] flex justify-center items-center  ">
             <div className=" bg-red-500/90 h-[4.5rem] w-[18rem] flex justify-center items-center  ">
@@ -42,18 +52,170 @@ const SeeOurWork = () => {
       </div>
 
       <div className="flex  justify-center items-center flex-col border-l-8 border-t-8 ml-32 border-white/40  ">
-        <div className="w-full h-[100px]   bg-black/[70%]  "></div>
-        <div className="flex h-full justify-center items-center w-full bg-black/[70%]  px-10  ">
-          <div className="h-full mx-5">
-            <div className="flex h-full  py-10 justify-center">
-              <div className="w-[60vw]">
-                <h1 className="mb-4 text-white scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl  ">
-                  Transform Your Bathroom into a Luxurious Oasis
-                </h1>
-              </div>
-              <GridGallery images={grid1} />
-            </div>
+        <div className="flex  w-full h-[2rem]   bg-black/[70%]  "></div>
+        <div className="flex  justify-center items-center w-full h-[5rem] bg-black/[70%] ">
+          <div className="flex gap-5">
+            <Button
+              variant="custom"
+              className={` py-5 ${
+                activeSection === "bath" ? "bg-white text-black" : ""
+              }`}
+              onClick={() => {
+                handleSectionChange("bath");
+              }}
+            >
+              Bath
+            </Button>
+            <Button
+              variant="custom"
+              className={` py-5 ${
+                activeSection === "kitchen" ? "bg-white text-black" : ""
+              }`}
+              onClick={() => {
+                handleSectionChange("kitchen");
+              }}
+            >
+              Kitchen
+            </Button>
+            <Button
+              variant="custom"
+              className={` py-5 ${
+                activeSection === "carpentry" ? "bg-white text-black" : ""
+              }`}
+              onClick={() => {
+                handleSectionChange("carpentry");
+              }}
+            >
+              Carpentry
+            </Button>
+            <Button
+              variant="custom"
+              className={` py-5 ${
+                activeSection === "painting" ? "bg-white text-black" : ""
+              }`}
+              onClick={() => {
+                handleSectionChange("painting");
+              }}
+            >
+              Painting
+            </Button>
           </div>
+        </div>
+        <div className="flex h-full justify-center items-center w-full bg-black/[70%]  px-10  ">
+          {/* Bath section  */}
+          {activeSection === "bath" && (
+            <div
+              className={`h-full mx-5 transition-opacity duration-300 ${
+                activeSection === "bath" ? "opacity-100" : "opacity-0"
+              } delay-300`}
+            >
+              <div
+                className={`flex flex-row  h-full  py-10 justify-center transition-opacity duration-300 ${
+                  activeSection === "bath" ? "opacity-100" : "opacity-0"
+                } delay-300`}
+              >
+                <div className="w-[60vw] text-white flex flex-col">
+                  <h1 className="mb-4  scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left   ">
+                    Transform Your Bathroom into a Luxurious Oasis
+                  </h1>
+
+                  <div className="flex flex-row mt-14 ml-5 ">
+                    <div className="w-2 bg-white mr-10"></div>
+                    <h2 className="w-[34vw] leading-8 text-xl  ">
+                      Embark on a journey of transformation with our exquisite
+                      bathroom remodeling gallery, showcasing the epitome of
+                      craftsmanship and innovation. Explore a symphony of design
+                      possibilities, from contemporary marvels to timeless
+                      classics, each image a testament to our dedication to
+                      excellence. Witness the fusion of functionality and
+                      aesthetics, as our skilled artisans breathe new life into
+                      every space. Let our gallery inspire your imagination and
+                      elevate your vision for the perfect bathroom retreat. At
+                      Britez Remodeling, we turn dreams into reality, one
+                      immaculate renovation at a time.
+                    </h2>
+                  </div>
+                </div>
+                <GridGallery images={grid1} />
+              </div>
+            </div>
+          )}
+
+          {/* Kitchen section  */}
+          {activeSection === "kitchen" && (
+            <div
+              className={`h-full mx-5 transition-opacity duration-300 ${
+                activeSection === "kitchen" ? "opacity-100" : "opacity-0"
+              } delay-300`}
+            >
+              <div className="flex flex-row  h-full  py-10 justify-center">
+                <div className="w-[60vw] text-white flex flex-col ">
+                  <h1 className="mb-4  scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left   ">
+                    Transform Your Kitchen Lorem ipsum
+                  </h1>
+
+                  <div className="flex flex-row mt-14 ml-5">
+                    <div className="w-2 bg-white mr-10"></div>
+                    <h2 className="w-[34vw] leading-8 text-xl  ">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Sit, doloremque non nihil sapiente nulla vero aperiam
+                      nostrum sint suscipit ducimus magni magnam accusantium.
+                      Ipsum earum porro architecto pariatur itaque libero.
+                    </h2>
+                  </div>
+                </div>
+                <GridGallery images={grid1} />
+              </div>
+            </div>
+          )}
+
+          {/* Carpentry section  */}
+          {activeSection === "carpentry" && (
+            <div className="h-full mx-5  ">
+              <div className="flex flex-row  h-full  py-10 justify-center">
+                <div className="w-[60vw] text-white flex flex-col ">
+                  <h1 className="mb-4  scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left   ">
+                    Custom carpentry, cabinets, Furniture Lorem ipsum
+                  </h1>
+
+                  <div className="flex flex-row mt-14 ml-5">
+                    <div className="w-2 bg-white mr-10"></div>
+                    <h2 className="w-[34vw] leading-8 text-xl  ">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Sit, doloremque non nihil sapiente nulla vero aperiam
+                      nostrum sint suscipit ducimus magni magnam accusantium.
+                      Ipsum earum porro architecto pariatur itaque libero.
+                    </h2>
+                  </div>
+                </div>
+                <GridGallery images={grid1} />
+              </div>
+            </div>
+          )}
+
+          {/* Painting section  */}
+          {activeSection === "painting" && (
+            <div className="h-full mx-5  ">
+              <div className="flex flex-row  h-full  py-10 justify-center">
+                <div className="w-[60vw] text-white flex flex-col ">
+                  <h1 className="mb-4  scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left   ">
+                    Painting, Drywall, and Finishing Services Lorem ipsum
+                  </h1>
+
+                  <div className="flex flex-row mt-14 ml-5">
+                    <div className="w-2 bg-white mr-10"></div>
+                    <h2 className="w-[34vw] leading-8 text-xl  ">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Sit, doloremque non nihil sapiente nulla vero aperiam
+                      nostrum sint suscipit ducimus magni magnam accusantium.
+                      Ipsum earum porro architecto pariatur itaque libero.
+                    </h2>
+                  </div>
+                </div>
+                <GridGallery images={grid1} />
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <ButtonUp />

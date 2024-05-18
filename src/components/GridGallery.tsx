@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
+import { Button } from "./ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type GridGalleryProps = {
   images: string[];
@@ -9,6 +11,11 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
     null
   );
+  const [showAllImages, setShowAllImages] = useState<boolean>(false);
+
+  const handleViewMore = () => {
+    setShowAllImages(!showAllImages);
+  };
 
   const handleImageClick = (index: number) => {
     setSelectedImageIndex(index);
@@ -34,18 +41,37 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
   const handleCloseModal = () => {
     setSelectedImageIndex(null);
   };
+
   return (
     <div className="grid grid-cols-2 gap-8  ">
-      {images &&
-        images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt="gallery"
-            className="h-[220px] w-[420px] object-cover  transition duration-300 ease-in-out cursor-pointer border-solid border-white border-1 hover:scale-105 hover:shadow-lg"
-            onClick={() => handleImageClick(index)}
-          />
+      {images
+        .slice(0, showAllImages ? images.length : 7)
+        .map((image, index) => (
+          <div key={index} className={`relative   `}>
+            <img
+              src={image}
+              alt="gallery"
+              className={`h-[220px] w-full object-cover  transition duration-300 ease-in-out cursor-pointer border-solid border-1 border-white/55   `}
+            />
+            <div
+              className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-lg cursor-pointer"
+              onClick={() => handleImageClick(index)}
+            >
+              Click to view image
+            </div>
+          </div>
         ))}
+
+      <div className="flex justify-center items-center w-full h-full border-2 border-white/55">
+        <Button
+          variant="custom"
+          onClick={() => {
+            handleViewMore();
+          }}
+        >
+          {showAllImages ? "View less" : "View more"}
+        </Button>
+      </div>
 
       {selectedImageIndex !== null && (
         <div className="fixed top-0 left-0 w-full h-full  flex items-center justify-center backdrop-filter backdrop-brightness-75 backdrop-blur-md custom-z-20 ">
@@ -71,12 +97,9 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
               {/* //////////         Prev BUTTON //////////////////// */}
 
               <div className="flex justify-center items-center gap-2 flex-row overflow-x-auto">
-                <button
-                  onClick={handlePrevImage}
-                  className="flex  justify-center items-center text-white text-lg bg-gray-800 w-32 h-10 rounded "
-                >
-                  Previous
-                </button>
+                <Button variant="custom" size="icon" onClick={handlePrevImage}>
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
 
                 {images &&
                   images.map((image, index) => (
@@ -87,7 +110,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
                       className={
                         index === selectedImageIndex &&
                         index < selectedImageIndex + 5
-                          ? "h-20 w-20 selected"
+                          ? " h-16 w-16 selected"
                           : "h-10 w-10"
                       }
                       onClick={() => handleImageClick(index)}
@@ -95,12 +118,9 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
                   ))}
 
                 {/* //////////         Next  BUTTON //////////////////// */}
-                <button
-                  onClick={handleNextImage}
-                  className=" justify-self-center text-white text-lg bg-gray-800 w-32 h-10 rounded"
-                >
-                  Next
-                </button>
+                <Button variant="custom" size="icon" onClick={handleNextImage}>
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
               </div>
 
               <p className="text-white justify-self-center  col-span-4 mt-5">{`Photo ${

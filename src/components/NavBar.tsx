@@ -49,16 +49,21 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
   return (
     <div
-      className={` flex justify-between items-center pl-4 fixed h-[65px]  bg-black bg-opacity-20 scroll 
+      className={` flex justify-between items-center pl-2 fixed h-[65px]  bg-black bg-opacity-20 scroll 
       z-10  w-full `}
     >
       <div>
-        <a href="/" className="flex items-center gap-2 ">
-          <SiHomebridge size={50} className=" fill-red-600" />
-          <h3 className=" text-white"> Britez Remodeling</h3>
+        <a href="/" className="flex items-center p-2">
+          <div className=" text-white/60 border-[3px] border-white/40 ">
+            <div className=" flex items-center gap-2  text-center px-3 py-1">
+              <SiHomebridge size={40} className=" fill-red-600/60" />
+              <p className="">ABJ Painting & Remodeling</p>
+            </div>
+          </div>
         </a>
       </div>
-      <div className=" ">
+
+      <div>
         <NavigationMenu>
           <NavigationMenuList>
             {/* HOME ------- ITEM */}
@@ -103,13 +108,16 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                               className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                               to="/kitchenremodeling"
                             >
-                              <div className="mb-2 mt-4 text-lg font-medium">
-                                Bathroom Remodeling
+                              <div className="flex justify-center items-center px-4 py-8">
+                                <div className="flex  flex-col   ">
+                                  <p className=" text-lg font-medium leading-tight mb-2 ">
+                                    Kitchen Remodeling
+                                  </p>
+                                  <p className="text-sm leading-tight text-muted-foreground">
+                                    Custom kitchen design
+                                  </p>
+                                </div>
                               </div>
-                              <p className="text-sm leading-tight text-muted-foreground">
-                                Beautifully designed components that you can
-                                copy and paste into your apps.
-                              </p>
                             </Link>
                           </NavigationMenuLink>
                         </li>
@@ -124,13 +132,16 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                               className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                               to="/painting"
                             >
-                              <div className="mb-2 mt-4 text-lg font-medium">
-                                Painting
+                              <div className="flex justify-center items-center px-4 py-8">
+                                <div className="flex  flex-col   ">
+                                  <p className=" text-lg font-medium leading-tight mb-2 ">
+                                    Painting
+                                  </p>
+                                  <p className="text-sm leading-tight text-muted-foreground">
+                                    Drywall repair and painting
+                                  </p>
+                                </div>
                               </div>
-                              <p className="text-sm leading-tight text-muted-foreground">
-                                Beautifully designed components that you can
-                                copy and paste into your apps.
-                              </p>
                             </Link>
                           </NavigationMenuLink>
                         </li>
@@ -144,16 +155,19 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                             className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
                           >
                             <Link
-                              className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                              className="flex justify-center items-center h-[200px] w-[180px] select-none rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                               to="/bathremodeling"
                             >
-                              <div className="mb-2 mt-4 text-lg font-medium">
-                                Bathroom Remodeling
+                              <div className="flex justify-center items-center px-4 py-8">
+                                <div className="flex  flex-col   ">
+                                  <p className=" text-lg font-medium leading-tight mb-2 ">
+                                    Bathroom Remodeling
+                                  </p>
+                                  <p className="text-sm leading-tight text-muted-foreground">
+                                    Beautifully designed
+                                  </p>
+                                </div>
                               </div>
-                              <p className="text-sm leading-tight text-muted-foreground">
-                                Beautifully designed components that you can
-                                copy and paste into your apps.
-                              </p>
                             </Link>
                           </NavigationMenuLink>
                         </li>
@@ -165,16 +179,19 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                             className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
                           >
                             <Link
-                              className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                              className="flex justify-center items-center h-[200px] w-[180px] select-none rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                               to="/carpentry"
                             >
-                              <div className="mb-2 mt-4 text-lg font-medium">
-                                Carpentry
+                              <div className="flex justify-center items-center px-4 py-8">
+                                <div className="flex  flex-col   ">
+                                  <p className=" text-lg font-medium ">
+                                    Carpentry
+                                  </p>
+                                  <p className="text-sm leading-tight text-muted-foreground">
+                                    custom carpentry services
+                                  </p>
+                                </div>
                               </div>
-                              <p className="text-sm leading-tight text-muted-foreground">
-                                Beautifully designed components that you can
-                                copy and paste into your apps.
-                              </p>
                             </Link>
                           </NavigationMenuLink>
                         </li>

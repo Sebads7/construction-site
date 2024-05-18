@@ -4,21 +4,24 @@ import { MdEmail } from "react-icons/md";
 
 const Contact = () => {
   return (
-    <div className="flex w-full ">
+    <div className="grid grid-cols-2 ">
       <div className="bg-black opacity-80 w-full h-[65px] flex fixed"></div>
-      <div className="w-full bg-gray-900 opacity-40">
+
+      <div className="w-full bg-gray-900 ">
+        <div className="bg-black/30  h-full absolute w-[50.4%]   "> </div>
         <img
           src="src/assets/fronthouse.jpeg"
           alt="background"
           className="w-full h-screen object-cover"
         />
       </div>
+
       <div className="w-full flex flex-col ">
-        <div className="w-full h-[200px]"></div>
+        <div className="w-full h-[150px]"></div>
         <div className="w-full  mb-[100px] flex items-center justify-center ">
-          <div className="w-80 bg-red-600/80 py-6   ">
-            <h1 className="flex  text-center justify-center text-white font-bold outline  outline-offset-8 outline-red-300  ">
-              Contact Us
+          <div className=" bg-red-500/95 h-[4.5rem] w-[18rem] flex justify-center items-center  ">
+            <h1 className="flex text-lg  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[25rem]  ">
+              See our Work
             </h1>
           </div>
         </div>

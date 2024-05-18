@@ -1,4 +1,5 @@
 import { Carrousel } from "@/components/Carrousel";
+
 import { Link } from "react-router-dom";
 
 const slides1 = [
@@ -22,6 +23,10 @@ const slides3 = [
 const WhatWeDo = () => {
   return (
     <div className="flex items-center flex-col px-5  ">
+      <div className=" flex justify-center items-center w-full h-[10rem]">
+        <h1>What We Do</h1>
+      </div>
+
       <div className="flex  items-center  py-[100px] ">
         <Carrousel images={slides1} imageSize={"300px"} />
         <div className="flex flex-col pl-5 gap-6 justify-center items-center">
@@ -44,6 +49,7 @@ const WhatWeDo = () => {
           </Link>
         </div>
       </div>
+
       <hr className=" w-full" />
       {/* SECOND SET */}
 
