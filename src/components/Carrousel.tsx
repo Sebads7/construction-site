@@ -10,30 +10,28 @@ import {
 
 type CarrouselProps = {
   images: string[];
-  imageSize: string;
+  className?: string;
 };
 
-export const Carrousel: React.FC<CarrouselProps> = ({ images, imageSize }) => {
+export const Carrousel: React.FC<CarrouselProps> = ({ images, className }) => {
   const plugin = React.useRef(
-    Autoplay({ delay: 7000, stopOnInteraction: false })
+    Autoplay({ delay: 9000, stopOnInteraction: false })
   );
   return (
-    <Carousel
-      plugins={[plugin.current]}
-      className="flex items-center  h-[300px] w-[300px] "
-    >
+    <Carousel plugins={[plugin.current]} className={className}>
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>
-            <Card className="flex  justify-center ">
-              <CardContent className="  p-0 ">
-                <img
-                  src={image}
-                  alt={`Image ${index} `}
-                  className="object-cover"
-                  style={{ width: imageSize, height: imageSize }}
-                />
-              </CardContent>
+            <Card className={className}>
+              <div className={className}>
+                <CardContent className={className}>
+                  <img
+                    src={image}
+                    alt={`Image ${index} `}
+                    className="w-full h-full  object-cover"
+                  />
+                </CardContent>
+              </div>
             </Card>
           </CarouselItem>
         ))}

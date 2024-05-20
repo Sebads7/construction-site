@@ -2,7 +2,8 @@ import ButtonUp from "@/components/ButtonUp";
 
 import GridGallery from "@/components/GridGallery";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const grid1 = [
   "src/assets/bath-remodeling/Bathroom Remodeling1.jpeg",
@@ -20,6 +21,16 @@ const grid1 = [
 
 const SeeOurWork = () => {
   const [activeSection, setActiveSection] = useState("bath");
+
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true });
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView, mainControls]);
 
   const handleSectionChange = (section: string) => {
     setTimeout(() => {
@@ -101,7 +112,8 @@ const SeeOurWork = () => {
             </Button>
           </div>
         </div>
-        <div className="flex h-full justify-center items-center w-full bg-black/[70%]  px-10  ">
+
+        <div className="flex h-full justify-center items-center w-full bg-black/[70%]  px-10">
           {/* Bath section  */}
           {activeSection === "bath" && (
             <div
@@ -114,7 +126,13 @@ const SeeOurWork = () => {
                   activeSection === "bath" ? "opacity-100" : "opacity-0"
                 } delay-300`}
               >
-                <div className="w-[60vw] text-white flex flex-col">
+                {/* left side */}
+                <motion.div
+                  className="w-[60vw] text-white flex flex-col"
+                  initial={{ opacity: 0, x: -100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
+                >
                   <h1 className="mb-4  scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left   ">
                     Transform Your Bathroom into a Luxurious Oasis
                   </h1>
@@ -135,8 +153,16 @@ const SeeOurWork = () => {
                       immaculate renovation at a time.
                     </h2>
                   </div>
-                </div>
-                <GridGallery images={grid1} />
+                </motion.div>
+
+                {/*gallery */}
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+                >
+                  <GridGallery images={grid1} />
+                </motion.div>
               </div>
             </div>
           )}
@@ -149,6 +175,7 @@ const SeeOurWork = () => {
               } delay-300`}
             >
               <div className="flex flex-row  h-full  py-10 justify-center">
+                {/* left side */}
                 <div className="w-[60vw] text-white flex flex-col ">
                   <h1 className="mb-4  scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left   ">
                     Transform Your Kitchen Lorem ipsum
@@ -164,7 +191,15 @@ const SeeOurWork = () => {
                     </h2>
                   </div>
                 </div>
-                <GridGallery images={grid1} />
+
+                {/*gallery */}
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+                >
+                  <GridGallery images={grid1} />
+                </motion.div>
               </div>
             </div>
           )}

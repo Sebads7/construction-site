@@ -4,6 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { Checkbox } from "./ui/checkbox";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,6 +20,7 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -53,10 +56,20 @@ const formSchema = z.object({
 });
 
 type ContactFormProps = {
-  showComponent: boolean;
+  showTextInput?: boolean;
+  secondButton?: boolean;
+  contactButton?: boolean;
+  modalButton?: boolean;
+  checkBox?: boolean;
 };
 
-const ContactForm: React.FC<ContactFormProps> = ({ showComponent }) => {
+const ContactForm: React.FC<ContactFormProps> = ({
+  showTextInput = false,
+  secondButton = false,
+  contactButton = false,
+  modalButton = false,
+  checkBox = false,
+}) => {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -66,6 +79,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ showComponent }) => {
       address: "",
       city: "",
       email: "",
+      textarea: "",
     },
   });
 
@@ -107,11 +121,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ showComponent }) => {
             />
             <FormField
               control={form.control}
-              name="address"
+              name="email"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Address" {...field} />
+                    <Input placeholder="Email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -130,10 +144,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ showComponent }) => {
               )}
             />
 
-            {showComponent ? (
+            {showTextInput ? (
               <FormField
                 control={form.control}
-                name="bio"
+                name="textarea"
                 render={({ field }) => (
                   <FormItem className="col-span-2">
                     <FormControl>
@@ -150,25 +164,55 @@ const ContactForm: React.FC<ContactFormProps> = ({ showComponent }) => {
               />
             ) : (
               <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Project Type" />
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a Project" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="light">Painting</SelectItem>
-                  <SelectItem value="dark">Carpentry</SelectItem>
-                  <SelectItem value="system">General Remodeling</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="light">Painting</SelectItem>
+                    <SelectItem value="dark">Carpentry</SelectItem>
+                    <SelectItem value="system">General Remodeling</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             )}
 
-            {showComponent ? (
+            {modalButton && <Button type="submit">Submit</Button>}
+
+            {contactButton && (
               <Button type="submit" className="h-[50px] col-span-2">
                 Submit
               </Button>
-            ) : (
-              <Button type="submit">Submit</Button>
+            )}
+
+            {secondButton && (
+              <Button
+                type="submit"
+                className=" bg-red-600 hover:bg-red-800 rounded-none "
+              >
+                Start Saving Today
+              </Button>
             )}
           </div>
+
+          {checkBox && (
+            <div className="w-full px-10 mt-10">
+              <Checkbox className="mr-2" required id="" />
+              <label htmlFor="terms1" className=" text-xs">
+                I’m interested in learning more about [] and its affiliates’
+                products. By checking this box, I consent and authorize [] and
+                its affiliates to call or text me using an automatic telephone
+                dialing system or pre-recorded voice message to provide my free
+                estimate and keep me informed about products and offers. [] and
+                its affiliate (and their service providers acting on their
+                behalf) can use any or all of the telephone numbers I have
+                provided above to make such communications. I understand that I
+                am not required to consent to receive automated phone calls,
+                texts, or emails as a condition of buying any property, goods,
+                or services.{" "}
+              </label>
+            </div>
+          )}
         </form>
       </Form>
     </div>

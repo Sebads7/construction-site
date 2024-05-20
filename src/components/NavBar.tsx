@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 import { useEffect, useState } from "react";
-import { SiHomebridge } from "react-icons/si";
+
 import { Link } from "react-router-dom";
 import NavSlides from "./NavSlides";
 
@@ -54,9 +54,9 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
     >
       <div>
         <a href="/" className="flex items-center p-2">
-          <div className=" text-white/60 border-[3px] border-white/40 ">
+          <div className=" text-white/80 border-[2px] border-white/80 ">
             <div className=" flex items-center gap-2  text-center px-3 py-1">
-              <SiHomebridge size={40} className=" fill-red-600/60" />
+              {/* <SiHomebridge size={40} className=" fill-red-600/60" /> */}
               <p className="">ABJ Painting & Remodeling</p>
             </div>
           </div>

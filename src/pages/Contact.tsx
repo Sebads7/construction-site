@@ -37,7 +37,7 @@ const Contact = () => {
         </div>
 
         <div className="flex w-full mt-10 justify-center items-center">
-          <ContactForm showComponent={true} />
+          <ContactForm showTextInput={true} contactButton={true} />
         </div>
       </div>
     </div>

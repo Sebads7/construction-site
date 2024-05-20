@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 type GridGalleryProps = {
   images: string[];
@@ -11,10 +12,21 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
     null
   );
-  const [showAllImages, setShowAllImages] = useState<boolean>(false);
+  const [showAllImages, setShowAllImages] = useState(false);
 
-  const handleViewMore = () => {
-    setShowAllImages(!showAllImages);
+  const gridConatinerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const gridSquareVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
   };
 
   const handleImageClick = (index: number) => {
@@ -43,35 +55,49 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-8  ">
-      {images
-        .slice(0, showAllImages ? images.length : 7)
-        .map((image, index) => (
-          <div key={index} className={`relative   `}>
-            <img
-              src={image}
-              alt="gallery"
-              className={`h-[220px] w-full object-cover  transition duration-300 ease-in-out cursor-pointer border-solid border-1 border-white/55   `}
-            />
-            <div
-              className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-lg cursor-pointer"
-              onClick={() => handleImageClick(index)}
-            >
-              Click to view image
-            </div>
-          </div>
-        ))}
+    <motion.div
+      className="grid grid-cols-2 gap-8"
+      variants={gridConatinerVariants}
+      initial="hidden"
+      animate="show"
+    >
+      <AnimatePresence>
+        {images
+          .slice(0, showAllImages ? images.length : 7)
+          .map((image, index) => (
+            <div key={index} className={`relative`}>
+              <motion.div variants={gridSquareVariants}>
+                <img
+                  src={image}
+                  alt="gallery"
+                  className={`h-[220px] w-full object-cover  cursor-pointer border-solid border-1 border-white/55   `}
+                />
+              </motion.div>
 
-      <div className="flex justify-center items-center w-full h-full border-2 border-white/55">
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100   bg-black bg-opacity-50 text-white text-lg cursor-pointer transition-all duration-3000"
+                onClick={() => handleImageClick(index)}
+              >
+                Click to view image
+              </motion.div>
+            </div>
+          ))}
+      </AnimatePresence>
+      <motion.div
+        className="flex justify-center items-center w-full h-full border-2 border-white/55"
+        whileTap={{ scale: 0.95 }}
+        variants={gridSquareVariants}
+        transition={{ duration: 1, ease: "easeIn", delay: 2 }}
+      >
         <Button
           variant="custom"
           onClick={() => {
-            handleViewMore();
+            setShowAllImages(!showAllImages);
           }}
         >
           {showAllImages ? "View less" : "View more"}
         </Button>
-      </div>
+      </motion.div>
 
       {selectedImageIndex !== null && (
         <div className="fixed top-0 left-0 w-full h-full  flex items-center justify-center backdrop-filter backdrop-brightness-75 backdrop-blur-md custom-z-20 ">
@@ -130,7 +156,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

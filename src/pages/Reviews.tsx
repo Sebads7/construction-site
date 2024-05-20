@@ -18,8 +18,6 @@ const Reviews = () => {
         </div>
       </div>
 
-      <Review />
-
       <div className="w-full h-full px-[8rem] my-[10rem] ">
         {/* first review */}
         <div className="border-2 rounded-lg w-[60rem] h-[10rem]">
@@ -83,6 +81,9 @@ const Reviews = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div className="flex justify-center ">
+        <Review />
       </div>
     </Container>
   );
