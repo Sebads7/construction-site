@@ -72,6 +72,7 @@ const Home = () => {
       </div>
 
       <div className="w-full h-[10rem]"></div>
+
       <ButtonUp />
     </>
   );

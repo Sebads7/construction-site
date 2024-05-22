@@ -1,11 +1,12 @@
 "use client";
 
+// IMPORTS FROM ZOD AND REACT-HOOK-FORM
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+// IMPORTS FROM SHADCN COMPONENTS
 import { Checkbox } from "./ui/checkbox";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -16,15 +17,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import SelectInput from "./SelectInput";
+import { toast } from "./ui/use-toast";
 
 const formSchema = z.object({
   firstname: z.string().min(2, {
@@ -33,14 +27,11 @@ const formSchema = z.object({
   lastname: z.string().min(2, {
     message: "Please enter your last name.",
   }),
-  address: z.string().min(2, {
-    message: "Please enter your address.",
-  }),
   city: z.string().min(2, {
     message: "Please enter your city.",
   }),
-  email: z.string().min(2, {
-    message: "Please enter your email.",
+  emailAddress: z.string().email({
+    message: "Please enter a valid email address.",
   }),
   textarea: z.string().min(2, {
     message: "Please enter your message.",
@@ -53,8 +44,12 @@ const formSchema = z.object({
     .max(100, {
       message: "Bio should be less than 100 characters.",
     }),
+  selectOption: z.string().min(2, {
+    message: "Please select an option.",
+  }),
 });
 
+//  COMPONENTS type.
 type ContactFormProps = {
   showTextInput?: boolean;
   secondButton?: boolean;
@@ -76,17 +71,23 @@ const ContactForm: React.FC<ContactFormProps> = ({
     defaultValues: {
       firstname: "",
       lastname: "",
-      address: "",
       city: "",
-      email: "",
+      emailAddress: "",
       textarea: "",
+      selectOption: "",
     },
   });
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+    toast({
+      title: "You submitted the following values:",
+      description: (
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+        </pre>
+      ),
+    });
     console.log(values);
   }
 
@@ -121,7 +122,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="email"
+              name="emailAddress"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -163,24 +164,39 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 )}
               />
             ) : (
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a Project" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem value="light">Painting</SelectItem>
-                    <SelectItem value="dark">Carpentry</SelectItem>
-                    <SelectItem value="system">General Remodeling</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <FormField
+                control={form.control}
+                name="selectOption"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <SelectInput {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             )}
 
-            {modalButton && <Button type="submit">Submit</Button>}
+            {modalButton && (
+              <Button
+                type="submit"
+                onClick={() => {
+                  onSubmit(form.getValues());
+                }}
+              >
+                Submit
+              </Button>
+            )}
 
             {contactButton && (
-              <Button type="submit" className="h-[50px] col-span-2">
+              <Button
+                type="submit"
+                className="h-[50px] col-span-2"
+                onClick={() => {
+                  onSubmit(form.getValues());
+                }}
+              >
                 Submit
               </Button>
             )}
@@ -188,7 +204,10 @@ const ContactForm: React.FC<ContactFormProps> = ({
             {secondButton && (
               <Button
                 type="submit"
-                className=" bg-red-600 hover:bg-red-800 rounded-none "
+                className=" bg-red-600 hover:bg-red-800 rounded-none"
+                onClick={() => {
+                  onSubmit(form.getValues());
+                }}
               >
                 Start Saving Today
               </Button>
@@ -196,8 +215,12 @@ const ContactForm: React.FC<ContactFormProps> = ({
           </div>
 
           {checkBox && (
-            <div className="w-full px-10 mt-10">
-              <Checkbox className="mr-2" required id="" />
+            <div className="w-full px-10 mt-10 ">
+              <Checkbox
+                className="mr-2 w-[1rem] h-[1rem]"
+                required
+                id="checkbox"
+              />
               <label htmlFor="terms1" className=" text-xs">
                 I’m interested in learning more about [] and its affiliates’
                 products. By checking this box, I consent and authorize [] and
