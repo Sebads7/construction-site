@@ -47,7 +47,7 @@ const SelectInput = React.forwardRef<HTMLInputElement, SelectInputProps>(
           animate={!isOpen ? "open" : "closed"}
         >
           {!isOpen && (
-            <div className=" relative top-9 ">
+            <div className=" relative top-10 ">
               <motion.div
                 className="absolute w-full  mt-1 border bg-white border-gray-300 rounded-lg shadow-2xl "
                 initial={{ opacity: 0, y: -10 }}
@@ -60,7 +60,7 @@ const SelectInput = React.forwardRef<HTMLInputElement, SelectInputProps>(
                 >
                   <motion.li
                     variants={itemVariants}
-                    className={HoverList}
+                    className={`hover:rounded-t-lg ${HoverList}`}
                     onClick={() => {
                       handleSelect("Carpentry");
                     }}
@@ -96,7 +96,7 @@ const SelectInput = React.forwardRef<HTMLInputElement, SelectInputProps>(
                   </motion.li>
                   <motion.li
                     variants={itemVariants}
-                    className={HoverList}
+                    className={`hover:rounded-b-lg ${HoverList}`}
                     onClick={() => {
                       handleSelect(" General Remodeling");
                     }}

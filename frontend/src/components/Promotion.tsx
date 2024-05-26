@@ -13,7 +13,11 @@ const Promotion = () => {
           </h1>
           <p className=" text-gray-700 mt-1">ON ALL PRODUCTS</p>
         </div>
-        <ContactForm secondButton={true} checkBox={true} />
+        <ContactForm
+          secondButton={true}
+          checkBox={true}
+          showSelectOption={true}
+        />
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import SelectInput from "./SelectInput";
-import { toast } from "./ui/use-toast";
+import { useState } from "react";
 
 const formSchema = z.object({
   firstname: z.string().min(2, {
@@ -36,14 +36,6 @@ const formSchema = z.object({
   textarea: z.string().min(2, {
     message: "Please enter your message.",
   }),
-  bio: z
-    .string()
-    .min(10, {
-      message: "Please enter your bio.",
-    })
-    .max(100, {
-      message: "Bio should be less than 100 characters.",
-    }),
   selectOption: z.string().min(2, {
     message: "Please select an option.",
   }),
@@ -56,15 +48,22 @@ type ContactFormProps = {
   contactButton?: boolean;
   modalButton?: boolean;
   checkBox?: boolean;
+  showSelectOption?: boolean;
+  schema?: any;
 };
 
 const ContactForm: React.FC<ContactFormProps> = ({
   showTextInput = false,
+  showSelectOption = false,
   secondButton = false,
   contactButton = false,
   modalButton = false,
   checkBox = false,
 }) => {
+  //states declarations
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -78,18 +77,33 @@ const ContactForm: React.FC<ContactFormProps> = ({
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>
-      ),
-    });
-    console.log(values);
-  }
+  // Define a submit handler.
+  const onSubmit = async (value: z.infer<typeof formSchema>) => {
+    console.log(value);
+    // Send the data.
+    setSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const response = await fetch("http://localhost:8000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(value),
+      });
+      if (response.ok) {
+        console.log("Email sent successfully");
+        form.reset();
+        setSubmitting(false);
+      } else {
+        throw new Error("Error sending email");
+      }
+    } catch (error) {
+      console.log(error);
+      setSubmitError("Error sending email");
+    }
+  };
 
   return (
     <div className=" w-full ">
@@ -145,7 +159,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
               )}
             />
 
-            {showTextInput ? (
+            {showTextInput && (
               <FormField
                 control={form.control}
                 name="textarea"
@@ -163,14 +177,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
                   </FormItem>
                 )}
               />
-            ) : (
+            )}
+
+            {showSelectOption && (
               <FormField
                 control={form.control}
                 name="selectOption"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <SelectInput {...field} />
+                      <SelectInput {...field} defaultValue="Select a Project" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -181,11 +197,12 @@ const ContactForm: React.FC<ContactFormProps> = ({
             {modalButton && (
               <Button
                 type="submit"
+                disabled={submitting}
                 onClick={() => {
                   onSubmit(form.getValues());
                 }}
               >
-                Submit
+                {submitting ? "Form Submited" : "Submit"}
               </Button>
             )}
 
@@ -193,11 +210,12 @@ const ContactForm: React.FC<ContactFormProps> = ({
               <Button
                 type="submit"
                 className="h-[50px] col-span-2"
+                disabled={submitting}
                 onClick={() => {
                   onSubmit(form.getValues());
                 }}
               >
-                Submit
+                {submitting ? "Form Submited" : "Submit"}
               </Button>
             )}
 
@@ -205,11 +223,12 @@ const ContactForm: React.FC<ContactFormProps> = ({
               <Button
                 type="submit"
                 className=" bg-red-600 hover:bg-red-800 rounded-none"
+                disabled={submitting}
                 onClick={() => {
                   onSubmit(form.getValues());
                 }}
               >
-                Start Saving Today
+                {submitting ? "Form Submited" : "  Start Saving Today"}
               </Button>
             )}
           </div>
@@ -236,9 +255,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
               </label>
             </div>
           )}
+          {submitError && <div className="text-red-500">{submitError}</div>}
         </form>
       </Form>
     </div>
   );
 };
+
 export default ContactForm;

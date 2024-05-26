@@ -77,7 +77,11 @@ const Review = () => {
               </span>
             </h1>
           </div>
-          <ContactForm secondButton={true} checkBox={true} />
+          <ContactForm
+            secondButton={true}
+            checkBox={true}
+            showSelectOption={true}
+          />
         </div>
       </motion.div>
     </div>

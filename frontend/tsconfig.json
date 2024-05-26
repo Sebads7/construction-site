@@ -25,6 +25,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "server/contact-us",
+    "server/route.ts",
+    "../backend/sendEmail.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
