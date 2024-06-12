@@ -20,36 +20,14 @@ import { Textarea } from "@/components/ui/textarea";
 import SelectInput from "./SelectInput";
 import { useState } from "react";
 
-const formSchema = z.object({
-  firstname: z.string().min(2, {
-    message: "Please enter your first name.",
-  }),
-  lastname: z.string().min(2, {
-    message: "Please enter your last name.",
-  }),
-  city: z.string().min(2, {
-    message: "Please enter your city.",
-  }),
-  emailAddress: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  textarea: z.string().min(2, {
-    message: "Please enter your message.",
-  }),
-  selectOption: z.string().min(2, {
-    message: "Please select an option.",
-  }),
-});
-
 //  COMPONENTS type.
 type ContactFormProps = {
   showTextInput?: boolean;
+  showSelectOption?: boolean;
   secondButton?: boolean;
   contactButton?: boolean;
   modalButton?: boolean;
   checkBox?: boolean;
-  showSelectOption?: boolean;
-  schema?: any;
 };
 
 const ContactForm: React.FC<ContactFormProps> = ({
@@ -64,25 +42,66 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
+  const formSchema = z.object({
+    fullname: z.string().min(2, {
+      message: "Please enter your full name.",
+    }),
+    phonenumber: z
+      .string()
+      .min(10, {
+        message: "Please enter a valid phone number.",
+      })
+      .max(14, {
+        message: "Please enter a valid phone number.",
+      }),
+    city: z.string().min(2, {
+      message: "Please enter your city.",
+    }),
+    emailAddress: z.string().email({
+      message: "Please enter a valid email address.",
+    }),
+    ...(showSelectOption && {
+      selectOption: z.string().min(1, {
+        message: "Please select an option.",
+      }),
+    }),
+    ...(showTextInput && {
+      textarea: z.string().min(2, {
+        message: "Please enter your message.",
+      }),
+    }),
+  });
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstname: "",
-      lastname: "",
+      fullname: "",
+      phonenumber: "",
       city: "",
       emailAddress: "",
-      textarea: "",
-      selectOption: "",
+      ...(showSelectOption && { selectOption: "" }),
+      ...(showTextInput && { textarea: "" }),
     },
   });
 
   // Define a submit handler.
   const onSubmit = async (value: z.infer<typeof formSchema>) => {
-    console.log(value);
+    // console.log(value);
+    console.log(form.getValues());
     // Send the data.
     setSubmitting(true);
-    setSubmitError("");
+
+    const isValid = await form.trigger();
+
+    console.log(isValid);
+
+    if (!isValid) {
+      // console.log(form.formState.errors);
+      setSubmitting(false);
+      // setSubmitError("Please fill out all required fields.");
+      return;
+    }
 
     try {
       const response = await fetch("http://localhost:8000/send-email", {
@@ -97,10 +116,13 @@ const ContactForm: React.FC<ContactFormProps> = ({
         form.reset();
         setSubmitting(false);
       } else {
-        throw new Error("Error sending email");
+        throw new Error("Server is not responding");
       }
     } catch (error) {
-      console.log(error);
+      setSubmitting(false);
+      form.reset();
+      // console.log(form.getValues());
+      // console.log(error);
       setSubmitError("Error sending email");
     }
   };
@@ -112,11 +134,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
           <div className="grid grid-cols-2 pb-3 gap-5 px-10 m-0 ">
             <FormField
               control={form.control}
-              name="firstname"
+              name="fullname"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="First Name" {...field} />
+                    <Input placeholder="Full Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -124,11 +146,15 @@ const ContactForm: React.FC<ContactFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="lastname"
+              name="phonenumber"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Last Name" {...field} />
+                    <Input
+                      type="number"
+                      placeholder="Phone Number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -170,6 +196,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                         placeholder="Please, enter your message"
                         className="h-[200px]"
                         {...field}
+                        value={field.value as string} // explicitly set the type of the value property to string
                       />
                     </FormControl>
 
@@ -186,7 +213,17 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <SelectInput {...field} defaultValue="Select a Project" />
+                      <SelectInput
+                        value={field.value as string}
+                        onChange={field.onChange}
+                        options={[
+                          "Carpentry",
+                          "Painting",
+                          "Bathroom Remodeling",
+                          "Kitchen Remodeling",
+                          " General Remodeling",
+                        ]}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

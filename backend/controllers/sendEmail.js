@@ -22,14 +22,15 @@ const sendEmail = async (value) => {
         name: "Website form",
       }, // sender address
       to: `${receivers}`, // list of receivers
-      subject: "New Contact Form Submission", // Subject line
+      subject: "New Quote Request", // Subject line
       html: `
-        <p><strong> Name:</strong> ${value.firstname} ${value.lastname}</p>
+        <p><strong> Name:</strong> ${value.fullname}</p>
+        <p><strong>Phone:</strong> ${value.phonenumber}</p>
         <p><strong>Email:</strong> ${value.emailAddress}</p>
         <p><strong>City:</strong> ${value.city}</p>
         ${
           !value.textarea
-            ? `<p><strong>Option:</strong> ${value.selectOption}</p>`
+            ? `<p><strong>Project:</strong> ${value.selectOption}</p>`
             : `<p><strong>Message:</strong> ${value.textarea}</p>`
         }
       `, // html body
