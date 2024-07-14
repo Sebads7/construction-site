@@ -9,7 +9,7 @@ const gallery = [
 const Painting = () => {
   return (
     <div>
-      <Carrousel images={gallery} imageSize="400px" />
+      <Carrousel images={gallery} />
     </div>
   );
 };

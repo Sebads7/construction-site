@@ -10,12 +10,10 @@ import {
   // NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import NavSlides from "./NavSlides";
-
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const gallery = [
   "src/assets/carpentry/Carpentry.JPG",
@@ -24,16 +22,6 @@ const gallery = [
 ];
 
 const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
-  const [show, setShow] = useState(false);
-
-  const handleRightClick = () => {
-    setShow((prevShow) => !prevShow);
-  };
-
-  const handleLeftClick = () => {
-    setShow((prevShow) => !prevShow);
-  };
-
   // if window scroll is greater than 100 then add sticky the class to the navbar
   useEffect(() => {
     const handleScroll = () => {
@@ -81,135 +69,77 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                 WHAT WE DO
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className=" gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] h-[270px]">
-                  <ul className="flex flex-row gap-3">
-                    <div className="flex justify-center items-center">
-                      <FaAngleLeft
-                        size={30}
-                        className="flex justify-center items-center cursor-pointer 
-                        transition-all duration-350 transform  hover:opacity-50
-                         hover:shadow-md hover:scale-110 dark:hover:shadow-black/30 dark:hover:scale-110  
-                        "
-                        onClick={() => {
-                          handleLeftClick();
-                        }}
-                      />
-                    </div>
+                <div className="flex justify-center items-center  md:w-[200px] lg:w-[300px] lg:grid-cols-[.75fr_1fr] ">
+                  <ul className="flex justify-center items-center flex-col w-full  ">
+                    {/* Kitchen Remodeling */}
+                    <li className="flex justify-center  transition duration-100 ease-in-out hover:bg-slate-800 p-3 w-full hover:text-white ">
+                      <NavigationMenuLink asChild className=" ">
+                        <Link
+                          className="flex items-center justify-center"
+                          to="/KitchenRemodeling"
+                        >
+                          <p className=" leading-tight ">Kitchen Remodeling</p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
 
-                    {show ? (
-                      <>
-                        {/* Kitchent Remodeling */}
-                        <li className="">
-                          <NavigationMenuLink
-                            asChild
-                            className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
-                          >
-                            <Link
-                              className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                              to="/kitchenremodeling"
-                            >
-                              <div className="flex justify-center items-center px-4 py-8">
-                                <div className="flex  flex-col   ">
-                                  <p className=" text-lg font-medium leading-tight mb-2 ">
-                                    Kitchen Remodeling
-                                  </p>
-                                  <p className="text-sm leading-tight text-muted-foreground">
-                                    Custom kitchen design
-                                  </p>
-                                </div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
+                    <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
 
-                        {/* PAINTING ITEM */}
-                        <li className="flex">
-                          <NavigationMenuLink
-                            asChild
-                            className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
-                          >
-                            <Link
-                              className="flex h-[200px] w-[180px] select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                              to="/painting"
-                            >
-                              <div className="flex justify-center items-center px-4 py-8">
-                                <div className="flex  flex-col   ">
-                                  <p className=" text-lg font-medium leading-tight mb-2 ">
-                                    Painting
-                                  </p>
-                                  <p className="text-sm leading-tight text-muted-foreground">
-                                    Drywall repair and painting
-                                  </p>
-                                </div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      </>
-                    ) : (
-                      <>
-                        {/* Bathroom Remodeling */}
-                        <li className="">
-                          <NavigationMenuLink
-                            asChild
-                            className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
-                          >
-                            <Link
-                              className="flex justify-center items-center h-[200px] w-[180px] select-none rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                              to="/bathremodeling"
-                            >
-                              <div className="flex justify-center items-center px-4 py-8">
-                                <div className="flex  flex-col   ">
-                                  <p className=" text-lg font-medium leading-tight mb-2 ">
-                                    Bathroom Remodeling
-                                  </p>
-                                  <p className="text-sm leading-tight text-muted-foreground">
-                                    Beautifully designed
-                                  </p>
-                                </div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
+                    {/* BATHROOM REMODELING */}
+                    <li className="flex justify-center  transition duration-100 ease-in-out hover:bg-slate-800 p-3 hover:text-white w-full ">
+                      <NavigationMenuLink asChild className=" ">
+                        <Link
+                          className="flex items-center justify-center"
+                          to="/BathRemodeling"
+                        >
+                          <p className=" leading-tight">Bathroom Remodeling</p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
 
-                        {/* CARPENTRY ITEM */}
-                        <li className="flex">
-                          <NavigationMenuLink
-                            asChild
-                            className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30"
-                          >
-                            <Link
-                              className="flex justify-center items-center h-[200px] w-[180px] select-none rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                              to="/carpentry"
-                            >
-                              <div className="flex justify-center items-center px-4 py-8">
-                                <div className="flex  flex-col   ">
-                                  <p className=" text-lg font-medium ">
-                                    Carpentry
-                                  </p>
-                                  <p className="text-sm leading-tight text-muted-foreground">
-                                    custom carpentry services
-                                  </p>
-                                </div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      </>
-                    )}
+                    <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
 
-                    <div className="flex justify-center items-center">
-                      <FaAngleRight
-                        size={30}
-                        className="flex justify-center items-center cursor-pointer 
-                        transition-all duration-350 transform  hover:opacity-50
-                        hover:shadow-md hover:scale-110 dark:hover:shadow-black/30 dark:hover:scale-110
-                        "
-                        onClick={() => {
-                          handleRightClick();
-                        }}
-                      />
-                    </div>
+                    {/* PRESSURE WASHING */}
+                    <li className="flex justify-center transition duration-100 ease-in-out hover:bg-slate-800 p-3 hover:text-white w-full  ">
+                      <NavigationMenuLink asChild className=" ">
+                        <Link
+                          className="flex items-center justify-center"
+                          to="/PressureWashing"
+                        >
+                          <p className=" leading-tight">Pressure Washing</p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+
+                    <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+
+                    {/* PAINTING ITEM */}
+                    <li className="flex justify-center transition duration-100 ease-in-out hover:bg-slate-800 p-3 hover:text-white w-full  ">
+                      <NavigationMenuLink asChild className=" ">
+                        <Link
+                          className="flex items-center justify-center"
+                          to="/Painting"
+                        >
+                          <p className=" leading-tight">
+                            Interior & Exterior Painting
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+
+                    <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+
+                    {/* CARPENTRY ITEM */}
+                    <li className="flex justify-center transition duration-100 ease-in-out hover:bg-slate-800 p-3   hover:text-white w-full ">
+                      <NavigationMenuLink asChild className=" ">
+                        <Link
+                          className="flex items-center justify-center"
+                          to="/Carpentry"
+                        >
+                          <p className=" leading-tight">Custom Carpentry</p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
                   </ul>
                 </div>
               </NavigationMenuContent>

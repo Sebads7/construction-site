@@ -13,6 +13,7 @@ import BathRemodeling from "./pages/What we do/BathRemodeling";
 import Carpentry from "./pages/What we do/Carpentry";
 import KitchenRemodeling from "./pages/What we do/KitchenRemodeling";
 import PaintingPage from "./pages/What we do/PaintingPage";
+import PressureWashing from "./pages/What we do/PressureWashing";
 import ScrollToTop from "./pages/ScrollToTop";
 
 const App = () => {
@@ -32,12 +33,13 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/seeourwork" element={<SeeOurWork />} />
+          <Route path="/SeeOurWork" element={<SeeOurWork />} />
           <Route path="/reviews" element={<Reviews />} />
-          <Route path="/bathremodeling" element={<BathRemodeling />} />
-          <Route path="/carpentry" element={<Carpentry />} />
-          <Route path="/kitchenremodeling" element={<KitchenRemodeling />} />
-          <Route path="/painting" element={<PaintingPage />} />
+          <Route path="/BathRemodeling" element={<BathRemodeling />} />
+          <Route path="/Carpentry" element={<Carpentry />} />
+          <Route path="/KitchenRemodeling" element={<KitchenRemodeling />} />
+          <Route path="/PressureWashing" element={<PressureWashing />} />
+          <Route path="/Painting" element={<PaintingPage />} />
         </Routes>
         <Footer />
       </Router>

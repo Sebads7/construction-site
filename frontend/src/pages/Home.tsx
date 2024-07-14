@@ -52,6 +52,7 @@ const Home = () => {
           </motion.div>
         </div>
       </Container>
+
       <WhatWeDo />
       <div className="w-full h-[10rem]"></div>
 

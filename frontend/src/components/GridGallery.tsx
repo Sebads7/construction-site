@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -6,9 +6,10 @@ import { AnimatePresence, motion } from "framer-motion";
 
 type GridGalleryProps = {
   images: string[];
+  imageLength: number;
 };
 
-const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
+const GridGallery: React.FC<GridGalleryProps> = ({ images, imageLength }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
     null
   );
@@ -54,16 +55,24 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
     setSelectedImageIndex(null);
   };
 
+  useEffect(() => {
+    if (selectedImageIndex !== null) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+  }, [selectedImageIndex]);
+
   return (
     <motion.div
-      className="grid grid-cols-2 gap-8"
+      className="grid grid-cols-2 gap-8 "
       variants={gridConatinerVariants}
       initial="hidden"
       animate="show"
     >
       <AnimatePresence>
         {images
-          .slice(0, showAllImages ? images.length : 7)
+          .slice(0, showAllImages ? images.length : imageLength)
           .map((image, index) => (
             <div key={index} className={`relative`}>
               <motion.div variants={gridSquareVariants}>
@@ -100,8 +109,8 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
       </motion.div>
 
       {selectedImageIndex !== null && (
-        <div className="fixed top-0 left-0 w-full h-full  flex items-center justify-center backdrop-filter backdrop-brightness-75 backdrop-blur-md custom-z-20 ">
-          <div className="flex justify-center flex-col  w-[70%] h-[95%] p-10 bg-black/90 custom-z-20">
+        <div className="fixed top-0 left-0 w-full h-full  flex items-center justify-center backdrop-filter backdrop-brightness-75 backdrop-blur-md custom-z-20  ">
+          <div className="  flex justify-center flex-col  w-full h-full p-10 bg-black/90 custom-z-20">
             {/* //////////   CloseModal BUTTON //////////////////// */}
             <div className="flex flex-row-reverse ">
               <button

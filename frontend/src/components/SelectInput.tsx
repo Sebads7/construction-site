@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import React from "react";
 
@@ -26,11 +26,29 @@ const SelectInput: React.FC<SelectInputProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(value);
+  const selectRef = useRef<HTMLDivElement>(null);
   // console.log(selected);
 
   useEffect(() => {
     setSelected(value);
   }, [value]);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.body.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   const handleSelect = (option: string) => {
     setSelected(option);
@@ -42,6 +60,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
     <motion.div
       className={`flex w-full bg-white border border-gray-300 text-sm rounded-lg text-slate-500 h-[4.5vh] `}
       whileTap={{ scale: 0.97 }}
+      ref={selectRef}
     >
       <motion.div
         className=" w-full transition "

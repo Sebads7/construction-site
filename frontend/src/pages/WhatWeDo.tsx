@@ -1,32 +1,16 @@
 import { Carrousel } from "@/components/Carrousel";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import slidesData from "./slides.json";
 
 import { Link } from "react-router-dom";
-
-const slides1 = [
-  "src/assets/carpentry/Carpentry.JPG",
-  "src/assets/carpentry/Carpentry2.JPG",
-  "src/assets/carpentry/Carpentry3.JPG",
-];
-
-const slides2 = [
-  "src/assets/bath-remodeling/bth1.JPG",
-  "src/assets/bath-remodeling/bth2.JPG",
-  "src/assets/bath-remodeling/bth3.JPG",
-];
-
-const slides3 = [
-  "src/assets/painting/painting1.JPG",
-  "src/assets/painting/Painting2.jpg",
-  "src/assets/painting/Painting3.jpg",
-];
 
 const WhatWeDo = () => {
   // const { scrollYProgress: completionProgress } = useScroll();
 
   const containerRef = useRef(null);
-
+  const [currentSlide, setCurrentSlide] = useState(0);
   const isInView = useInView(containerRef, { once: true });
   const mainControls = useAnimation();
 
@@ -36,10 +20,17 @@ const WhatWeDo = () => {
     }
   }, [isInView, mainControls]);
 
-  // const { scrollYProgress } = useScroll({
-  //   target: containerRef,
-  //   offset: ["start end", "end end"],
-  // });
+  const slidesToShow = 3;
+
+  const Prev = () => {
+    setCurrentSlide((prev) => Math.max(prev - 1, 0));
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) =>
+      Math.min(prev + 1, slidesData.length - slidesToShow)
+    );
+  };
 
   return (
     <div>
@@ -54,155 +45,92 @@ const WhatWeDo = () => {
         </h3>
       </div>
 
-      {/* Images container section */}
+      {/* SLIDES CONTAINER SECTION */}
       <div className="flex justify-center ">
-        <div className="grid  grid-cols-3 gap-12  " ref={containerRef}>
-          <motion.div
-            whileHover={{ scale: 1.01 }}
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 15,
-              ease: "easeInOut",
-            }}
-          >
-            <motion.div
-              className="grid  place-items-center shadow-2xl w-[27vw] "
-              animate={mainControls}
-              initial="hidden"
-              variants={{
-                hidden: { opacity: 0, x: -100 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-            >
-              <Carrousel
-                images={slides1}
-                className="w-full h-[15rem] border-none p-0 "
-              />
-              <div className="grid  place-items-center px-10 m-5">
-                <h1 className="flex justify-center font-bold ">
-                  CUSTOM CARPENTRY
-                </h1>
-                <h2 className="my-5">
-                  Set up an appointment to talk in-person or virtually with a
-                  Designer about ideas for your home. Together, you will develop
-                  design concepts, make product selections, and finalize details
-                  on your blueprints. We’ll handle the permits and construction
-                  and a dedicated Project Superintendent will make sure
-                  everything runs smoothly, all the way through to the final
-                  inspection.
-                </h2>
-                <Link to="carpentry">
-                  <button
-                    type="button"
-                    className="my-5 flex justify-center  bg-yellow-400 px-9 py-3 text-xs font-medium uppercase leading-normal text-black shadow-light-3 transition duration-150 ease-in-out hover:bg-yellow-500 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
-                  >
-                    LEARN MORE
-                  </button>
-                </Link>
-              </div>
-            </motion.div>
-          </motion.div>
+        {/* LEFT BUTTON */}
+        <motion.div
+          className="flex items-center bg-slate-200 px-2 mr-7 hover:bg-slate-300 cursor-pointer"
+          animate={mainControls}
+          onClick={Prev}
+          initial="hidden"
+          variants={{
+            hidden: { opacity: 0, scale: 0.8 },
+            visible: { opacity: 1, scale: 1 },
+          }}
+          transition={{
+            duration: 0.8,
+            delay: 1.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        >
+          <FaAngleLeft />
+        </motion.div>
 
-          {/* SECOND SET */}
-          <motion.div
-            whileHover={{ scale: 1.01 }}
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 15,
-              ease: "easeInOut",
-            }}
-          >
-            <motion.div
-              className="grid place-items-center shadow-2xl w-[27vw]  "
-              animate={mainControls}
-              initial="hidden"
-              variants={{
-                hidden: { opacity: 0, y: 100 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-            >
-              <Carrousel
-                images={slides2}
-                className="w-full h-[15rem] border-none p-0 "
-              />
-              <div className="grid  place-items-center px-10 m-5">
-                <h1 className="flex justify-center font-bold ">
-                  BATHROOM REMODELING
-                </h1>
-                <h2 className="my-5">
-                  Set up an appointment to talk in-person or virtually with a
-                  Designer about ideas for your home. Together, you will develop
-                  design concepts, make product selections, and finalize details
-                  on your blueprints. We’ll handle the permits and construction
-                  and a dedicated Project Superintendent will make sure
-                  everything runs smoothly, all the way through to the final
-                  inspection.
-                </h2>
-                <Link to="bathremodeling">
-                  <button
-                    type="button"
-                    className="my-5 flex justify-center  bg-yellow-400 px-9 py-3 text-xs font-medium uppercase leading-normal text-black shadow-light-3 transition duration-150 ease-in-out hover:bg-yellow-500 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
-                  >
-                    LEARN MORE
-                  </button>
-                </Link>
-              </div>
-            </motion.div>
-          </motion.div>
+        {/* SLIDES */}
+        <motion.div className="grid  grid-cols-3 gap-12   " ref={containerRef}>
+          {slidesData
+            .slice(currentSlide, currentSlide + slidesToShow)
+            .map((slide, index) => (
+              <motion.div
+                className=""
+                whileHover={{ scale: 1.01 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 15,
+                  ease: "easeInOut",
+                }}
+              >
+                <motion.div
+                  key={index}
+                  className="grid grid-rows-3 place-items-center shadow-2xl w-[27vw] h-[45rem]  "
+                  animate={mainControls}
+                  initial="hidden"
+                  variants={slide.variants}
+                  transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+                >
+                  <div className=" flex h-full  w-full">
+                    <Carrousel
+                      images={slide.images}
+                      className="flex w-full h-[17rem] border-none p-0  m-0 "
+                    />
+                  </div>
 
-          {/* THIRD SET */}
-          <motion.div
-            whileHover={{ scale: 1.01 }}
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 15,
-              ease: "easeInOut",
-            }}
-          >
-            <motion.div
-              className="grid place-items-center shadow-2xl w-[27vw]  "
-              animate={mainControls}
-              initial="hidden"
-              variants={{
-                hidden: { opacity: 0, x: 100 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-            >
-              <Carrousel
-                images={slides3}
-                className="w-full h-[15rem] border-none p-0 "
-              />
-              <div className="grid  place-items-center px-10 m-5">
-                <h1 className="flex justify-center font-bold ">
-                  INTERIOR AND EXTERIOR PAINTING
-                </h1>
-                <h2 className="my-5">
-                  Set up an appointment to talk in-person or virtually with a
-                  Designer about ideas for your home. Together, you will develop
-                  design concepts, make product selections, and finalize details
-                  on your blueprints. We’ll handle the permits and construction
-                  and a dedicated Project Superintendent will make sure
-                  everything runs smoothly, all the way through to the final
-                  inspection.
-                </h2>
-                <Link to="painting">
-                  <button
-                    type="button"
-                    className="my-5 flex justify-center  bg-yellow-400 px-9 py-3 text-xs font-medium uppercase leading-normal text-black shadow-light-3 transition duration-150 ease-in-out hover:bg-yellow-500 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
-                  >
-                    LEARN MORE
-                  </button>
-                </Link>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
+                  <div className="grid  h-full mt-20 p-10  ">
+                    <h1 className="text-center font-bold ">{slide.title}</h1>
+                    <h2 className="my-5">{slide.description}</h2>
+                  </div>
+                  <Link to={slide.link}>
+                    <button
+                      type="button"
+                      className="my-5 grid  bg-yellow-400 px-9 py-3 text-xs font-medium uppercase leading-normal text-black shadow-light-3 transition duration-150 ease-in-out hover:bg-yellow-500 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                    >
+                      LEARN MORE
+                    </button>
+                  </Link>
+                </motion.div>
+              </motion.div>
+            ))}
+        </motion.div>
+
+        {/* RIGHT BUTTON */}
+        <motion.div
+          className="flex items-center bg-slate-200 px-2 ml-7 hover:bg-slate-300 cursor-pointer"
+          animate={mainControls}
+          onClick={nextSlide}
+          initial="hidden"
+          variants={{
+            hidden: { opacity: 0, scale: 0.8 },
+            visible: { opacity: 1, scale: 1 },
+          }}
+          transition={{
+            duration: 0.8,
+            delay: 1.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        >
+          <FaAngleRight />
+        </motion.div>
       </div>
     </div>
   );

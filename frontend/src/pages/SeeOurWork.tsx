@@ -160,8 +160,9 @@ const SeeOurWork = () => {
                   initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+                  className="w-[50%]"
                 >
-                  <GridGallery images={grid1} />
+                  <GridGallery images={grid1} imageLength={5} />
                 </motion.div>
               </div>
             </div>
@@ -197,8 +198,9 @@ const SeeOurWork = () => {
                   initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+                  className="w-[50%]"
                 >
-                  <GridGallery images={grid1} />
+                  <GridGallery images={grid1} imageLength={5} />
                 </motion.div>
               </div>
             </div>
@@ -223,7 +225,15 @@ const SeeOurWork = () => {
                     </h2>
                   </div>
                 </div>
-                <GridGallery images={grid1} />
+                {/*gallery */}
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+                  className="w-[50%]"
+                >
+                  <GridGallery images={grid1} imageLength={5} />
+                </motion.div>
               </div>
             </div>
           )}
@@ -247,7 +257,16 @@ const SeeOurWork = () => {
                     </h2>
                   </div>
                 </div>
-                <GridGallery images={grid1} />
+
+                {/*gallery */}
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+                  className="w-[50%]"
+                >
+                  <GridGallery images={grid1} imageLength={5} />
+                </motion.div>
               </div>
             </div>
           )}
