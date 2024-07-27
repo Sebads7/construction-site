@@ -181,13 +181,13 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
             {/* THIRD ITEM */}
 
-            <NavigationMenuItem className="px-4 text-sm">
+            {/* <NavigationMenuItem className="px-4 text-sm">
               <NavigationMenuLink>
                 <Link to="/Reviews" className="bg-transparent text-white">
                   REVIEWS
                 </Link>
               </NavigationMenuLink>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
 
             <NavigationMenuItem className="px-4 text-sm">
               <NavigationMenuLink>

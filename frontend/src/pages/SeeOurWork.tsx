@@ -1,6 +1,9 @@
 import ButtonUp from "@/components/ButtonUp";
+import ContactForm from "@/components/ContactForm";
 
 import GridGallery from "@/components/GridGallery";
+
+import Review from "@/components/Review";
 import { Button } from "@/components/ui/button";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -41,7 +44,7 @@ const SeeOurWork = () => {
     <div>
       <div className="bg-black opacity-50 w-full h-[65px] flex fixed "></div>
 
-      <div className="w-ful  h-[25rem]  flex ">
+      <div className="w-full  h-[30rem]  flex ">
         <div className="bg-black/30 w-full h-full fixed -z-10 "> </div>
         <div className="fixed w-full h-full  -z-20  ">
           <img
@@ -51,20 +54,20 @@ const SeeOurWork = () => {
           />
         </div>
 
-        <div className="w-full left-0 h-full flex  flex-col items-center -z-10    pt-10  absolute">
-          <div className=" w-full h-[423px] flex justify-center items-center  ">
-            <div className=" bg-red-500/90 h-[4.5rem] w-[18rem] flex justify-center items-center  ">
-              <h1 className="flex text-lg  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[25rem]  ">
-                See our Work
+        <div className="w-full h-[30rem]  left-0 flex  flex-col items-center justify-center  bg-black/10 py-10 absolute">
+          <div className=" w-full h-[300px]  flex justify-center items-center  ">
+            <div className=" bg-zinc-800/85 h-[5.5rem] w-[22rem] flex justify-center items-center   ">
+              <h1 className="flex text-xl  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[30rem]  ">
+                See Our Work
               </h1>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex  justify-center items-center flex-col border-l-8 border-t-8 ml-32 border-white/40  ">
-        <div className="flex  w-full h-[2rem]   bg-black/[70%]  "></div>
-        <div className="flex  justify-center items-center w-full h-[5rem] bg-black/[70%] ">
+      <div className="flex  justify-center items-center flex-col border-b-8 border-t-8 border-white/40  ">
+        <div className="flex  w-full h-[2rem]   bg-black/30  "></div>
+        <div className="flex  justify-center items-center w-full h-[5rem] bg-black/30 ">
           <div className="flex gap-5">
             <Button
               variant="custom"
@@ -113,7 +116,7 @@ const SeeOurWork = () => {
           </div>
         </div>
 
-        <div className="flex h-full justify-center items-center w-full bg-black/[70%]  px-10">
+        <div className="flex h-full justify-center items-center w-full bg-black/30  px-10">
           {/* Bath section  */}
           {activeSection === "bath" && (
             <div
@@ -160,7 +163,7 @@ const SeeOurWork = () => {
                   initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-                  className="w-[50%]"
+                  className="w-2/4"
                 >
                   <GridGallery images={grid1} imageLength={5} />
                 </motion.div>
@@ -272,6 +275,25 @@ const SeeOurWork = () => {
           )}
         </div>
       </div>
+
+      <div className="w-full h-full pb-20 bg-white/95">
+        <div className=" flex flex-col justify-center items-center w-full h-[25rem] ">
+          <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider lg:text-4xl  ">
+            The Top Trusted Remodeling Experts in Atlanta
+          </h2>
+          <h3 className="w-[60rem]  text-center leading-7 [&:not(:first-child)]:mt-6 text-lg ">
+            We are committed to delivering the best home improvement experience
+            of your life. We handle the whole process from start to finish, so
+            you have one point of contact through your entire project.
+          </h3>
+        </div>
+        <Review />
+      </div>
+
+      <div className="w-full  h-[30rem]  flex border-white/40 border-t-8 ">
+        <div className="bg-black/30 w-full h-full fixed -z-10 "> </div>
+      </div>
+
       <ButtonUp />
     </div>
   );

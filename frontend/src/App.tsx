@@ -12,9 +12,10 @@ import Reviews from "./pages/Reviews";
 import BathRemodeling from "./pages/What we do/BathRemodeling";
 import Carpentry from "./pages/What we do/Carpentry";
 import KitchenRemodeling from "./pages/What we do/KitchenRemodeling";
-import PaintingPage from "./pages/What we do/PaintingPage";
+
 import PressureWashing from "./pages/What we do/PressureWashing";
 import ScrollToTop from "./pages/ScrollToTop";
+import Painting from "./pages/What we do/Painting";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -39,7 +40,7 @@ const App = () => {
           <Route path="/Carpentry" element={<Carpentry />} />
           <Route path="/KitchenRemodeling" element={<KitchenRemodeling />} />
           <Route path="/PressureWashing" element={<PressureWashing />} />
-          <Route path="/Painting" element={<PaintingPage />} />
+          <Route path="/Painting" element={<Painting />} />
         </Routes>
         <Footer />
       </Router>

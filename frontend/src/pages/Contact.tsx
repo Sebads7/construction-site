@@ -4,11 +4,11 @@ import { MdEmail } from "react-icons/md";
 
 const Contact = () => {
   return (
-    <div className="grid grid-cols-2 ">
-      <div className="bg-black opacity-80 w-full h-[65px] flex fixed"></div>
+    <div className="grid grid-cols-2  ">
+      <div className="bg-black opacity-80 w-full h-[65px] flex fixed z-[8]"></div>
 
-      <div className="w-full bg-gray-900 ">
-        <div className="bg-black/30  h-full absolute w-[50.4%]   "> </div>
+      <div className=" w-full  relative ">
+        <div className="bg-black/30  h-full absolute w-full  "> </div>
         <img
           src="src/assets/fronthouse.jpeg"
           alt="background"
@@ -16,12 +16,11 @@ const Contact = () => {
         />
       </div>
 
-      <div className="w-full flex flex-col ">
-        <div className="w-full h-[150px]"></div>
-        <div className="w-full  mb-[100px] flex items-center justify-center ">
-          <div className=" bg-red-500/95 h-[4.5rem] w-[18rem] flex justify-center items-center  ">
-            <h1 className="flex text-lg  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[25rem]  ">
-              See our Work
+      <div className=" w-full">
+        <div className=" w-full h-2/5 flex justify-center items-center   ">
+          <div className=" bg-zinc-700/80 h-[5rem] w-[20rem] flex justify-center items-center   ">
+            <h1 className="flex text-xl  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[30rem]  ">
+              Contact Us
             </h1>
           </div>
         </div>
@@ -36,8 +35,10 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="flex w-full mt-10 justify-center items-center">
-          <ContactForm showTextInput={true} contactButton={true} />
+        <div className="flex justify-center w-full mt-10  ">
+          <div className=" w-[90%] ">
+            <ContactForm showTextInput={true} contactButton={true} />
+          </div>
         </div>
       </div>
     </div>

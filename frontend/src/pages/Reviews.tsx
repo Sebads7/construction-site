@@ -9,11 +9,13 @@ const Reviews = () => {
   return (
     <Container>
       <div className="bg-black opacity-80 w-full h-[65px] flex fixed"></div>
-      <div className="w-full left-0 h-full flex  flex-col items-center  pt-10  ">
-        <div className=" w-full h-[15rem] flex justify-center items-center  ">
-          <div className=" bg-red-500/90 h-[4.5rem] w-[18rem] flex justify-center items-center  ">
-            <h1 className="flex text-lg  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[25rem]  ">
-              See our Work
+
+      {/* TITLE SECTION */}
+      <div className="w-full h-[30rem]  left-0 flex  flex-col items-center justify-center  py-10 ">
+        <div className=" w-full h-[300px]  flex justify-center items-center  ">
+          <div className=" bg-zinc-800/85 h-[5.5rem] w-[22rem] flex justify-center items-center   ">
+            <h1 className="flex text-xl  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[30rem]  ">
+              See Our Work
             </h1>
           </div>
         </div>
