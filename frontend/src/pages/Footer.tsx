@@ -7,7 +7,7 @@ import { SiHomebridge } from "react-icons/si";
 const Footer = () => {
   return (
     <div>
-      <footer className=" bg-[#1a1920] text-slate-200 text-sm">
+      <footer className=" bg-[#1a1920] text-slate-200 text-sm py-1">
         <div className="flex flex-col md:flex-row  justify-between px-28 p-5">
           <div className=" flex flow-row justify-center items-center">
             <a href="/" className="flex items-center p-2 mr-5">

@@ -9,10 +9,9 @@
   font-family: "Inter", sans-serif;
 }
 
-html,
-head,
 body {
-  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .custom-z-20 {

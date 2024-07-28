@@ -37,8 +37,8 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
   return (
     <div
-      className={` flex justify-between items-center pl-2 fixed h-[65px]  bg-black bg-opacity-20 scroll 
-      z-10  w-full `}
+      className={` flex justify-between items-center pl-2 fixed w-full h-[65px]  bg-black bg-opacity-20 scroll 
+      z-10  `}
     >
       <div>
         <a href="/" className="flex items-center p-2">

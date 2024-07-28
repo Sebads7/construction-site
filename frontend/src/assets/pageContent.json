@@ -1,0 +1,44 @@
+{
+  "kitchenRemodeling": {
+    "pageName": "Kitchen Remodeling",
+    "imageBackground": "./src/assets/kitchen remodeling/kitch-rem2.webp",
+    "title": "Revitalize Your Kitchen: Expert Remodeling Services",
+    "description": "Welcome to our world of craftsmanship, where wood meets creativity and precision. With a passion for transforming spaces, we specialize in bespoke carpentry solutions that blend timeless elegance with functional design, ensuring every project reflects your unique vision and exceeds expectations.",
+    "WhyChooseUsTitle": "  Why choose us for your kitchen remodeling project?",
+    "whyChooseUs": [
+      "Expert Design Consultation: Our seasoned designers will collaborate closely with you to grasp your preferences, cooking habits, and budget, ensuring every aspect of your new kitchen reflects your needs.",
+      "Quality Craftsmanship: With years of industry experience, our craftsmen are committed to delivering top-notch workmanship. From bespoke cabinetry to intricate back-splash designs, we meticulously attend to every detail to uphold the highest standards of quality.",
+      "Timely Completion: We understand that a kitchen renovation can disrupt your daily life. That's why we prioritize finishing every project promptly and within budget, allowing you to enjoy your upgraded kitchen without unnecessary delays.",
+      "Personalized Solutions: We believe your kitchen should be a reflection of your unique style. Whether you prefer contemporary chic or classic warmth, we customize our designs and solutions to complement your aesthetic preferences and lifestyle."
+    ],
+    "servicesInclude": [
+      "Custom Cabinetry",
+      "Counter-tops",
+      "Lighting Design",
+      "Flooring",
+      "Plumbing and Fixtures",
+      "Painting and Wall Treatments"
+    ]
+  },
+  "bathroomRemodeling": {
+    "pageName": "Bathroom Remodeling",
+    "title": "Transform Your Bathroom into a Luxurious Oasis",
+    "imageBackground": "src/assets/bath-remodeling/15-top-bathroom-remodeling-features-01.webp",
+    "description": "At ABJ Painting & Remodeling, we specialize in creating breathtaking bathroom renovations that combine functionality with aesthetics. Whether you're dreaming of a spa-like retreat or seeking to maximize space in a small bathroom, our team of skilled craftsmen is here to bring your vision to life..",
+    "WhyChooseUsTitle": "  Why choose us for your bathroom remodeling project?",
+    "whyChooseUs": [
+      " Quality Craftsmanship: With years of experience in the industry, our craftsmen are dedicated to delivering superior quality workmanship. From custom cabinetry to intricate tile work, we pay attention to every detail to ensure the highest standards of excellence.",
+      "Timely Completion: We understand that a bathroom renovation can be disruptive to your daily routine. That's why we strive to complete every project on time and within budget, so you can enjoy your updated bathroom as soon as possible.",
+      " Personalized Solutions: We believe that every bathroom should be as unique as its owner. Whether you're looking for modern elegance or timeless charm, we tailor our designs and solutions to match your taste and personality.",
+      " Quality Materials: We source and use only the finest materials for your bathroom renovation. From durable fixtures to luxurious finishes, we ensure that your new bathroom not only looks stunning but also stands the test of time."
+    ],
+    "servicesInclude": [
+      "Custom Cabinetry",
+      " Painting",
+      "Lighting Design",
+      "Flooring",
+      "Plumbing and Fixtures",
+      "Wall Treatments"
+    ]
+  }
+}

@@ -1,179 +1,78 @@
-import { Carrousel } from "@/components/Carrousel";
 import GridGallery from "@/components/GridGallery";
 import Review from "@/components/Review";
-import { GiSevenPointedStar } from "react-icons/gi";
+import PagesSection from "@/components/PagesSection";
+import PageContent from "@/assets/pageContent.json";
+
 import slide from "@/assets/SlideImages.json";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const BathRemodeling = () => {
+  const containerRef = useRef(null);
+
+  const isInView = useInView(containerRef);
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView, mainControls]);
+
   return (
-    <div className=" w-full ">
+    <div>
       <div className="bg-black opacity-50 w-full h-[65px] flex fixed z-[8]"></div>
 
-      <div className="w-full  flex">
-        <div className="w-full  bg-gray-900 opacity-70  ">
-          <img
-            src="src/assets/bath-remodeling/15-top-bathroom-remodeling-features-01.webp"
-            alt="background"
-            className="w-full h-screen object-cover "
-          />
-        </div>
+      <PagesSection content={PageContent.bathroomRemodeling} />
 
-        <div className="w-full h-full left-0 flex  flex-col items-center  bg-black/50 py-10 absolute">
-          <div className=" w-full h-[300px] flex justify-center items-center  ">
-            <div className=" bg-zinc-700/85 h-[5.5rem] w-[22rem] flex justify-center items-center   ">
-              <h1 className="flex text-xl  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[30rem]  ">
-                Bathroom Remodeling
-              </h1>
-            </div>
-          </div>
+      {/* REVIEW AND CONTACT SECTION */}
 
-          <div className="flex flex-col justify-center items-center h-[27rem] w-full bg-gray-900/10 p-10">
-            <h1 className="mb-4 text-white scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl  ">
-              Transform Your Bathroom into a Luxurious Oasis
-            </h1>
-            <h2 className="w-[70rem] text-white text-center leading-7 [&:not(:first-child)]:mt-6 text-xl">
-              At ABJ Painting & Remodeling, we specialize in creating
-              breathtaking bathroom // renovations that combine functionality
-              with aesthetics. Whether // you're dreaming of a spa-like retreat
-              or seeking to maximize space // in a small bathroom, our team of
-              skilled craftsmen is here to // bring your vision to life.
+      <div className="flex flex-col w-full h-full py-20 z-10 bg-white/95">
+        <div className="flex  flex-col  justify-center">
+          <div className=" flex flex-col justify-center items-center w-full h-[25rem] ">
+            <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider lg:text-4xl  ">
+              The Top Trusted Remodeling Experts in Atlanta
             </h2>
+            <h3 className="w-[60rem]  text-center leading-7 [&:not(:first-child)]:mt-6 text-lg ">
+              We are committed to delivering the best home improvement
+              experience of your life. We handle the whole process from start to
+              finish, so you have one point of contact through your entire
+              project.
+            </h3>
           </div>
-        </div>
-      </div>
-
-      <div className="h-[15rem] w-full "></div>
-
-      <div className="flex  w-full h-full  ">
-        <div className="w-[50%] ">
-          <div className="bg-black/10 flex flex-col pt-10 px-16  h-[45rem] w-full">
-            <div className="bg-gray-200 shadow-xl hover:scale-[1.005] delay-100 transition-all ease-in-out p-10">
-              <div className=" flex flex-col  bg-slate-50/90  ">
-                <h3 className="text-xl font-semibold tracking-tight text-center pt-10  ">
-                  Why choose us for your bathroom remodeling project?
-                </h3>
-                <ul className="flex flex-col gap-6 text-lg tracking-tight  p-5 px-10  ">
-                  <li>
-                    Quality Craftsmanship: With years of experience in the
-                    industry, our craftsmen are dedicated to delivering superior
-                    quality workmanship. From custom cabinetry to intricate tile
-                    work, we pay attention to every detail to ensure the highest
-                    standards of excellence.
-                  </li>
-                  <li>
-                    Timely Completion: We understand that a bathroom renovation
-                    can be disruptive to your daily routine. That's why we
-                    strive to complete every project on time and within budget,
-                    so you can enjoy your updated bathroom as soon as possible.
-                  </li>
-                  <li>
-                    Personalized Solutions: We believe that every bathroom
-                    should be as unique as its owner. Whether you're looking for
-                    modern elegance or timeless charm, we tailor our designs and
-                    solutions to match your taste and personality.
-                  </li>
-                  <li>
-                    Quality Materials: We source and use only the finest
-                    materials for your bathroom renovation. From durable
-                    fixtures to luxurious finishes, we ensure that your new
-                    bathroom not only looks stunning but also stands the test of
-                    time.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col w-[50%]">
-          <div className="flex">
-            <Carrousel
-              images={slide.kitchenRemodeling}
-              className="border-none w-[22rem] h-[46.5rem]"
-            />
-            <div className="bg-black/10  flex flex-col pt-10 h-[45rem] w-full px-16 relative ">
-              <div className="bg-gray-200 shadow-xl flex flex-col justify-center  -top-12 absolute left-10  h-full px-10 ">
-                <div className="  bg-slate-50/90 px-10 py-36 ">
-                  <h3 className=" text-xl font-semibold tracking-tight pb-10 ">
-                    Our Services Include:
-                  </h3>
-                  <ul className="flex flex-col gap-6  text-lg tracking-tight   ">
-                    <li className="flex items-center gap-2">
-                      <span className=" text-gray-400 ">
-                        <GiSevenPointedStar />
-                      </span>
-                      Custom Cabinetry
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className=" text-gray-400 ">
-                        <GiSevenPointedStar />
-                      </span>
-                      Painting
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className=" text-gray-400 ">
-                        <GiSevenPointedStar />
-                      </span>
-                      Lighting Design
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className=" text-gray-400 ">
-                        <GiSevenPointedStar />
-                      </span>
-                      Flooring
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className=" text-gray-400 ">
-                        <GiSevenPointedStar />
-                      </span>
-                      Plumbing and Fixtures
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className=" text-gray-400 ">
-                        <GiSevenPointedStar />
-                      </span>
-                      Wall Treatments
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="h-[10rem] w-full "></div>
-
-      <div className="relative">
-        <div className="w-full h-full  ">
-          <img
-            src="./src/assets/kitchen remodeling/kitch-rem4.jpg"
-            alt="background"
-            className="w-full h-[20rem] object-cover  "
-          />
-          <div className="w-full h-full bg-black opacity-50  top-0  absolute"></div>
-        </div>
-      </div>
-
-      <div className="h-[10rem] w-full "></div>
-
-      <div className="flex flex-col w-full h-full py-20">
-        <div className="flex  justify-center">
           <Review />
         </div>
 
-        <div className="h-[10rem] w-full "></div>
+        <div className="h-[20rem] w-full "></div>
 
-        <div className="px-10">
-          <div className="bg-black/20 py-20 px-10 shadow-xl ">
+        {/* GALLERY SECTION */}
+
+        <motion.div ref={containerRef} className="px-10">
+          <motion.div className="bg-[#272829] opacity-85 py-20 px-10 shadow-xl ">
             <h3 className=" text-2xl font-semibold tracking-tight text-center pb-20 text-white">
-              View our Work
+              VIEW OUR RECENT BATHROOM REMODELING PROJECTS
             </h3>
-            <GridGallery images={slide.kitchenRemodeling} imageLength={3} />
-          </div>
-        </div>
+            <motion.div
+              animate={mainControls}
+              initial="hidden"
+              variants={{
+                hidden: { opacity: 0, y: 100 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{
+                duration: 1,
+                delay: 0.2,
+                ease: [0.5, 0.71, 0.9, 1.01],
+              }}
+            >
+              <GridGallery images={slide.kitchenRemodeling} imageLength={3} />
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         <div className="h-[10rem] w-full "></div>
       </div>
+      <div className="w-full  h-[20rem]  flex bg-black/50"></div>
     </div>
   );
 };
