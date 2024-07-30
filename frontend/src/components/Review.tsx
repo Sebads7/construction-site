@@ -1,7 +1,12 @@
-import { Rating } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useInView,
+  useAnimation,
+} from "framer-motion";
+import { Rating } from "@mui/material";
 import ContactForm from "./ContactForm";
-import { motion, useAnimation, useInView } from "framer-motion";
 
 const reviews = [
   {
@@ -21,113 +26,128 @@ const reviews = [
   },
 ];
 
-const Review = () => {
-  const [currentReview, setCurrentReview] = useState(0);
-  const [value] = useState<number | null>(5);
+const variants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 1000 : -1000,
+    opacity: 0,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? 1000 : -1000,
+    opacity: 0,
+  }),
+};
 
+export const Review = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true });
   const mainControls = useAnimation();
 
+  const [[page, direction], setPage] = useState([0, 0]);
+  const imageIndex =
+    ((page % reviews.length) + reviews.length) % reviews.length; // Wrap around
+
+  const paginate = (newDirection: number) => {
+    setPage([page + newDirection, newDirection]);
+  };
+
+  // Interval to automatically paginate
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentReview((prevIndex) => (prevIndex + 1) % reviews.length);
-    }, 7000);
-    return () => clearInterval(interval);
-  }, []);
+      paginate(1); // Change to -1 for reverse direction
+    }, 9000); // Change interval time as needed (7000 ms = 7 seconds)
+
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, [page]);
 
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");
     }
-  }, [isInView, mainControls]);
+  }, [isInView]);
 
   return (
     <div
-      className="relative grid place-items-center gap-12 grid-cols-3 py-[1rem] px-36"
+      className="flex justify-center items-center w-full h-full bg-white/60 gap-12 py-4 px-36"
       ref={containerRef}
     >
-      <div className="relative w-full col-span-2 row-span-2">
-        {reviews.map((review, index) => (
+      <motion.div
+        className="flex  relative w-3/4 h-[23rem] "
+        animate={mainControls}
+        initial="hidden"
+        variants={{
+          hidden: { opacity: 0, scale: 0.5 },
+          visible: { opacity: 1, scale: 1 },
+        }}
+        transition={{
+          duration: 1,
+          delay: 1,
+          ease: [0, 0.71, 0.2, 1.01],
+        }}
+      >
+        <AnimatePresence initial={false} custom={direction}>
           <motion.div
-            className="relative grid items-center"
-            animate={mainControls}
-            initial="hidden"
-            variants={{
-              hidden: { opacity: 0, scale: 0.5 },
-              visible: { opacity: 1, scale: 1 },
-            }}
+            key={page}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             transition={{
-              duration: 0.8,
-              delay: 0.4,
-              ease: [0, 0.71, 0.2, 1.01],
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.1 },
             }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            className="absolute  h-full flex items-center justify-center"
           >
-            <motion.div
-              key={review.id}
-              className={`absolute content-center h-[25rem] border-2 bg-white/[80%]
-              ${currentReview === index ? "opacity-100" : "opacity-0"} `}
-              initial="hidden"
-              animate={currentReview === index ? "visible" : "hidden"}
-              variants={{
-                hidden: { opacity: 0, x: -300 },
-                visible: { opacity: 1, x: 0 },
-              }}
-            >
-              <div
-                className={`place-items-center self-center grid transition-opacity ease-in-out`}
-              >
-                <Rating
-                  value={value}
-                  name="read-only "
-                  defaultValue={4.5}
-                  size="large"
-                  onChange={() => {}}
-                  readOnly
-                />
-                <div className="text-center px-10 mt-10">
-                  <h2 className=" px-10 text-slate-600 ">{review.text}</h2>
-                  <p className="mt-5 text-cyan-600">{review.name}</p>
-                </div>
+            <div className="flex flex-col items-center bg-white border-2 p-6 py-16 gap-4 rounded-lg shadow-lg">
+              <Rating value={5} name="read-only" size="large" readOnly />
+              <div className="text-center mt-6">
+                <p className="text-slate-600">{reviews[imageIndex].text}</p>
+                <p className="mt-4 text-cyan-600">{reviews[imageIndex].name}</p>
               </div>
-            </motion.div>
-
-            {/* Dots */}
-            <div className="absolute bottom-[-14.5rem] left-1/2 transform -translate-x-1/2  grid grid-cols-3 gap-3 ">
-              {reviews.map((_, index) => (
-                <div
-                  key={index}
-                  onClick={() => setCurrentReview(index)}
-                  className={`w-4 h-4 rounded-full cursor-pointer ${
-                    currentReview === index ? "bg-cyan-600" : "bg-gray-300"
-                  }`}
-                />
-              ))}
             </div>
           </motion.div>
-        ))}
-      </div>
+        </AnimatePresence>
+        {/* Navigation Dots */}
+        <div className="flex gap-2 absolute bottom-[-2rem] left-1/2 transform -translate-x-1/2">
+          {reviews.map((_, index) => (
+            <div
+              key={index}
+              onClick={() => setPage([index, index - page])}
+              className={`w-4 h-4 rounded-full cursor-pointer ${
+                imageIndex === index ? "bg-gray-700" : "bg-gray-300"
+              }`}
+            />
+          ))}
+        </div>
+      </motion.div>
 
       {/* Right side of the grid */}
       <motion.div
-        className="grid  h-[40rem] w-[30rem]  col-span-1"
+        className="flex h-[40rem] w-[30rem]"
         animate={mainControls}
         initial="hidden"
         variants={{
           hidden: { opacity: 0, x: 100 },
           visible: { opacity: 1, x: 0 },
         }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+        transition={{ duration: 0.8, delay: 1.2, ease: [0, 0.71, 0.2, 1.01] }}
       >
-        <div className=" bg-yellow-300/90 grid place-items-center  shadow-2xl py-10 z-[2] ">
-          <div className="w-full  flex justify-center items-center text-center">
-            <h1 className="flex flex-col  scroll-m-20 text-1xl  font-semibold tracking-tight ">
-              UP TO
-              <span className="scroll-m-20 border-b border-black pb-5 text-4xl font-semibold tracking-tight first:mt-0 mb-9 ">
-                20% OFF
-              </span>
-            </h1>
-          </div>
+        <div className="bg-yellow-300/90 grid place-items-center shadow-2xl py-10 z-[2] ">
+          <h1 className="text-center text-2xl font-semibold">
+            UP TO
+            <span className="block text-4xl font-semibold border-b border-black pb-2">
+              20% OFF
+            </span>
+          </h1>
           <ContactForm
             secondButton={true}
             checkBox={true}

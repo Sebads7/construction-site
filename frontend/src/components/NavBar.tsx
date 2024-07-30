@@ -157,16 +157,18 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                       className="transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30 rounded-md bg-gradient-to-b"
                     >
                       <a
-                        className="flex h-full w-full select-none flex-col   from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md   items-center justify-center  "
+                        className="flex h-full w-full select-none flex-col   from-muted/50 to-muted py-6 no-underline outline-none focus:shadow-md   items-center justify-center  "
                         href="/SeeOurWork"
                       >
-                        <div className="mb-4 mt-1 text-lg font-medium">
-                          Check our gallery
+                        <div className="w-full py-5 ">
+                          <div className="mb-4 mt-1 text-base font-semibold text-center">
+                            Check our gallery
+                          </div>
+                          <p className="text-sm leading-tight text-muted-foreground text-center ">
+                            Our photo galleries feature the best photos from our
+                            projects.
+                          </p>
                         </div>
-                        <p className="text-sm leading-tight text-muted-foreground">
-                          Our photo galleries feature the best photos from our
-                          projects.
-                        </p>
                       </a>
                     </NavigationMenuLink>
                   </li>

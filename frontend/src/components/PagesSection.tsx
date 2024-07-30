@@ -1,8 +1,12 @@
 import { motion, useAnimation, useInView } from "framer-motion";
 import { Carrousel } from "./Carrousel";
 import { TbPointFilled } from "react-icons/tb";
-import slide from "@/assets/SlideImages.json";
+
 import { useEffect, useRef } from "react";
+
+import slide from "@/assets/SlideImages.json";
+import Review from "@/components/Review";
+import GridGallery from "@/components/GridGallery";
 
 type PagesSectionProps = {
   content: {
@@ -12,21 +16,28 @@ type PagesSectionProps = {
     whyChooseUs: string[];
     servicesInclude: string[];
     imageBackground: string;
+    ourServices: string;
     WhyChooseUsTitle: string;
   };
 };
 
 const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
   const containerRef = useRef(null);
+  const containerRef2 = useRef(null);
 
   const isInView = useInView(containerRef);
+  const isInView2 = useInView(containerRef2);
   const mainControls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");
     }
-  }, [isInView, mainControls]);
+    if (isInView2) {
+      mainControls.start("visible");
+    }
+  }, [isInView, isInView2, mainControls]);
+
   return (
     <div>
       <div className="w-full h-[60rem] flex   ">
@@ -80,11 +91,11 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
           // initial={{ opacity: 0, y: -100 }}
           // animate={{ opacity: 1, y: 0 }}
 
-          className="w-[50%]"
+          className="w-[47%]"
         >
-          <div className="bg-black/10 flex flex-col  justify-center items-center h-[45rem]  ">
+          <div className="bg-black/10 flex flex-col  justify-center items-center h-[45rem] w-full ">
             <motion.div
-              className="bg-gray-200 w-3/4    p-10 flex justify-center  shadow-2xl "
+              className="bg-gray-200 w-10/12    p-10 flex justify-center  shadow-2xl "
               animate={mainControls}
               initial="hidden"
               variants={{
@@ -97,8 +108,8 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
                 ease: [0.4, 0.7, 0.4, 1.01],
               }}
             >
-              <div className=" flex flex-col  justify-center  bg-slate-50/90 shadow-2xl    ">
-                <h3 className="text-xl font-semibold tracking-tight text-center py-5  ">
+              <div className=" flex flex-col  justify-center items-center bg-slate-50/90 shadow-2xl     ">
+                <h3 className="text-xl font-semibold tracking-tight text-center py-5  w-3/4 ">
                   {content.WhyChooseUsTitle}
                 </h3>
                 <ul className="flex flex-col gap-6 text-base tracking-tight  px-10 pb-5  ">
@@ -111,14 +122,14 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
           </div>
         </motion.div>
 
-        <div className="flex flex-col w-[50%]">
+        <div className="flex flex-col w-[53%]">
           <div className="flex ">
             <Carrousel
               images={slide.kitchenRemodeling}
               className="border-none w-[22rem] h-[46.5rem]"
             />
             {/* RIGHT  TEXT */}
-            <div className="bg-black/10  flex h-[45rem] w-full   justify-center items-center ">
+            <div className="bg-black/10  flex h-[45rem] w-full   justify-center items-center  ">
               <motion.div
                 animate={mainControls}
                 initial="hidden"
@@ -133,9 +144,9 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
                 }}
                 className=" bg-gray-200 shadow-2xl  flex flex-col justify-center  p-10  "
               >
-                <div className="  bg-slate-50/90 p-10 py-20  h-full items-center justify-center flex flex-col shadow-2xl  ">
-                  <h3 className=" text-xl font-semibold tracking-tight pb-5 ">
-                    Our Services Include:
+                <div className="  bg-slate-50/90  py-20  h-full items-center justify-center flex flex-col shadow-2xl  ">
+                  <h3 className=" text-xl font-semibold tracking-tight pb-5 px-2  w-3/4 text-center">
+                    {content.ourServices}
                   </h3>
                   <ul className="flex flex-col gap-5  text-lg tracking-tight ">
                     {content.servicesInclude.map((service, index) => (
@@ -156,6 +167,55 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
 
       <div className="h-[15rem] w-full bg-white/95"></div>
 
+      <div className="w-full  h-[20rem]  flex bg-black/50"></div>
+
+      {/* REVIEW AND CONTACT SECTION */}
+
+      <div className="flex flex-col w-full h-full py-20 z-10 bg-white/95">
+        <div className="flex flex-col  justify-center">
+          <div className=" flex flex-col justify-center items-center w-full h-[25rem] ">
+            <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider lg:text-4xl  ">
+              The Top Trusted Remodeling Experts in Atlanta
+            </h2>
+            <h3 className="w-[60rem]  text-center leading-7 [&:not(:first-child)]:mt-6 text-lg ">
+              We are committed to delivering the best home improvement
+              experience of your life. We handle the whole process from start to
+              finish, so you have one point of contact through your entire
+              project.
+            </h3>
+          </div>
+          <Review />
+        </div>
+
+        <div className="h-[20rem] w-full "></div>
+
+        {/* GALLERY SECTION */}
+
+        <motion.div ref={containerRef2} className="px-10">
+          <motion.div className="bg-[#272829] opacity-85 py-20 px-10 shadow-xl ">
+            <h3 className=" text-2xl font-semibold tracking-tight text-center pb-20 text-white">
+              VIEW OUR RECENT KITCHEN REMODELING PROJECTS
+            </h3>
+            <motion.div
+              animate={mainControls}
+              initial="hidden"
+              variants={{
+                hidden: { opacity: 0, y: 100 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{
+                duration: 1,
+                delay: 0.2,
+                ease: [0.5, 0.71, 0.9, 1.01],
+              }}
+            >
+              <GridGallery images={slide.kitchenRemodeling} imageLength={3} />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        <div className="h-[10rem] w-full "></div>
+      </div>
       <div className="w-full  h-[20rem]  flex bg-black/50"></div>
     </div>
   );
