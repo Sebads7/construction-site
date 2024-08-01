@@ -130,8 +130,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
   return (
     <div className=" w-full ">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 ">
-          <div className="grid grid-cols-2 pb-3 gap-5 px-10 m-0 ">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8  ">
+          <div className="grid grid-cols-2 mobile:grid-cols-1 pb-3 gap-5 px-10 m-0   ">
             <FormField
               control={form.control}
               name="fullname"
@@ -271,13 +271,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
           </div>
 
           {checkBox && (
-            <div className="w-full px-10 mt-10 ">
+            <div className="flex justify-center  w-full px-10 mt-10 ">
               <Checkbox
-                className="mr-2 w-[1rem] h-[1rem]"
+                className=" mr-2 w-[1rem] h-[1rem]"
                 required
                 id="checkbox"
               />
-              <label htmlFor="terms1" className=" text-xs">
+              <a className=" hidden mobile:flex mobile:text-xs ">
+                Click to check agreement
+              </a>
+              <label htmlFor="terms1" className=" text-xs mobile:hidden flex ">
                 I’m interested in learning more about [] and its affiliates’
                 products. By checking this box, I consent and authorize [] and
                 its affiliates to call or text me using an automatic telephone
@@ -288,7 +291,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 provided above to make such communications. I understand that I
                 am not required to consent to receive automated phone calls,
                 texts, or emails as a condition of buying any property, goods,
-                or services.{" "}
+                or services.
               </label>
             </div>
           )}

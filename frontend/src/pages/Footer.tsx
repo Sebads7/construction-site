@@ -7,9 +7,17 @@ import { SiHomebridge } from "react-icons/si";
 const Footer = () => {
   return (
     <div>
-      <footer className=" bg-[#1a1920] text-slate-200 text-sm py-1">
-        <div className="flex flex-col md:flex-row  justify-between px-28 p-5">
-          <div className=" flex flow-row justify-center items-center">
+      <footer
+        className="
+      mobile:flex 
+      mobile:justify-center 
+      mobile:items-center  
+      bg-[#1a1920] 
+      text-slate-200 
+      text-sm py-1"
+      >
+        <div className="flex mobile:flex-col flex-row  justify-between px-28 p-5 mobile:gap-10 ">
+          <div className=" flex flow-row mobile:flex-col justify-center items-center">
             <a href="/" className="flex items-center p-2 mr-5">
               <div className=" text-white border-2 ">
                 <div className=" flex items-center gap-2  text-center px-3 py-1">
@@ -26,7 +34,7 @@ const Footer = () => {
               <FaXTwitter size={20} />
             </div>
           </div>
-          <div className="flex justify-center items-center gap-5">
+          <div className="flex mobile:flex-col justify-center items-center gap-5">
             <p className=" font-bold  uppercase">Call us at </p>
             <div className="flex gap-2">
               <IoPhonePortraitOutline size={20} />

@@ -25,7 +25,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <>
       <Router>
         <ScrollToTop />
         <NavBar handleShowModal={handleShowModal} />
@@ -44,7 +44,7 @@ const App = () => {
         </Routes>
         <Footer />
       </Router>
-    </div>
+    </>
   );
 };
 

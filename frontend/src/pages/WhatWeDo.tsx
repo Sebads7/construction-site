@@ -80,6 +80,8 @@ const slidesData = [
 const WhatWeDo = () => {
   const containerRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(3);
+  const [dotsCount, setDotsCount] = useState(3);
   const isInView = useInView(containerRef, { once: true });
   const mainControls = useAnimation();
 
@@ -89,7 +91,24 @@ const WhatWeDo = () => {
     }
   }, [isInView, mainControls]);
 
-  const slidesToShow = 3;
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      if (window.innerWidth <= 768) {
+        setSlidesToShow(1);
+        setDotsCount(5);
+      } else {
+        setSlidesToShow(3);
+        setDotsCount(3);
+      }
+    };
+    updateSlidesToShow();
+
+    window.addEventListener("resize", updateSlidesToShow);
+
+    return () => {
+      window.removeEventListener("resize", updateSlidesToShow);
+    };
+  }, []);
 
   const Prev = () => {
     setCurrentSlide((prev) => Math.max(prev - 1, 0));
@@ -102,12 +121,12 @@ const WhatWeDo = () => {
   };
 
   return (
-    <div>
-      <div className=" flex flex-col justify-center items-center w-full h-[25rem] mt-[5rem] ">
-        <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider lg:text-4xl  ">
+    <div className="w-full">
+      <div className=" flex flex-col justify-center items-center w-full h-[25rem] px-4   ">
+        <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider text-4xl  mobile:text-lg">
           The Top Trusted Remodeling Experts in Atlanta
         </h2>
-        <h3 className="w-[60rem]  text-center leading-7 [&:not(:first-child)]:mt-6 text-lg ">
+        <h3 className="w-[60rem] mobile:w-full text-center leading-7 [&:not(:first-child)]:mt-6 text-lg  mobile:text-xs ">
           We are committed to delivering the best home improvement experience of
           your life. We handle the whole process from start to finish, so you
           have one point of contact through your entire project.
@@ -115,12 +134,12 @@ const WhatWeDo = () => {
       </div>
 
       {/* SLIDES CONTAINER SECTION */}
-      <div className="flex justify-center  ">
+      <div className="flex flex-row mobile:flex-col justify-center px-0 mobile:px-5   ">
         {/* LEFT BUTTON */}
         <motion.div
-          className={`flex items-center  px-2 mr-7 border-2 border-gray-200  hover:bg-gray-200 transition-all hover:cursor-pointer group ${
+          className={`mobile:hidden flex items-center justify-center w-10 px-2 mr-7 border-2 border-gray-200  hover:bg-gray-200 transition-all cursor-pointer group  ${
             currentSlide === 0
-              ? "border-opacity-20 hover:bg-gray-200/[1%] hover:cursor-default"
+              ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none "
               : ""
           }`}
           animate={mainControls}
@@ -137,7 +156,7 @@ const WhatWeDo = () => {
           }}
         >
           <FaAngleLeft
-            className={`fill-slate-500 group-hover:fill-white ${
+            className={`fill-slate-500 group-hover:fill-white    ${
               currentSlide === 0
                 ? "fill-slate-500/20 group-hover:fill-slate-500/20"
                 : ""
@@ -147,14 +166,14 @@ const WhatWeDo = () => {
 
         {/* SLIDES */}
         <motion.div
-          className="grid  grid-cols-3 gap-12 transition-all mx-5 "
+          className="grid  grid-cols-3 mobile:grid-cols-1 gap-12 transition-all mx-5 mobile:mx-2   "
           ref={containerRef}
         >
           {slidesData
             .slice(currentSlide, currentSlide + slidesToShow)
             .map((slide, index) => (
               <motion.div
-                className="transition-all ease-in-out delay-200"
+                className="transition-all ease-in-out delay-200 "
                 whileHover={{ scale: 1.002 }}
                 transition={{
                   type: "spring",
@@ -166,7 +185,7 @@ const WhatWeDo = () => {
               >
                 <motion.div
                   key={index}
-                  className="grid grid-rows-3 place-items-center shadow-2xl w-[25vw] h-[42rem]  pb-5  "
+                  className="grid grid-rows-3 place-items-center shadow-2xl w-[25vw] h-[42rem]  pb-5 mobile:w-full mobile:h-[35rem] "
                   animate={mainControls}
                   initial="hidden"
                   variants={slide.variants}
@@ -175,18 +194,22 @@ const WhatWeDo = () => {
                   <div className=" flex h-full  w-full ">
                     <Carrousel
                       images={slide.images}
-                      className="flex w-full h-[17rem] border-none p-0  m-0  "
+                      className="flex w-full h-[17rem] mobile:h-[13rem] border-none p-0  m-0  "
                     />
                   </div>
 
-                  <div className="grid  h-full mt-20 p-10  ">
-                    <h1 className="text-center font-bold ">{slide.title}</h1>
-                    <h2 className="mt-5 text-center ">{slide.description}</h2>
+                  <div className="grid  h-full mt-20 mobile:mt-5 p-10 mobile:p-5   ">
+                    <h1 className="text-center font-bold mobile:mt-3 ">
+                      {slide.title}
+                    </h1>
+                    <h2 className="mt-5 text-center mobile:text-sm  ">
+                      {slide.description}
+                    </h2>
                   </div>
-                  <div className="flex w-full h-full items-end">
+                  <div className="flex w-full  h-full  items-end">
                     <Link
                       to={slide.link}
-                      className=" w-full h-2/4 flex items-center justify-center "
+                      className=" w-full h-2/4  flex items-center justify-center "
                     >
                       <button
                         type="button"
@@ -203,9 +226,9 @@ const WhatWeDo = () => {
 
         {/* RIGHT BUTTON */}
         <motion.div
-          className={`flex items-center  px-2 ml-7 border-2 border-gray-200  hover:bg-gray-200 transition-all hover:cursor-pointer group ${
+          className={`mobile:hidden flex items-center  px-2 ml-7 border-2 border-gray-200  hover:bg-gray-200 transition-all cursor-pointer group ${
             currentSlide === 2
-              ? "border-opacity-20 hover:bg-gray-200/[1%] hover:cursor-default"
+              ? "border-opacity-20 hover:bg-gray-200/[1%]  pointer-events-none"
               : ""
           }`}
           animate={mainControls}
@@ -224,19 +247,24 @@ const WhatWeDo = () => {
           <FaAngleRight
             className={`fill-slate-500 group-hover:fill-white ${
               currentSlide === 2
-                ? "fill-slate-500/20 group-hover:fill-slate-500/20"
+                ? "fill-slate-500/20 group-hover:fill-slate-500/20 pointer-events-none"
                 : ""
             }`}
           />
         </motion.div>
       </div>
       {/* Dots */}
-      <div className=" flex flex-row gap-2 justify-center pt-5 ">
-        {slidesData.slice(2).map((_, index) => (
+      <div className=" flex flex-row gap-2 justify-center pt-5 mobile:gap-3 ">
+        {Array.from({
+          length: Math.min(
+            dotsCount,
+            Math.ceil(slidesData.length / slidesToShow + 1)
+          ),
+        }).map((_, index) => (
           <div
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-4 h-4 rounded-full cursor-pointer transition-all ease-out ${
+            className={`w-4 h-4 rounded-full cursor-pointer transition-all ease-out mobile:w-6 mobile:h-6 ${
               currentSlide === index
                 ? "bg-gray-700 scale-110"
                 : "bg-gray-300 scale-95"
