@@ -1,4 +1,4 @@
 [build]
   base    = "frontend"      # Tells Netlify to look inside the frontend directory
-  publish = "build"         # Specifies the directory to publish
+  publish = "dist"         # Specifies the directory to publish
   command = "npm install && npm run build"  # Build command to create the build folder
