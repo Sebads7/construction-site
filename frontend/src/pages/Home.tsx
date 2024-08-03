@@ -10,7 +10,7 @@ const Home = () => {
       <div className=" relative flex flex-row mobile:flex-col h-full  ">
         <div className=" w-full h-[60rem]   bg-black/90  ">
           <img
-            src="src/assets/fronthouse.jpeg"
+            src="/assets/fronthouse.jpeg"
             alt="background"
             className=" w-full h-screen mobile:h-full  object-cover"
           />
