@@ -8,17 +8,17 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const grid1 = [
-  "src/assets/bath-remodeling/Bathroom Remodeling1.jpeg",
-  "src/assets/bath-remodeling/Bathroom Remodeling2.jpeg",
-  "src/assets/bath-remodeling/Bathroom Remodeling3.jpeg",
-  "src/assets/bath-remodeling/Bathroom Remodeling4.jpeg",
-  "src/assets/bath-remodeling/Bathroom Remodeling5.jpeg",
-  "src/assets/bath-remodeling/Bathroom Remodeling6.jpeg",
-  "src/assets/bath-remodeling/Bathroom Remodeling7.jpeg",
-  "src/assets/bath-remodeling/Bathroom Remodeling8.jpeg",
-  "src/assets/bath-remodeling/Bathroom Remodeling9.jpeg",
-  "src/assets/bath-remodeling/Bathroom Remodeling10.jpeg",
-  "src/assets/bath-remodeling/Bathroom Remodeling11.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling1.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling2.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling3.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling4.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling5.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling6.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling7.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling8.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling9.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling10.jpeg",
+  "/images/bath-remodeling/Bathroom Remodeling11.jpeg",
 ];
 
 const SeeOurWork = () => {
@@ -47,7 +47,7 @@ const SeeOurWork = () => {
         <div className="bg-black/30 w-full h-full fixed -z-10 "> </div>
         <div className="fixed w-full h-full  -z-20  ">
           <img
-            src="src/assets/fronthouse.jpeg"
+            src="/images/fronthouse.jpeg"
             alt="background"
             className=" w-full h-screen object-cover"
           />

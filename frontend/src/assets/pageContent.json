@@ -1,7 +1,7 @@
 {
   "kitchenRemodeling": {
     "pageName": "Kitchen Remodeling",
-    "imageBackground": "./src/assets/kitchen remodeling/kitch-rem2.webp",
+    "imageBackground": "./images/kitchen remodeling/kitch-rem2.webp",
     "title": "Revitalize Your Kitchen: Expert Remodeling Services",
     "description": "Welcome to our world of craftsmanship, where wood meets creativity and precision. With a passion for transforming spaces, we specialize in bespoke carpentry solutions that blend timeless elegance with functional design, ensuring every project reflects your unique vision and exceeds expectations.",
     "WhyChooseUsTitle": "  Why choose us for your kitchen remodeling project?",
@@ -24,7 +24,7 @@
   "bathroomRemodeling": {
     "pageName": "Bathroom Remodeling",
     "title": "Transform Your Bathroom into a Luxurious Oasis",
-    "imageBackground": " src/assets/bath-remodeling/15-top-bathroom-remodeling-features-01.webp",
+    "imageBackground": " /images/bath-remodeling/15-top-bathroom-remodeling-features-01.webp",
     "description": "At ABJ Painting & Remodeling, we specialize in creating breathtaking bathroom renovations that combine functionality with aesthetics. Whether you're dreaming of a spa-like retreat or seeking to maximize space in a small bathroom, our team of skilled craftsmen is here to bring your vision to life..",
     "WhyChooseUsTitle": "  Why choose us for your bathroom remodeling project?",
     "whyChooseUs": [
@@ -46,7 +46,7 @@
   "pressureWashing": {
     "pageName": "Pressure Washing",
     "title": "Professional Pressure Washing Services",
-    "imageBackground": "/src/assets/pressure washing/pressure-washing5.jpg",
+    "imageBackground": "/images/pressure washing/pressure-washing5.jpg",
     "description": "Transform your property with ABJ Pressure Washing Services, where we bring expert care and precision to every job. Whether you're aiming to restore your home's exterior brilliance or tackle those tough stains, our dedicated team is ready to deliver outstanding results. We provide a wide array of pressure washing solutions for driveways, decks, siding, fences, and more, ensuring your home always looks its absolute best.",
     "WhyChooseUsTitle": "  Why Choose Us for Your Pressure Washing Needs?",
     "whyChooseUs": [
@@ -68,7 +68,7 @@
   "interiorExterior": {
     "pageName": "Interior and Exterior Painting",
     "title": "Elevating Interiors and Exteriors with Expert Craftsmanship",
-    "imageBackground": "/src/assets/painting/painting4.jpeg",
+    "imageBackground": "/images/painting/painting4.jpeg",
     "description": "At ABJ Painting & Remodeling, we specialize in transforming interiors and exteriors with stunning painting services that seamlessly blend functionality with aesthetic appeal. Whether you envision refreshing your living spaces or enhancing your property's curb appeal, our skilled team is dedicated to bringing your vision to life with precision and care.",
     "WhyChooseUsTitle": "  Why Choose Us for Your Pressure Washing Needs?",
     "whyChooseUs": [
@@ -90,7 +90,7 @@
   "customCarpentry": {
     "pageName": "Carpentry",
     "title": "Transforming Spaces with Expert Craftsmanship",
-    "imageBackground": "src/assets/carpentry/Carpentry5.webp",
+    "imageBackground": "/images/carpentry/Carpentry5.webp",
     "description": "At ABJ Carpentry & Design, we excel in crafting stunning carpentry projects that blend practicality with elegance. Whether you envision bespoke furniture pieces or innovative space-saving solutions, our team of expert craftsmen is dedicated to realizing your vision with precision and artistry.",
     "WhyChooseUsTitle": "  Why Choose Us for Your Custom Remodeling Needs?",
     "whyChooseUs": [

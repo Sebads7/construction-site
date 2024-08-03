@@ -10,7 +10,7 @@ const Contact = () => {
       <div className=" w-full h-full  relative mobile:fixed  ">
         <div className="bg-black/30  h-full   absolute w-full  "> </div>
         <img
-          src="src/assets/fronthouse.jpeg"
+          src="/images/fronthouse.jpeg"
           alt="background"
           className="w-full h-screen mobile:h-full object-cover"
         />

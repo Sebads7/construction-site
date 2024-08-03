@@ -9,9 +9,9 @@ const slidesData = [
   {
     title: "CUSTOM CARPENTRY",
     images: [
-      "src/assets/carpentry/Carpentry.JPG",
-      "src/assets/carpentry/Carpentry2.JPG",
-      "src/assets/carpentry/Carpentry3.JPG",
+      "/images/carpentry/Carpentry.JPG",
+      "/images/carpentry/Carpentry2.JPG",
+      "/images/carpentry/Carpentry3.JPG",
     ],
     link: "carpentry",
     description:
@@ -25,9 +25,9 @@ const slidesData = [
   {
     title: "BATHROOM REMODELING",
     images: [
-      "src/assets/bath-remodeling/bth1.JPG",
-      "src/assets/bath-remodeling/bth2.JPG",
-      "src/assets/bath-remodeling/bth3.JPG",
+      "/images/bath-remodeling/bth1.JPG",
+      "/images/bath-remodeling/bth2.JPG",
+      "/images/bath-remodeling/bth3.JPG",
     ],
     link: "BathRemodeling",
     description:
@@ -40,9 +40,9 @@ const slidesData = [
   {
     title: "INTERIOR AND EXTERIOR PAINTING",
     images: [
-      "src/assets/painting/painting1.JPG",
-      "src/assets/painting/Painting2.jpg",
-      "src/assets/painting/Painting3.jpg",
+      "/images/painting/painting1.jpg",
+      "/images/painting/painting2.jpg",
+      "/images/painting/painting3.jpg",
     ],
     link: "painting",
     description:
@@ -55,9 +55,9 @@ const slidesData = [
   {
     title: "PRESSURE WASHING",
     images: [
-      "src/assets/pressure washing/house-pressure-wash.jpeg",
-      "src/assets/pressure washing/back-house.jpeg",
-      "src/assets/pressure washing/pressure-washing-deck.jpg",
+      "/images/pressure washing/house-pressure-wash.jpeg",
+      "/images/pressure washing/back-house.jpeg",
+      "/images/pressure washing/pressure-washing-deck.jpg",
     ],
     link: "PressureWashing",
     description:
@@ -67,9 +67,9 @@ const slidesData = [
   {
     title: "KITCHEN REMODELING",
     images: [
-      "src/assets/kitchen remodeling/kitch-rem.webp",
-      "src/assets/kitchen remodeling/kitch-rem2.webp",
-      "src/assets/kitchen remodeling/kitch-rem3.jpeg",
+      "/images/kitchen remodeling/kitch-rem.webp",
+      "/images/kitchen remodeling/kitch-rem2.webp",
+      "/images/kitchen remodeling/kitch-rem3.jpeg",
     ],
     link: "KitchenRemodeling",
     description:
