@@ -64,7 +64,7 @@ const Home = () => {
       {/* REVIEW AND PROMO */}
 
       <div>
-        <div className=" flex flex-col justify-center items-center w-full h-[25rem]  px-4 mobile:h-[20rem]  b ">
+        <div className=" flex flex-col justify-center items-center w-full h-[25rem]  px-4 mobile:h-[20rem]   ">
           <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider text-4xl  mobile:text-lg">
             The Top Trusted Remodeling Experts in Atlanta
           </h2>

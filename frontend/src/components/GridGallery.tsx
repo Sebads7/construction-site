@@ -46,8 +46,8 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images, imageLength }) => {
   };
 
   const handleNextImage = () => {
-    setSelectedImageIndex(
-      (prevIndex = 0) => ((prevIndex || 0) + 1) % images.length
+    setSelectedImageIndex((prevIndex) =>
+      prevIndex !== null ? (prevIndex + 1) % images.length : 0
     );
   };
 
@@ -65,7 +65,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images, imageLength }) => {
 
   return (
     <motion.div
-      className="grid grid-cols-2 gap-8 "
+      className="grid grid-cols-2 gap-8 mobile:grid-cols-1 mobile:gap-4   "
       variants={gridConatinerVariants}
       initial="hidden"
       animate="show"
@@ -84,7 +84,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images, imageLength }) => {
               </motion.div>
 
               <motion.div
-                className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100   bg-black bg-opacity-50 text-white text-lg cursor-pointer transition-all duration-3000"
+                className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100   bg-black bg-opacity-50 text-white text-lg cursor-pointer transition-all duration-3000 "
                 onClick={() => handleImageClick(index)}
               >
                 Click to view image
@@ -93,7 +93,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images, imageLength }) => {
           ))}
       </AnimatePresence>
       <motion.div
-        className="flex justify-center items-center w-full h-full border-2 border-white/55"
+        className="flex justify-center items-center w-full h-full border-2 border-white/55 mobile:py-14 "
         whileTap={{ scale: 0.95 }}
         variants={gridSquareVariants}
         transition={{ duration: 1, ease: "easeIn", delay: 2 }}
@@ -109,24 +109,24 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images, imageLength }) => {
       </motion.div>
 
       {selectedImageIndex !== null && (
-        <div className="fixed top-0 left-0 w-full h-full  flex items-center justify-center backdrop-filter backdrop-brightness-75 backdrop-blur-md custom-z-20  ">
-          <div className="  flex justify-center flex-col  w-full h-full p-10 bg-black/90 custom-z-20">
+        <div className="fixed top-0 left-0  w-full h-full z-20 bg-black ">
+          <div className="flex flex-col w-full h-full bg-black  ">
             {/* //////////   CloseModal BUTTON //////////////////// */}
-            <div className="flex flex-row-reverse ">
+            <div className="flex flex-row-reverse  bg-black  ">
               <button
                 type="button"
                 onClick={handleCloseModal}
-                className=" text-white "
+                className="flex justify-center items-center text-white pr-6 py-6  "
               >
                 <IoMdClose size={30} className="" />
               </button>
             </div>
 
-            <div className="flex flex-col  items-center gap-4  ">
+            <div className="flex flex-col  items-center gap-4 w-full mobile:h-[42rem]  bg-black mobile:px-5  ">
               <img
                 src={images[selectedImageIndex]}
                 alt="selected"
-                className="  w-[900px] h-[600px]  object-cover"
+                className="  w-5/6  h-[42rem] mobile:w-full mobile:h-screen  object-cover "
               />
 
               {/* //////////         Prev BUTTON //////////////////// */}

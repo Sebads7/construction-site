@@ -5,7 +5,6 @@ import PagesSection from "@/components/PagesSection";
 const Painting = () => {
   return (
     <div>
-      <div className="bg-black opacity-50 w-full h-[65px] flex fixed z-[8]"></div>
       <PagesSection content={PageContent.interiorExterior} />
     </div>
   );

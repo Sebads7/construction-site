@@ -46,7 +46,7 @@ const Footer = () => {
             <div className="flex items-center gap-2">
               <IoPhonePortraitOutline size={20} />
 
-              <p className=" font-bold ">444-444-444</p>
+              <p className=" font-bold ">679-779-5280</p>
             </div>
           </div>
 

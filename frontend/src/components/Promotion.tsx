@@ -22,7 +22,9 @@ const Promotion = () => {
               20% OFF
             </span>
           </h1>
-          <p className=" text-gray-700 mt-1">ON ALL PRODUCTS</p>
+          <p className=" text-gray-700 mt-1 mb-12 mobile:mb-2">
+            ON ALL PRODUCTS
+          </p>
         </div>
         <ContactForm
           secondButton={true}

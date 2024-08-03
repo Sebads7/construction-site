@@ -2,7 +2,7 @@
 
 // IMPORTS FROM ZOD AND REACT-HOOK-FORM
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 
 // IMPORTS FROM SHADCN COMPONENTS
@@ -41,6 +41,12 @@ const ContactForm: React.FC<ContactFormProps> = ({
   //states declarations
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+
+  const closeModal = () => setIsModalOpen(false);
 
   const formSchema = z.object({
     fullname: z.string().min(2, {
@@ -290,24 +296,44 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 required
                 id="checkbox"
               />
-              <a className=" hidden mobile:flex mobile:text-xs ">
+              <a
+                className=" hidden mobile:flex mobile:text-xs underline "
+                onClick={openModal}
+              >
                 Click to check agreement
               </a>
               <label htmlFor="terms1" className=" text-xs mobile:hidden flex ">
-                I’m interested in learning more about [] and its affiliates’
-                products. By checking this box, I consent and authorize [] and
-                its affiliates to call or text me using an automatic telephone
-                dialing system or pre-recorded voice message to provide my free
-                estimate and keep me informed about products and offers. [] and
-                its affiliate (and their service providers acting on their
-                behalf) can use any or all of the telephone numbers I have
-                provided above to make such communications. I understand that I
-                am not required to consent to receive automated phone calls,
-                texts, or emails as a condition of buying any property, goods,
-                or services.
+                I’m interested in learning more about ABJ Remodeling and its
+                services. By checking this box, I consent and authorize ABJ
+                Remodeling to contact me via phone call or text message. ABJ
+                Remodeling may use any of the telephone numbers I have provided
+                for these communications.
               </label>
             </div>
           )}
+
+          {/* Modal Component */}
+          {isModalOpen && (
+            <div className="fixed w-full translate-y-[-2rem] h-full top-0 inset-0 mt-0  bg-black bg-opacity-50 flex justify-center items-center z-50">
+              <div className="bg-white p-8 rounded shadow-lg max-w-lg mx-4 mt-0">
+                <h2 className="text-xl font-bold mb-4">Agreement</h2>
+                <p>
+                  I’m interested in learning more about ABJ Remodeling and its
+                  services. By checking this box, I consent and authorize ABJ
+                  Remodeling to contact me via phone call or text message. ABJ
+                  Remodeling may use any of the telephone numbers I have
+                  provided for these communications.
+                </p>
+                <button
+                  className="mt-4 px-4 py-2 bg-blue-950 text-white rounded"
+                  onClick={closeModal}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
+
           {submitError && <div className="text-red-500">{submitError}</div>}
         </form>
       </Form>

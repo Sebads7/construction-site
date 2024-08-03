@@ -1,5 +1,4 @@
 import ButtonUp from "@/components/ButtonUp";
-import ContactForm from "@/components/ContactForm";
 
 import GridGallery from "@/components/GridGallery";
 
@@ -163,7 +162,7 @@ const SeeOurWork = () => {
                   initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-                  className="w-2/4"
+                  className="w-2/4 h-full"
                 >
                   <GridGallery images={grid1} imageLength={5} />
                 </motion.div>
