@@ -26,7 +26,7 @@ const Home = () => {
             <h1 className=" text-center pt-1 mobile:pt-[5rem]  mb-4   text-white scroll-m-20  font-extrabold tracking-wider text-5xl mobile:text-lg ">
               Atlanta's Top Remodeling Experts
             </h1>
-            <h2 className="w-full text-white text-center leading-7 [&:not(:first-child)]:mt-6 text-lg mobile:text-sm mobile:pb-10 ">
+            <h2 className="w-full text-white text-center leading-7 mt-6 text-lg mobile:text-sm mobile:pb-10 ">
               Experience the ultimate in home improvement with ABJ Painting &
               Remodeling. Our dedicated team oversees every aspect, ensuring
               seamless progress from beginning to end. Enjoy peace of mind with
@@ -68,7 +68,7 @@ const Home = () => {
           <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider text-4xl  mobile:text-lg">
             The Top Trusted Remodeling Experts in Atlanta
           </h2>
-          <h3 className="w-[60rem] mobile:w-full text-center leading-7 [&:not(:first-child)]:mt-6 text-lg  mobile:text-xs ">
+          <h3 className="w-[60rem] mobile:w-full text-center leading-7 [&:not(:first-child)]:mt-6 text-lg  mobile:text-sm ">
             We are committed to delivering the best home improvement experience
             of your life. We handle the whole process from start to finish, so
             you have one point of contact through your entire project.

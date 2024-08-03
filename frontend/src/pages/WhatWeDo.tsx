@@ -122,11 +122,11 @@ const WhatWeDo = () => {
 
   return (
     <div className="w-full">
-      <div className=" flex flex-col justify-center items-center w-full h-[25rem] px-4   ">
+      <div className=" flex flex-col justify-center items-center w-full h-[25rem]  px-4 mobile:h-[15rem] mobile:mt-10  ">
         <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider text-4xl  mobile:text-lg">
           The Top Trusted Remodeling Experts in Atlanta
         </h2>
-        <h3 className="w-[60rem] mobile:w-full text-center leading-7 [&:not(:first-child)]:mt-6 text-lg  mobile:text-xs ">
+        <h3 className="w-[60rem] mobile:w-full text-center leading-7 mt-6 text-lg  mobile:text-sm ">
           We are committed to delivering the best home improvement experience of
           your life. We handle the whole process from start to finish, so you
           have one point of contact through your entire project.
@@ -199,10 +199,10 @@ const WhatWeDo = () => {
                   </div>
 
                   <div className="grid  h-full mt-20 mobile:mt-5 p-10 mobile:p-5   ">
-                    <h1 className="text-center font-bold mobile:mt-3 ">
+                    <h1 className="text-center font-bold mobile:mt-3 text-lg mobile:text-base ">
                       {slide.title}
                     </h1>
-                    <h2 className="mt-5 text-center mobile:text-sm  ">
+                    <h2 className="mt-5 text-center text-base mobile:text-sm  ">
                       {slide.description}
                     </h2>
                   </div>
@@ -213,7 +213,7 @@ const WhatWeDo = () => {
                     >
                       <button
                         type="button"
-                        className=" flex justify-center items-center    bg-yellow-400 px-9 py-3 text-xs font-medium uppercase leading-normal text-black shadow-light-3 transition duration-150 ease-in-out hover:bg-yellow-500 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                        className=" flex justify-center items-center    bg-yellow-400 px-9 py-3 text-xs  font-medium uppercase leading-normal text-black shadow-light-3 transition duration-150 ease-in-out hover:bg-yellow-500 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
                       >
                         LEARN MORE
                       </button>
@@ -264,7 +264,7 @@ const WhatWeDo = () => {
           <div
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-4 h-4 rounded-full cursor-pointer transition-all ease-out mobile:w-6 mobile:h-6 ${
+            className={`w-4 h-4 rounded-full cursor-pointer transition-all ease-out mobile:w-5 mobile:h-5 ${
               currentSlide === index
                 ? "bg-gray-700 scale-110"
                 : "bg-gray-300 scale-95"

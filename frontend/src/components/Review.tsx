@@ -6,7 +6,7 @@ import {
   useAnimation,
 } from "framer-motion";
 import { Rating } from "@mui/material";
-import ContactForm from "./ContactForm";
+import Promotion from "./Promotion";
 
 const reviews = [
   {
@@ -73,11 +73,12 @@ export const Review = () => {
 
   return (
     <div
-      className=" flex mobile:flex-col justify-center items-center   bg-white/40 gap-12 py-10 px-36 mobile:px-1 mobile:py-1 "
+      className=" flex mobile:flex-col justify-center items-center   bg-white/40 gap-12 py-10 px-32 mobile:px-3 mobile:py-1 "
       ref={containerRef}
     >
+      {/* LEFT SIDE - REVIEW */}
       <motion.div
-        className="relative flex items-center justify-center mobile:flex-col  w-3/4 mobile:w-full h-[20rem]  "
+        className="relative flex items-center justify-center mobile:flex-col  w-3/4  mobile:w-full h-[20rem] mobile:h-[25rem]  "
         animate={mainControls}
         initial="hidden"
         variants={{
@@ -105,11 +106,11 @@ export const Review = () => {
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={1}
-            className="absolute flex items-center justify-center  h-full  top-0 "
+            className="absolute flex items-center justify-center  h-full  top-0  "
           >
             <div
-              className="flex flex-col justify-center items-center bg-white h-[20rem] border-2 p-6  gap-4 rounded-lg shadow-lg 
-            mobile:text-sm  mobile:gap-1"
+              className="flex flex-col justify-center items-center bg-white h-full border-2 p-6  gap-4 rounded-lg shadow-lg 
+            mobile:text-sm  mobile:gap-1   "
             >
               <div className="mobile:hidden">
                 <Rating value={5} name="read-only" size="large" readOnly />
@@ -119,8 +120,10 @@ export const Review = () => {
                 <Rating value={5} name="read-only" size="medium" readOnly />
               </div>
 
-              <div className="flex flex-col text-center mt-6 mobile:mt-1">
-                <p className="text-slate-600  ">{reviews[imageIndex].text}</p>
+              <div className="flex flex-col text-center mt-2 mobile:mt-1 ">
+                <p className="text-slate-600 mobile:text-sm ">
+                  {reviews[imageIndex].text}
+                </p>
                 <p className="mt-4 text-cyan-600 ">
                   {reviews[imageIndex].name}
                 </p>
@@ -129,22 +132,22 @@ export const Review = () => {
           </motion.div>
         </AnimatePresence>
         {/* Navigation Dots */}
-        <div className="flex gap-2 absolute bottom-[-2rem] left-1/2 transform -translate-x-1/2 mobile:bottom-[-3rem] mobile:gap-3">
+        <div className="flex  justify-center items-center gap-2 absolute bottom-[-2rem] left-1/2 transform -translate-x-1/2 mobile:bottom-[-3rem] mobile:gap-3">
           {reviews.map((_, index) => (
             <div
               key={index}
               onClick={() => setPage([index, index - page])}
-              className={`w-4 h-4 rounded-full cursor-pointer mobile:w-6 mobile:h-6  ${
-                imageIndex === index ? "bg-gray-700" : "bg-gray-300"
+              className={`w-4 h-4 rounded-full cursor-pointer mobile:w-5 mobile:h-5  ${
+                imageIndex === index ? "bg-gray-700 " : "bg-gray-300"
               }`}
             />
           ))}
         </div>
       </motion.div>
 
-      {/* Right side of the grid */}
+      {/* RIGHT SIDE - CONTACT PROMOTION */}
       <motion.div
-        className="flex h-full w-5/12 mobile:w-full mobile:mt-10 "
+        className="flex  justify-center h-full w-7/12 mobile:w-full mobile:mt-10  z-[8]"
         animate={mainControls}
         initial="hidden"
         variants={{
@@ -153,19 +156,7 @@ export const Review = () => {
         }}
         transition={{ duration: 0.8, delay: 1.2, ease: [0, 0.71, 0.2, 1.01] }}
       >
-        <div className="bg-yellow-300 shadow-2xl  z-[2] h-full py-20 px-1  flex flex-col  justify-center items-center w-full ">
-          <h1 className="text-center text-2xl font-semibold h-full pb-10 ">
-            UP TO
-            <span className="h-full text-4xl font-semibold border-b border-black pb-2 flex justify-center  ">
-              20% OFF
-            </span>
-          </h1>
-          <ContactForm
-            secondButton={true}
-            checkBox={true}
-            showSelectOption={true}
-          />
-        </div>
+        <Promotion />
       </motion.div>
     </div>
   );

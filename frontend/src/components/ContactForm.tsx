@@ -130,15 +130,19 @@ const ContactForm: React.FC<ContactFormProps> = ({
   return (
     <div className=" w-full ">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8  ">
-          <div className="grid grid-cols-2 mobile:grid-cols-1 pb-3 gap-5 px-10 m-0   ">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8   ">
+          <div className="grid grid-cols-2 mobile:flex mobile:flex-col pb-3 gap-5 px-10 m-0 w-full   ">
             <FormField
               control={form.control}
               name="fullname"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Full Name" {...field} />
+                    <Input
+                      placeholder="Full Name"
+                      {...field}
+                      className="mobile:text-xs"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -153,6 +157,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                     <Input
                       type="number"
                       placeholder="Phone Number"
+                      className="mobile:text-xs"
                       {...field}
                     />
                   </FormControl>
@@ -166,7 +171,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Email" {...field} />
+                    <Input
+                      placeholder="Email"
+                      {...field}
+                      className="mobile:text-xs"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -178,7 +187,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="City" {...field} />
+                    <Input
+                      placeholder="City"
+                      {...field}
+                      className="mobile:text-xs"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -194,7 +207,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                     <FormControl>
                       <Textarea
                         placeholder="Please, enter your message"
-                        className="h-[200px]"
+                        className="h-[200px] mobile:text-xs"
                         {...field}
                         value={field.value as string} // explicitly set the type of the value property to string
                       />
@@ -246,7 +259,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             {contactButton && (
               <Button
                 type="submit"
-                className="h-[50px] col-span-2"
+                className="h-[50px] col-span-2 "
                 disabled={submitting}
                 onClick={() => {
                   onSubmit(form.getValues());
