@@ -112,13 +112,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
     }
 
     try {
-      const response = await fetch(`${apiBaseUrl}/send-email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(value),
-      });
+      const response = await fetch(
+        "https://construction-site-1qd6.onrender.com/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(value),
+        }
+      );
       if (response.ok) {
         console.log("Email sent successfully");
         form.reset();
