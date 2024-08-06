@@ -30,6 +30,8 @@ type ContactFormProps = {
   checkBox?: boolean;
 };
 
+const apiBaseUrl = process.env.REACT_APP_API_URL || "http://localhost:8000";
+
 const ContactForm: React.FC<ContactFormProps> = ({
   showTextInput = false,
   showSelectOption = false,
@@ -110,7 +112,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     }
 
     try {
-      const response = await fetch("http://localhost:8000/send-email", {
+      const response = await fetch(`${apiBaseUrl}/send-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
