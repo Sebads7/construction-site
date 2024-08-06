@@ -30,7 +30,7 @@ type ContactFormProps = {
   checkBox?: boolean;
 };
 
-const apiBaseUrl = process.env.REACT_APP_API_URL || "http://localhost:8000";
+const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const ContactForm: React.FC<ContactFormProps> = ({
   showTextInput = false,
