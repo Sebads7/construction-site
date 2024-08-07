@@ -10,7 +10,7 @@ export default defineConfig({
     outDir: "dist",
   },
   server: {
-    host: "192.168.68.50",
+    host: "192.168.1.14",
     port: 5173,
   },
   resolve: {

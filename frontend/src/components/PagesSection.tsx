@@ -217,7 +217,6 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
               delay: 0.2,
               ease: [0.5, 0.71, 0.9, 1.01],
             }}
-            className=""
           >
             <GridGallery images={slide.kitchenRemodeling} imageLength={3} />
           </motion.div>

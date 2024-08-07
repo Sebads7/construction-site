@@ -7,9 +7,14 @@ import { AnimatePresence, motion } from "framer-motion";
 type GridGalleryProps = {
   images: string[];
   imageLength: number;
+  className?: string;
 };
 
-const GridGallery: React.FC<GridGalleryProps> = ({ images, imageLength }) => {
+const GridGallery: React.FC<GridGalleryProps> = ({
+  images,
+  imageLength,
+  className,
+}) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
     null
   );
@@ -65,7 +70,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images, imageLength }) => {
 
   return (
     <motion.div
-      className="grid grid-cols-2 gap-8 mobile:grid-cols-1 mobile:gap-4   "
+      className={`grid grid-cols-2 gap-8 mobile:grid-cols-1 mobile:gap-4 ${className}   `}
       variants={gridConatinerVariants}
       initial="hidden"
       animate="show"
@@ -79,7 +84,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images, imageLength }) => {
                 <img
                   src={image}
                   alt="gallery"
-                  className={`h-[220px] w-full object-cover  cursor-pointer border-solid border-1 border-white/55   `}
+                  className={`h-[220px] w-full object-cover  cursor-pointer border-solid border-1 border-white/55    `}
                 />
               </motion.div>
 

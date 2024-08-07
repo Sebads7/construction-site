@@ -1,0 +1,52 @@
+{
+  "bath": {
+    "title": "Transform Your Bathroom into a Luxurious Oasis",
+    "description": "Embark on a journey of transformation with our exquisite bathroom remodeling gallery, showcasing the epitome of craftsmanship and innovation. Explore a symphony of design possibilities, from contemporary marvels to timeless classics, each image a testament to our dedication to excellence. ",
+    "images": [
+      "/images/bath-remodeling/Bathroom Remodeling1.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling2.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling3.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling4.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling5.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling6.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling7.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling8.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling9.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling10.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling11.jpeg"
+    ]
+  },
+  "kitchen": {
+    "title": "Transform Your Kitchen Lorem ipsum",
+    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit, doloremque non nihil sapiente nulla vero aperiam nostrum sint suscipit ducimus magni magnam accusantium. Ipsum earum porro architecto pariatur itaque libero.",
+    "images": [
+      "/images/bath-remodeling/Bathroom Remodeling1.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling2.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling3.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling4.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling5.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling6.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling7.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling8.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling9.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling10.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling11.jpeg"
+    ]
+  },
+  "carpentry": {
+    "title": "Custom Carpentry, Cabinets, Furniture Lorem ipsum",
+    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit, doloremque non nihil sapiente nulla vero aperiam nostrum sint suscipit ducimus magni magnam accusantium. Ipsum earum porro architecto pariatur itaque libero.",
+    "images": [
+      "/images/bath-remodeling/Bathroom Remodeling1.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling2.jpeg"
+    ]
+  },
+  "painting": {
+    "title": "Painting, Drywall, and Finishing Services Lorem ipsum",
+    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit, doloremque non nihil sapiente nulla vero aperiam nostrum sint suscipit ducimus magni magnam accusantium. Ipsum earum porro architecto pariatur itaque libero.",
+    "images": [
+      "/images/bath-remodeling/Bathroom Remodeling1.jpeg",
+      "/images/bath-remodeling/Bathroom Remodeling2.jpeg"
+    ]
+  }
+}

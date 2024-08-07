@@ -302,12 +302,12 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 id="checkbox"
               />
               <a
-                className=" hidden mobile:flex mobile:text-xs underline "
+                className=" hidden tablet:flex mobile:text-xs underline "
                 onClick={openModal}
               >
                 Click to check agreement
               </a>
-              <label htmlFor="terms1" className=" text-xs mobile:hidden flex ">
+              <label htmlFor="terms1" className=" text-xs tablet:hidden flex ">
                 I’m interested in learning more about ABJ Remodeling and its
                 services. By checking this box, I consent and authorize ABJ
                 Remodeling to contact me via phone call or text message. ABJ

@@ -43,6 +43,9 @@ const variants = {
   }),
 };
 
+const mobile = window.innerWidth < 640;
+const lg = window.innerWidth > 1024;
+
 export const Review = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true });
@@ -73,12 +76,12 @@ export const Review = () => {
 
   return (
     <div
-      className=" flex mobile:flex-col justify-center items-center   bg-white/40 gap-12 py-10 px-32 mobile:px-3 mobile:py-1 "
+      className=" flex mobile:flex-col justify-center items-center   bg-white/40 gap-12 py-10  mobile:px-3 mobile:py-1 "
       ref={containerRef}
     >
       {/* LEFT SIDE - REVIEW */}
       <motion.div
-        className="relative flex items-center justify-center mobile:flex-col  w-3/4  mobile:w-full h-[20rem] mobile:h-[25rem]  "
+        className="relative flex items-center justify-center mobile:flex-col  w-3/4 pl-20 mobile:w-full h-[20rem] mobile:h-[25rem]  "
         animate={mainControls}
         initial="hidden"
         variants={{
@@ -86,8 +89,8 @@ export const Review = () => {
           visible: { opacity: 1, scale: 1 },
         }}
         transition={{
-          duration: 1,
-          delay: 1,
+          duration: 0.7,
+          delay: 0.5,
           ease: [0, 0.71, 0.2, 1.01],
         }}
       >
@@ -147,14 +150,14 @@ export const Review = () => {
 
       {/* RIGHT SIDE - CONTACT PROMOTION */}
       <motion.div
-        className="flex  justify-center h-full w-7/12 mobile:w-full mobile:mt-10  z-[8]"
+        className="flex  justify-center h-full w-7/12 mobile:w-full mobile:mt-10  z-[8] bg-white"
         animate={mainControls}
         initial="hidden"
         variants={{
-          hidden: { opacity: 0, x: 100 },
-          visible: { opacity: 1, x: 0 },
+          hidden: { opacity: 0, x: mobile ? 0 : 100, y: lg ? 0 : 100 },
+          visible: { opacity: 1, x: 0, y: 0 },
         }}
-        transition={{ duration: 0.8, delay: 1.2, ease: [0, 0.71, 0.2, 1.01] }}
+        transition={{ duration: 0.8, delay: 0.8, ease: [0, 0.71, 0.2, 1.01] }}
       >
         <Promotion />
       </motion.div>

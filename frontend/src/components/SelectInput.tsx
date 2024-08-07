@@ -58,7 +58,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
 
   return (
     <motion.div
-      className={`flex w-full bg-white border border-gray-300 text-sm rounded-lg text-slate-500 h-[4.5vh] `}
+      className={`flex w-full bg-white border border-gray-300 text-sm rounded-lg text-slate-500 h-[2.5rem] `}
       whileTap={{ scale: 0.97 }}
       ref={selectRef}
     >

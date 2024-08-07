@@ -28,10 +28,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
   return (
     <div
-      className={` flex fixed  justify-between items-center  w-full   h-auto bg-black/90 p-5  scroll  mobile:text-xs  mobile:ml-0 mobile:mt-5 mobile:p-0 mobile:bg-transparent mobile:flex-row-reverse  z-10 `}
+      className={` flex fixed  justify-between items-center  w-full   h-auto bg-black/90 p-5  scroll  mobile:text-xs  tablet:ml-0 tablet:mt-5 tablet:p-0 tablet:bg-transparent tablet:flex-row-reverse  z-10 `}
     >
       {/* Mobile Menu Button */}
-      <div className="hidden mobile:flex  bg-red-500 h-full p-4 rounded-lg mr-2   ">
+      <div className="hidden tablet:flex  bg-red-500 h-full p-4 rounded-lg mr-2   ">
         <button
           onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
           className="text-white focus:outline-none"
@@ -54,13 +54,15 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
       </div>
 
       {/* Logo and Title */}
-      <div className="mobile:hidden flex items-center">
+      <div className="tablet:hidden flex items-center">
         <a
           href="/"
           className="flex items-center text-white/80 border-[2px] border-white/80"
         >
           <div className="flex items-center gap-2 text-center px-3 py-1">
-            <p className="md:text-sm sm:text-xs">ABJ Painting & Remodeling</p>
+            <p className="tablet:text-sm mobile:text-xs">
+              ABJ Painting & Remodeling
+            </p>
           </div>
         </a>
       </div>
@@ -68,9 +70,9 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
       {/* Menu for larger screens */}
       <div className="flex">
         <NavigationMenu>
-          <NavigationMenuList className="mobile:hidden flex space-x-4">
+          <NavigationMenuList className="tablet:hidden flex space-x-4 tablet:space-x-2">
             {/* HOME */}
-            <NavigationMenuItem className="px-4 lg:text-sm md:text-xs">
+            <NavigationMenuItem className="px-4 lg:text-sm ">
               <NavigationMenuLink>
                 <Link to="/" className="bg-transparent text-white">
                   HOME
@@ -202,8 +204,8 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
         </div>
 
         <div className="fixed top-0 w-full bg-black/90 h-full   ">
-          <div className="flex flex-col w-full px-5 my-10 z-10">
-            <div className="flex flex-row-reverse pb-10 w-full ">
+          <div className="flex mobile:flex-col tablet:flex-row-reverse  w-full px-5  my-10 tablet:my-5 z-10 ">
+            <div className="flex flex-row-reverse mobile:pb-10 mobile:w-full  ">
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className=" flex  text-white text-4xl "
@@ -213,7 +215,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
             </div>
 
             {/* Request Appointment Button */}
-            <div className=" flex pb-10 w-full justify-center items-center">
+            <div className=" flex mobile:pb-10 w-full justify-center items-center ">
               <Button
                 className="bg-red-600 py-2 px-4 rounded-md hover:bg-red-500 text-white text-sm mobile:text-xs"
                 onClick={handleShowModal}
@@ -241,7 +243,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
           {/* MENU SECTION */}
           <div className="flex  justify-center w-full  z-10">
             <NavigationMenu className="flex  w-full  ">
-              <NavigationMenuList className="flex flex-col justify-center items-center gap-5     ">
+              <NavigationMenuList className="flex mobile:flex-col tablet:flex-row justify-center items-center gap-5     ">
                 {/* HOME */}
                 <NavigationMenuItem>
                   <NavigationMenuLink>
@@ -288,7 +290,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className=" flex  ">
                     <div className="flex justify-center  border-none bg-white     ">
-                      <ul className="flex justify-center items-center flex-col  bg-white w-[12rem] text-[0.85rem]  ">
+                      <ul className="flex justify-center items-center flex-col  bg-white w-[12rem] mobile:text-[0.85rem] tablet:text-xs ">
                         {/* Kitchen Remodeling */}
 
                         <li className="flex justify-center  p-3 w-full ">
@@ -369,9 +371,9 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
       </div>
 
       {/* Request Appointment Button */}
-      <div className="mobile:hidden flex">
+      <div className="tablet:hidden flex ">
         <Button
-          className="bg-red-600 py-2 px-4 rounded-md hover:bg-red-500 text-white text-sm mobile:text-xs"
+          className="bg-red-600 py-2 px-4 rounded-md hover:bg-red-500 text-white text-sm mobile:text-xs  "
           onClick={handleShowModal}
         >
           <p className="flex lg:flex-row gap-1">

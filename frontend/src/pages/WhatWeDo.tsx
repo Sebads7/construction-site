@@ -1,9 +1,11 @@
 import { Carrousel } from "@/components/Carrousel";
+import { table } from "console";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-
 import { Link } from "react-router-dom";
+
+const tablet = window.innerWidth < 900;
 
 const slidesData = [
   {
@@ -17,8 +19,8 @@ const slidesData = [
     description:
       "Explore our bespoke custom carpentry services. From custom cabinets and elegant trim work to personalized furniture and intricate woodworking projects, we bring creativity and precision to every detail. Contact us today to arrange a personalized in-person consultation.",
     variants: {
-      hidden: { opacity: 0, x: -100 },
-      visible: { opacity: 1, x: 0 },
+      hidden: { opacity: 0, x: tablet ? 0 : -100, y: tablet ? 100 : 100 },
+      visible: { opacity: 1, x: 1, y: 1 },
     },
   },
 
@@ -48,8 +50,8 @@ const slidesData = [
     description:
       "Discover our  interior and exterior painting services. From detailed surface preparation to expert color selection, we ensure every brushstroke enhances your home’s beauty. Contact us today to arrange a personalized in-person consultation, and bring new life to your surroundings.",
     variants: {
-      hidden: { opacity: 0, x: 100 },
-      visible: { opacity: 1, x: 0 },
+      hidden: { opacity: 0, x: 100, y: 100 },
+      visible: { opacity: 1, x: 1, y: 1 },
     },
   },
   {
@@ -80,10 +82,24 @@ const slidesData = [
 const WhatWeDo = () => {
   const containerRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [slidesToShow, setSlidesToShow] = useState(3);
-  const [dotsCount, setDotsCount] = useState(3);
+
   const isInView = useInView(containerRef, { once: true });
   const mainControls = useAnimation();
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  const adjustedLength = isMobile ? slidesData.length : slidesData.length - 2;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024); // Adjust the breakpoint as needed
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (isInView) {
@@ -91,42 +107,21 @@ const WhatWeDo = () => {
     }
   }, [isInView, mainControls]);
 
-  useEffect(() => {
-    const updateSlidesToShow = () => {
-      if (window.innerWidth <= 768) {
-        setSlidesToShow(1);
-        setDotsCount(5);
-      } else {
-        setSlidesToShow(3);
-        setDotsCount(3);
-      }
-    };
-    updateSlidesToShow();
-
-    window.addEventListener("resize", updateSlidesToShow);
-
-    return () => {
-      window.removeEventListener("resize", updateSlidesToShow);
-    };
-  }, []);
-
   const Prev = () => {
     setCurrentSlide((prev) => Math.max(prev - 1, 0));
   };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) =>
-      Math.min(prev + 1, slidesData.length - slidesToShow)
-    );
+    setCurrentSlide((prev) => Math.min(prev + 1, slidesData.length - 3));
   };
 
   return (
-    <div className="w-full">
-      <div className=" flex flex-col justify-center items-center w-full h-[25rem]  px-4 mobile:h-[15rem] mobile:mt-10  ">
-        <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider text-4xl  mobile:text-lg">
+    <div className="w-full  ">
+      <div className="flex flex-col justify-center items-center w-full h-[25rem] px-4 mobile:h-[15rem] mobile:mt-10">
+        <h2 className="text-center mb-4 scroll-m-20 font-extrabold tracking-wider text-4xl mobile:text-lg tablet:text-xl">
           The Top Trusted Remodeling Experts in Atlanta
         </h2>
-        <h3 className="w-[60rem] mobile:w-full text-center leading-7 mt-6 text-lg  mobile:text-sm ">
+        <h3 className="w-[60rem] tablet:w-full text-center leading-7 mt-6 text-lg mobile:text-sm tablet:text-base">
           We are committed to delivering the best home improvement experience of
           your life. We handle the whole process from start to finish, so you
           have one point of contact through your entire project.
@@ -134,12 +129,12 @@ const WhatWeDo = () => {
       </div>
 
       {/* SLIDES CONTAINER SECTION */}
-      <div className="flex flex-row mobile:flex-col justify-center px-0 mobile:px-5   ">
+      <div className="flex flex-row mobile:flex-col justify-center items-center  mobile:px-5 overflow-hidden relative px-16 w-full  ">
         {/* LEFT BUTTON */}
         <motion.div
-          className={`mobile:hidden flex items-center justify-center w-10 px-2 mr-7 border-2 border-gray-200  hover:bg-gray-200 transition-all cursor-pointer group  ${
+          className={`tablet:hidden flex items-center justify-center w-10 px-2 mr-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group bg-white z-[2] h-[41rem] ${
             currentSlide === 0
-              ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none "
+              ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none"
               : ""
           }`}
           animate={mainControls}
@@ -156,7 +151,7 @@ const WhatWeDo = () => {
           }}
         >
           <FaAngleLeft
-            className={`fill-slate-500 group-hover:fill-white    ${
+            className={`fill-slate-500 group-hover:fill-white ${
               currentSlide === 0
                 ? "fill-slate-500/20 group-hover:fill-slate-500/20"
                 : ""
@@ -165,13 +160,17 @@ const WhatWeDo = () => {
         </motion.div>
 
         {/* SLIDES */}
-        <motion.div
-          className="grid  grid-cols-3 mobile:grid-cols-1 gap-12 transition-all mx-5 mobile:mx-2   "
-          ref={containerRef}
-        >
-          {slidesData
-            .slice(currentSlide, currentSlide + slidesToShow)
-            .map((slide, index) => (
+        <div className="grid  overflow-hidden w-full mobile:translate-x-3  tablet:translate-x-[2rem] ">
+          <motion.div
+            className="grid grid-flow-col  gap-12 transition-all duration-700 ease-in-out mobile:mx-2 w-auto  "
+            ref={containerRef}
+            style={{
+              transform: `translateX(-${
+                currentSlide * (102 / slidesData.length)
+              }%)`,
+            }}
+          >
+            {slidesData.map((slide, index) => (
               <motion.div
                 className="transition-all ease-in-out delay-200 "
                 whileHover={{ scale: 1.002 }}
@@ -182,38 +181,46 @@ const WhatWeDo = () => {
                   ease: "easeInOut",
                   delay: 0.1,
                 }}
+                key={index}
               >
                 <motion.div
-                  key={index}
-                  className="grid grid-rows-3 place-items-center shadow-2xl w-[25vw] h-[42rem]  pb-5 mobile:w-full mobile:h-[35rem] "
+                  className="grid grid-rows-3 place-items-center shadow-md border-2 w-[26vw] h-[42rem] 
+                  pb-5 
+                  mobile:w-[78vw] 
+                  mobile:h-[70vh]  
+                  tablet:w-[75vw] 
+                  tablet:h-[140vh]
+                 
+                  
+                  "
                   animate={mainControls}
                   initial="hidden"
                   variants={slide.variants}
                   transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                 >
-                  <div className=" flex h-full  w-full ">
+                  <div className="flex h-full w-full">
                     <Carrousel
                       images={slide.images}
-                      className="flex w-full h-[17rem] mobile:h-[13rem] border-none p-0  m-0  "
+                      className="flex w-full h-[17rem] mobile:h-[13rem] tablet:h-[10rem] tablet:w-[75vw] mobile:w-full border-none p-0 m-0"
                     />
                   </div>
 
-                  <div className="grid  h-full mt-20 mobile:mt-5 p-10 mobile:p-5   ">
-                    <h1 className="text-center font-bold mobile:mt-3 text-lg mobile:text-base ">
+                  <div className="grid h-full mt-20 mobile:mt-5 p-10 tablet:p-5">
+                    <h1 className="text-center font-bold mobile:mt-3 text-lg mobile:text-base">
                       {slide.title}
                     </h1>
-                    <h2 className="mt-5 text-center text-base mobile:text-sm  ">
+                    <h2 className="mt-5 text-center text-base mobile:text-sm tablet:text-base tablet:mt-2">
                       {slide.description}
                     </h2>
                   </div>
-                  <div className="flex w-full  h-full  items-end">
+                  <div className="flex w-full h-full items-end  tablet:h-2/4">
                     <Link
                       to={slide.link}
-                      className=" w-full h-2/4  flex items-center justify-center "
+                      className="w-full h-2/4 mobile:h-1/4   flex items-center justify-center"
                     >
                       <button
                         type="button"
-                        className=" flex justify-center items-center    bg-yellow-400 px-9 py-3 text-xs  font-medium uppercase leading-normal text-black shadow-light-3 transition duration-150 ease-in-out hover:bg-yellow-500 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                        className="flex justify-center items-center bg-yellow-400 px-9 py-3 text-xs font-medium uppercase leading-normal text-black shadow-light-3 transition duration-150 ease-in-out hover:bg-yellow-500 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
                       >
                         LEARN MORE
                       </button>
@@ -222,13 +229,14 @@ const WhatWeDo = () => {
                 </motion.div>
               </motion.div>
             ))}
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* RIGHT BUTTON */}
         <motion.div
-          className={`mobile:hidden flex items-center  px-2 ml-7 border-2 border-gray-200  hover:bg-gray-200 transition-all cursor-pointer group ${
-            currentSlide === 2
-              ? "border-opacity-20 hover:bg-gray-200/[1%]  pointer-events-none"
+          className={`tablet:hidden flex items-center px-2 ml-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group  z-[2] h-[41rem] ${
+            currentSlide === slidesData.length - 3
+              ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none"
               : ""
           }`}
           animate={mainControls}
@@ -246,20 +254,18 @@ const WhatWeDo = () => {
         >
           <FaAngleRight
             className={`fill-slate-500 group-hover:fill-white ${
-              currentSlide === 2
+              currentSlide === slidesData.length - 3
                 ? "fill-slate-500/20 group-hover:fill-slate-500/20 pointer-events-none"
                 : ""
             }`}
           />
         </motion.div>
       </div>
+
       {/* Dots */}
-      <div className=" flex flex-row gap-2 justify-center pt-5 mobile:gap-3 ">
+      <div className="flex flex-row gap-2 justify-center pt-5 mobile:gap-3">
         {Array.from({
-          length: Math.min(
-            dotsCount,
-            Math.ceil(slidesData.length / slidesToShow + 1)
-          ),
+          length: Math.ceil(adjustedLength),
         }).map((_, index) => (
           <div
             key={index}

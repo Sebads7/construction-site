@@ -21,7 +21,7 @@ module.exports = {
       lg: { max: "1023px" },
       // => @media (max-width: 1023px) { ... }
 
-      md: { max: "767px" },
+      tablet: { max: "900px" },
       // => @media (max-width: 767px) { ... }
 
       mobile: { max: "639px" },
