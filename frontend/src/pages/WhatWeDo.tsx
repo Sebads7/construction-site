@@ -1,5 +1,4 @@
 import { Carrousel } from "@/components/Carrousel";
-import { table } from "console";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
