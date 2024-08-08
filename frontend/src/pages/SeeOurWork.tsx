@@ -145,7 +145,6 @@ const SeeOurWork = () => {
                   <GridGallery
                     images={sections[activeSection].images || []}
                     imageLength={isMobile ? 3 : 7}
-                    className="mobile:space-y-4 "
                   />
                 </motion.div>
               </div>

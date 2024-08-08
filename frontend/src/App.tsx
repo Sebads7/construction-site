@@ -1,50 +1,33 @@
 "use client";
 
-import Modal from "./components/Modal";
 import { useState } from "react";
-import Home from "./pages/Home";
+import Modal from "./components/Modal";
 import NavBar from "./components/NavBar";
-import Footer from "./pages/Footer";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Contact from "./pages/Contact";
-import SeeOurWork from "./pages/SeeOurWork";
-import Reviews from "./pages/Reviews";
-import BathRemodeling from "./pages/What we do/BathRemodeling";
-import Carpentry from "./pages/What we do/Carpentry";
-import KitchenRemodeling from "./pages/What we do/KitchenRemodeling";
-
-import PressureWashing from "./pages/What we do/PressureWashing";
+import Footer from "./components/Footer";
 import ScrollToTop from "./pages/ScrollToTop";
-import Painting from "./pages/What we do/Painting";
+import AppRoutes from "./routes";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { BrowserRouter as Router } from "react-router-dom";
+import ButtonUp from "./components/ButtonUp";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
-    setShowModal(!showModal);
+    setShowModal((prev) => !prev);
   };
 
   return (
-    <>
-      <Router>
-        <ScrollToTop />
-        <NavBar handleShowModal={handleShowModal} />
-        {showModal && <Modal handleShowModal={handleShowModal} />}
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/SeeOurWork" element={<SeeOurWork />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/BathRemodeling" element={<BathRemodeling />} />
-          <Route path="/Carpentry" element={<Carpentry />} />
-          <Route path="/KitchenRemodeling" element={<KitchenRemodeling />} />
-          <Route path="/PressureWashing" element={<PressureWashing />} />
-          <Route path="/Painting" element={<Painting />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </>
+    <Router>
+      <ScrollToTop />
+      <NavBar handleShowModal={handleShowModal} />
+      {showModal && <Modal handleShowModal={handleShowModal} />}
+      <ErrorBoundary>
+        <AppRoutes />
+      </ErrorBoundary>
+      <ButtonUp />
+      <Footer />
+    </Router>
   );
 };
 

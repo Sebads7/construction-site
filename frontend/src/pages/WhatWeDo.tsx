@@ -30,7 +30,7 @@ const slidesData = [
       "/images/bath-remodeling/bth2.JPG",
       "/images/bath-remodeling/bth3.JPG",
     ],
-    link: "BathRemodeling",
+    link: "bath-remodeling",
     description:
       "Discover our extensive bathroom remodeling services, including tile installation, cabinetry and storage solutions, lighting and electrical work, plumbing services, flooring installation, and painting. Contact us today to arrange a personalized in-person consultation.",
     variants: {
@@ -60,7 +60,7 @@ const slidesData = [
       "/images/pressure washing/back-house.jpeg",
       "/images/pressure washing/pressure-washing-deck.jpg",
     ],
-    link: "PressureWashing",
+    link: "pressure-washing",
     description:
       "Revitalize your surfaces with our professional pressure washing services. Whether it's your home's exterior, driveway, or deck, we specialize in thorough cleaning to restore beauty and curb appeal. Contact us today to arrange a personalized in-person consultation.",
   },
@@ -72,7 +72,7 @@ const slidesData = [
       "/images/kitchen remodeling/kitch-rem2.webp",
       "/images/kitchen remodeling/kitch-rem3.jpeg",
     ],
-    link: "KitchenRemodeling",
+    link: "kitchen-remodeling",
     description:
       "Transform your kitchen, from custom cabinetry and counter-top installation to lighting design and flooring solutions, we specialize in creating functional and stylish spaces tailored to your needs. Contact us today to arrange a personalized in-person consultation.",
   },

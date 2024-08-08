@@ -66,7 +66,30 @@ const GridGallery: React.FC<GridGalleryProps> = ({
     } else {
       document.body.style.overflowY = "auto";
     }
+    // Clean up the effect when the component is unmounted
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
   }, [selectedImageIndex]);
+
+  // Calculate indices for showing images
+  const getVisibleImages = (index: number | null) => {
+    if (index === null) return [];
+    const halfVisibleCount = 3; // Half of the 5 images shown
+    const totalVisibleCount = 5;
+    let start = Math.max(index - halfVisibleCount, 0);
+    let end = start + totalVisibleCount;
+
+    if (end > images.length) {
+      end = images.length;
+      start = Math.max(end - totalVisibleCount, 0);
+    }
+
+    return images.slice(start, end);
+  };
+
+  // Get the range of visible images based on the selected index
+  const visibleImages = getVisibleImages(selectedImageIndex);
 
   return (
     <motion.div
@@ -127,11 +150,11 @@ const GridGallery: React.FC<GridGalleryProps> = ({
               </button>
             </div>
 
-            <div className="flex flex-col  items-center gap-4 w-full h-full  bg-black mobile:px-5  ">
+            <div className="flex flex-col  items-center gap-4 w-full h-full  bg-black mobile:px-4  ">
               <img
                 src={images[selectedImageIndex]}
                 alt="selected"
-                className="  w-5/6   mobile:w-full tablet:w-[25rem] h-[45rem] mobile:h-[25rem] tablet:h-[11rem]  object-cover "
+                className="  w-5/6   mobile:w-full tablet:w-[25rem] h-[45rem] mobile:h-[20rem] tablet:h-[11rem]  object-cover "
               />
 
               {/* //////////         Prev BUTTON //////////////////// */}
@@ -141,21 +164,22 @@ const GridGallery: React.FC<GridGalleryProps> = ({
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
 
-                {images &&
-                  images.map((image, index) => (
+                {visibleImages.map((image) => {
+                  const imageIndex = images.indexOf(image);
+                  return (
                     <img
-                      key={index}
+                      key={imageIndex}
                       src={image}
                       alt="gallery"
-                      className={
-                        index === selectedImageIndex &&
-                        index < selectedImageIndex + 5
-                          ? " h-16 w-16 selected"
-                          : "h-10 w-10"
-                      }
-                      onClick={() => handleImageClick(index)}
+                      className={`${
+                        imageIndex === selectedImageIndex
+                          ? "h-16 w-16 mobile:w-10 mobile:h-10 selected"
+                          : "h-10 w-10 mobile:h-5 mobile:w-5"
+                      } `}
+                      onClick={() => handleImageClick(imageIndex)}
                     />
-                  ))}
+                  );
+                })}
 
                 {/* //////////         Next  BUTTON //////////////////// */}
                 <Button variant="custom" size="icon" onClick={handleNextImage}>
@@ -163,7 +187,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({
                 </Button>
               </div>
 
-              <p className="text-white justify-self-center  col-span-4 mt-5 tablet:mt-1">{`Photo ${
+              <p className="text-white justify-self-center  col-span-4 mt-5 tablet:mt-1  ">{`Photo ${
                 selectedImageIndex + 1
               } of ${images.length}`}</p>
             </div>
