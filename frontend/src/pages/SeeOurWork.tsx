@@ -57,9 +57,9 @@ const SeeOurWork = () => {
   };
   return (
     <div>
-      <div className="bg-black opacity-50 w-full h-[65px] flex fixed mobile:hidden"></div>
+      <div className="bg-black opacity-50 w-full h-[65px] flex fixed tablet:hidden"></div>
 
-      <div className="w-full  h-[30rem]  flex mobile:h-[20rem] ">
+      <div className="w-full  h-[30rem]  flex tablet:h-[20rem] ">
         <div className="bg-black/30 w-full h-full fixed -z-10 "> </div>
         <div className="fixed w-full h-full  -z-20  ">
           <img
@@ -69,7 +69,7 @@ const SeeOurWork = () => {
           />
         </div>
         {/* PAGE NAME */}
-        <div className="w-full h-[30rem]  left-0 flex  flex-col items-center justify-center  bg-black/10 py-10 absolute  mobile:h-[10rem] mobile:mt-16">
+        <div className="w-full h-[30rem]  left-0 flex  flex-col items-center justify-center  bg-black/10 py-10 absolute  tablet:h-[10rem] tablet:mt-16">
           <div className=" w-full h-[300px]  flex justify-center items-center  ">
             <div className=" bg-zinc-700/85 h-[5.5rem] w-[22rem] flex justify-center items-center mobile:w-[17rem] mobile:h-[5rem]  ">
               <h1 className="flex text-xl  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[30rem] mobile:text-sm  ">
@@ -84,13 +84,13 @@ const SeeOurWork = () => {
         <div className="flex  w-full h-[2rem]   bg-black/30  "></div>
 
         {sections[activeSection] && (
-          <div className="w-[60vw] text-white  flex-col mobile:w-full mobile:text-xs hidden mobile:flex">
-            <h1 className="mb-4 scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left mobile:text-base  mobile:px-5 mobile:text-center mobile:pt-10">
+          <div className="w-[60vw] text-white  flex-col tablet:w-full mobile:text-xs hidden tablet:flex tablet:mb-10">
+            <h1 className="mb-4 scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left mobile:text-base  mobile:px-5 tablet:text-center tablet:pt-10 tablet:text-xl">
               {sections[activeSection].title}
             </h1>
-            <div className="flex flex-row mt-14 ml-5 mobile:ml-0 mobile:px-4 mobile:mt-5">
-              <div className="w-2 bg-white mr-10 mobile:mr-2"></div>
-              <h2 className="w-[34vw] leading-8 text-xl mobile:w-full mobile:text-sm">
+            <div className="flex flex-row mt-14 ml-5 tablet:ml-0 mobile:px-4 tablet:px-3 tablet:mt-5 ">
+              <div className="w-2 bg-white mr-10 tablet:mr-2 "></div>
+              <h2 className="w-[34vw] leading-8 text-xl tablet:w-full mobile:text-sm tablet:text-base ">
                 {sections[activeSection].description}
               </h2>
             </div>
@@ -116,17 +116,17 @@ const SeeOurWork = () => {
           </div>
         </div>
 
-        <div className="flex h-full justify-center items-center w-full bg-black/30  px-10 mobile:px-0 ">
+        <div className="flex h-full justify-center items-center w-full bg-black/30  px-10 tablet:px-0 ">
           {sections[activeSection] && (
-            <div className="h-full mx-5 mobile:mx-0 ">
-              <div className="flex flex-row h-full py-10 justify-center mobile:flex-col-reverse mobile:py-0 mobile:pb-10">
-                <div className="w-[60vw] text-white flex flex-col mobile:w-full mobile:text-xs mobile:hidden">
-                  <h1 className="mb-4 scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left mobile:text-base  mobile:px-5 mobile:text-center mobile:pt-10">
+            <div className="h-full mx-5 tablet:mx-0  tablet:w-full ">
+              <div className="flex flex-row h-full py-10 justify-center  tablet:flex-col mobile:py-0 mobile:pb-1  ">
+                <div className="w-[60vw] text-white flex flex-col tablet:w-full  mobile:text-xs tablet:hidden tablet:mb-10">
+                  <h1 className="mb-4 scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left tablet:text-center mobile:text-base  tablet:px-5 mobile:text-center tablet:pt-10 tablet:text-xl ">
                     {sections[activeSection].title}
                   </h1>
-                  <div className="flex flex-row mt-14 ml-5 mobile:ml-0 mobile:px-4 mobile:mt-5">
-                    <div className="w-2 bg-white mr-10 mobile:mr-2"></div>
-                    <h2 className="w-[34vw] leading-8 text-xl mobile:w-full mobile:text-sm">
+                  <div className="flex flex-row mt-14 ml-5 mobile:ml-0 tablet:px-4 mobile:mt-5  ">
+                    <div className="w-2 bg-white mr-10 mobile:mr-2 "></div>
+                    <h2 className="w-[34vw] leading-8 text-xl tablet:w-full mobile:text-sm ">
                       {sections[activeSection].description}
                     </h2>
                   </div>
@@ -140,12 +140,12 @@ const SeeOurWork = () => {
                   }}
                   animate={{ opacity: 1, x: 0, y: 0 }}
                   transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-                  className="w-[50%] mobile:w-full mobile:bg-[#272829] mobile:px-5 mobile:py-10 "
+                  className="w-[50%] tablet:w-full tablet:bg-[#272829] tablet:px-8 tablet:py-10 "
                 >
                   <GridGallery
                     images={sections[activeSection].images || []}
                     imageLength={isMobile ? 3 : 7}
-                    className="mobile:space-y-4"
+                    className="mobile:space-y-4 "
                   />
                 </motion.div>
               </div>
@@ -168,7 +168,7 @@ const SeeOurWork = () => {
         <Review />
       </div> */}
 
-      <div className="w-full  h-[30rem]  flex border-white/40 border-t-8 ">
+      <div className="w-full  h-[30rem] tablet:h-[10rem]  flex border-white/40 border-t-8 ">
         <div className="bg-black/30 w-full h-full fixed -z-10 "> </div>
       </div>
 

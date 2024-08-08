@@ -20,9 +20,9 @@ const Footer = () => {
       w-full
       "
       >
-        <div className="flex mobile:flex-col flex-row  justify-between px-28 p-5  mobile:gap-10 mobile:z-[2] h-full w-full  mobile:justify-center mobile:items-center mobile:px-0 mobile:text-xs">
+        <div className="flex tablet:flex-col flex-row  justify-between px-28 p-5  mobile:gap-10 mobile:z-[2] h-full w-full  mobile:justify-center mobile:items-center tablet:px-0 mobile:text-xs">
           {/* LOGO AND SOCIAL MEDIA */}
-          <div className=" flex flow-row mobile:flex-col justify-center items-center  ">
+          <div className=" flex flow-row tablet:flex-col justify-center items-center  ">
             <a href="/" className="flex justify-center items-center p-2 ">
               <div className="flex text-white border-2 ">
                 <div className=" flex items-center gap-2  text-center px-3 py-1">
@@ -32,7 +32,7 @@ const Footer = () => {
               </div>
             </a>
 
-            <div className="flex flex-row justify-center items-center gap-4 ml-5 mobile:ml-0">
+            <div className="flex flex-row justify-center items-center gap-4 ml-5 mobile:ml-0 tablet:my-5 mobile:my-0">
               <FaFacebook size={20} />
               <FaInstagram size={20} />
 
@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
 
           {/* LOCATION AND DEVELOPER INFO */}
-          <div className="flex flex-col justify-center items-center gap-1 mobile:w-full mobile:mb-5 mobile:gap-2">
+          <div className="flex  mobile:flex-col flex-col justify-center items-center gap-1 mobile:w-full mobile:mb-5 mobile:gap-2 tablet:mt-5  mobile:mt-0">
             <p className="">Lawrenceville, Georgia USA</p>
             <p>&copy; 2024. All rights reserved.</p>
             <p>Designed and Developed by Sebastian Di Salvatore</p>

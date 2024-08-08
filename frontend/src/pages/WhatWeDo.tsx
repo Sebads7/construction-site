@@ -128,7 +128,7 @@ const WhatWeDo = () => {
       </div>
 
       {/* SLIDES CONTAINER SECTION */}
-      <div className="flex flex-row mobile:flex-col justify-center items-center  mobile:px-5 overflow-hidden relative px-16 w-full  ">
+      <div className="flex flex-row mobile:flex-col justify-center items-center  mobile:px-5 overflow-hidden relative px-10 w-full tablet:px-0  ">
         {/* LEFT BUTTON */}
         <motion.div
           className={`tablet:hidden flex items-center justify-center w-10 px-2 mr-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group bg-white z-[2] h-[41rem] ${
@@ -159,81 +159,83 @@ const WhatWeDo = () => {
         </motion.div>
 
         {/* SLIDES */}
-        <div className="grid  overflow-hidden w-full mobile:translate-x-3  tablet:translate-x-[2rem] ">
-          <motion.div
-            className="grid grid-flow-col  gap-12 transition-all duration-700 ease-in-out mobile:mx-2 w-auto  "
-            ref={containerRef}
-            style={{
-              transform: `translateX(-${
-                currentSlide * (102 / slidesData.length)
-              }%)`,
-            }}
-          >
-            {slidesData.map((slide, index) => (
-              <motion.div
-                className="transition-all ease-in-out delay-200 "
-                whileHover={{ scale: 1.002 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 12,
-                  ease: "easeInOut",
-                  delay: 0.1,
-                }}
-                key={index}
-              >
+        <div className="flex justify-center items-center  w-[90%] tablet:w-full  ">
+          <div className="grid overflow-hidden w-full  mobile:translate-x-3    ">
+            <motion.div
+              className="grid grid-flow-col  gap-12 transition-all duration-700 ease-in-out mobile:mx-0  w-auto  p-2 "
+              ref={containerRef}
+              style={{
+                transform: `translateX(-${
+                  currentSlide * (100 / slidesData.length)
+                }%)`,
+              }}
+            >
+              {slidesData.map((slide, index) => (
                 <motion.div
-                  className="grid grid-rows-3 place-items-center shadow-md border-2 w-[26vw] h-[42rem] 
+                  className="transition-all ease-in-out delay-200"
+                  whileHover={{ scale: 1.002 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 12,
+                    ease: "easeInOut",
+                    delay: 0.1,
+                  }}
+                  key={index}
+                >
+                  <motion.div
+                    className="grid grid-rows-3 place-items-center shadow-md border-2 w-[26vw] h-[42rem] 
                   pb-5 
                   mobile:w-[78vw] 
                   mobile:h-[70vh]  
-                  tablet:w-[75vw] 
-                  tablet:h-[140vh]
+                  tablet:w-[40rem] 
+                  tablet:h-[30rem]
                  
                   
                   "
-                  animate={mainControls}
-                  initial="hidden"
-                  variants={slide.variants}
-                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                >
-                  <div className="flex h-full w-full">
-                    <Carrousel
-                      images={slide.images}
-                      className="flex w-full h-[17rem] mobile:h-[13rem] tablet:h-[10rem] tablet:w-[75vw] mobile:w-full border-none p-0 m-0"
-                    />
-                  </div>
+                    animate={mainControls}
+                    initial="hidden"
+                    variants={slide.variants}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                  >
+                    <div className="flex h-full w-full">
+                      <Carrousel
+                        images={slide.images}
+                        className="flex w-full h-[17rem] mobile:h-[13rem] tablet:h-[10rem] tablet:w-[39.8rem] mobile:w-full border-none p-0 m-0"
+                      />
+                    </div>
 
-                  <div className="grid h-full mt-20 mobile:mt-5 p-10 tablet:p-5">
-                    <h1 className="text-center font-bold mobile:mt-3 text-lg mobile:text-base">
-                      {slide.title}
-                    </h1>
-                    <h2 className="mt-5 text-center text-base mobile:text-sm tablet:text-base tablet:mt-2">
-                      {slide.description}
-                    </h2>
-                  </div>
-                  <div className="flex w-full h-full items-end  tablet:h-2/4">
-                    <Link
-                      to={slide.link}
-                      className="w-full h-2/4 mobile:h-1/4   flex items-center justify-center"
-                    >
-                      <button
-                        type="button"
-                        className="flex justify-center items-center bg-yellow-400 px-9 py-3 text-xs font-medium uppercase leading-normal text-black shadow-light-3 transition duration-150 ease-in-out hover:bg-yellow-500 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                    <div className="grid h-full mt-20 mobile:mt-5 p-10 tablet:p-5">
+                      <h1 className="text-center font-bold mobile:mt-3 text-lg mobile:text-base">
+                        {slide.title}
+                      </h1>
+                      <h2 className="mt-5 text-center text-base mobile:text-sm tablet:text-base tablet:mt-2">
+                        {slide.description}
+                      </h2>
+                    </div>
+                    <div className="flex w-full h-full items-end  tablet:h-2/4 mobile:mt-10">
+                      <Link
+                        to={slide.link}
+                        className="w-full h-2/4 mobile:h-1/4   flex items-center justify-center"
                       >
-                        LEARN MORE
-                      </button>
-                    </Link>
-                  </div>
+                        <button
+                          type="button"
+                          className="flex justify-center items-center bg-yellow-400 px-9 py-3 text-xs font-medium uppercase leading-normal text-black shadow-light-3 transition duration-150 ease-in-out hover:bg-yellow-500 hover:shadow-light-2 focus:bg-neutral-200 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-light-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                        >
+                          LEARN MORE
+                        </button>
+                      </Link>
+                    </div>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
 
         {/* RIGHT BUTTON */}
         <motion.div
-          className={`tablet:hidden flex items-center px-2 ml-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group  z-[2] h-[41rem] ${
+          className={`tablet:hidden flex items-center px-2 ml-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group  z-[2] h-[41rem]  ${
             currentSlide === slidesData.length - 3
               ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none"
               : ""

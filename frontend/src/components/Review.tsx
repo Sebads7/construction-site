@@ -76,12 +76,12 @@ export const Review = () => {
 
   return (
     <div
-      className=" flex mobile:flex-col justify-center items-center   bg-white/40 gap-12 py-10  mobile:px-3 mobile:py-1 "
+      className=" flex tablet:flex-col justify-center items-center   bg-white/40 gap-12 py-10  mobile:px-3 mobile:py-1 "
       ref={containerRef}
     >
       {/* LEFT SIDE - REVIEW */}
       <motion.div
-        className="relative flex items-center justify-center mobile:flex-col  w-3/4 pl-20 mobile:w-full h-[20rem] mobile:h-[25rem]  "
+        className="relative flex items-center justify-center mobile:flex-col  w-3/4 pl-20 tablet:w-[90%]  h-[20rem] mobile:h-[25rem] tablet:pl-0  "
         animate={mainControls}
         initial="hidden"
         variants={{
@@ -150,7 +150,7 @@ export const Review = () => {
 
       {/* RIGHT SIDE - CONTACT PROMOTION */}
       <motion.div
-        className="flex  justify-center h-full w-7/12 mobile:w-full mobile:mt-10  z-[8] bg-white"
+        className="flex  justify-center h-full w-7/12 tablet:w-full mobile:mt-10  z-[8]  bg-white tablet:px-20 mobile:px-1 tablet:mt-10  "
         animate={mainControls}
         initial="hidden"
         variants={{

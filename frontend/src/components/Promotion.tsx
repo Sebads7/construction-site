@@ -2,7 +2,7 @@ import ContactForm from "./ContactForm";
 
 const Promotion = () => {
   return (
-    <div className="flex justify-center w-3/4 mobile:w-full h-3/4 tablet:h-[36rem]   ">
+    <div className="flex justify-center w-3/4 tablet:w-full h-3/4 tablet:h-[36rem]   ">
       <div
         className="bg-yellow-300/95 mobile:bg-yellow-300 
       flex 

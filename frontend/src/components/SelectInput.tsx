@@ -68,9 +68,9 @@ const SelectInput: React.FC<SelectInputProps> = ({
         animate={isOpen ? "open" : "closed"}
       >
         {isOpen && (
-          <div className=" relative top-10 ">
+          <div className=" relative top-10 mobile:translate-y-0  tablet:translate-y-[-14.4rem] z-[2] ">
             <motion.div
-              className="absolute w-full  mt-1 border bg-white border-gray-300 rounded-lg shadow-2xl "
+              className="absolute w-full  mt-1 border bg-white border-gray-300 rounded-lg shadow-2xl  "
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
@@ -101,11 +101,11 @@ const SelectInput: React.FC<SelectInputProps> = ({
         )}
 
         <motion.div
-          className="relative flex items-center w-full h-full px-2.5 cursor-pointer focus:border-black focus:border-2 focus:rounded-lg"
+          className="relative flex items-center w-full h-full px-2.5 cursor-pointer focus:border-black focus:border-2 focus:rounded-lg  "
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
-            className={`w-full border-none ring-white ${
+            className={`w-full border-none ring-white  ${
               selected ? "text-black" : " text-slate-500"
             }`}
             // contentEditable={false}
@@ -113,7 +113,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
             {selected ? selected : "Select a Project"}
           </div>
           <motion.div
-            className="cursor-pointer"
+            className="cursor-pointer "
             variants={{
               open: { rotate: 180 },
               closed: { rotate: 0 },

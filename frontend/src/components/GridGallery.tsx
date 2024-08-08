@@ -70,7 +70,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({
 
   return (
     <motion.div
-      className={`grid grid-cols-2 gap-8 mobile:grid-cols-1 mobile:gap-4 ${className}   `}
+      className={`grid grid-cols-2 gap-8 tablet:grid-cols-1 tablet:gap-5 ${className}   `}
       variants={gridConatinerVariants}
       initial="hidden"
       animate="show"
@@ -98,7 +98,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({
           ))}
       </AnimatePresence>
       <motion.div
-        className="flex justify-center items-center w-full h-full border-2 border-white/55 mobile:py-14 "
+        className="flex justify-center items-center w-full h-full border-2 border-white/55 tablet:py-14 "
         whileTap={{ scale: 0.95 }}
         variants={gridSquareVariants}
         transition={{ duration: 1, ease: "easeIn", delay: 2 }}
@@ -121,17 +121,17 @@ const GridGallery: React.FC<GridGalleryProps> = ({
               <button
                 type="button"
                 onClick={handleCloseModal}
-                className="flex justify-center items-center text-white pr-6 py-6  "
+                className="flex justify-center items-center text-white pr-6 py-6 mobile:py-3 tablet:py-0 tablet:pt-4  "
               >
                 <IoMdClose size={30} className="" />
               </button>
             </div>
 
-            <div className="flex flex-col  items-center gap-4 w-full mobile:h-[42rem]  bg-black mobile:px-5  ">
+            <div className="flex flex-col  items-center gap-4 w-full h-full  bg-black mobile:px-5  ">
               <img
                 src={images[selectedImageIndex]}
                 alt="selected"
-                className="  w-5/6  h-[42rem] mobile:w-full mobile:h-screen  object-cover "
+                className="  w-5/6   mobile:w-full tablet:w-[25rem] h-[45rem] mobile:h-[25rem] tablet:h-[11rem]  object-cover "
               />
 
               {/* //////////         Prev BUTTON //////////////////// */}
@@ -163,7 +163,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({
                 </Button>
               </div>
 
-              <p className="text-white justify-self-center  col-span-4 mt-5">{`Photo ${
+              <p className="text-white justify-self-center  col-span-4 mt-5 tablet:mt-1">{`Photo ${
                 selectedImageIndex + 1
               } of ${images.length}`}</p>
             </div>

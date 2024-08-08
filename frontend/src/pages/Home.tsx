@@ -72,6 +72,7 @@ const Home = () => {
             mobile:mt-10
             tablet:mt-0
             tablet:w-full
+            tablet:px-24
             
             "
           >
@@ -90,7 +91,7 @@ const Home = () => {
           <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider text-4xl  mobile:text-lg tablet:text-xl">
             The Top Trusted Remodeling Experts in Atlanta
           </h2>
-          <h3 className="w-[60rem] tablet:w-full text-center leading-7 [&:not(:first-child)]:mt-6 text-lg  mobile:text-sm tablet:text-base ">
+          <h3 className="w-[60rem] mobile:w-full tablet:w-[40rem] text-center leading-7 [&:not(:first-child)]:mt-6 text-lg  mobile:text-sm tablet:text-base ">
             We are committed to delivering the best home improvement experience
             of your life. We handle the whole process from start to finish, so
             you have one point of contact through your entire project.
