@@ -1,5 +1,5 @@
 import WhatWeDo from "./WhatWeDo";
-import ButtonUp from "@/components/ButtonUp";
+
 import Review from "@/components/Review";
 import Promotion from "@/components/Promotion";
 import { motion } from "framer-motion";
