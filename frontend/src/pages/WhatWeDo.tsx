@@ -1,6 +1,6 @@
 import { Carrousel } from "@/components/Carrousel";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -16,7 +16,7 @@ const slidesData = [
     ],
     link: "carpentry",
     description:
-      "Explore our bespoke custom carpentry services. From custom cabinets and elegant trim work to personalized furniture and intricate woodworking projects, we bring creativity and precision to every detail. Contact us today to arrange a personalized in-person consultation.",
+      "From custom cabinets and elegant trim work to personalized furniture and intricate woodworking projects, we bring creativity and precision to every detail.",
     variants: {
       hidden: { opacity: 0, x: tablet ? 0 : -100, y: tablet ? 100 : 100 },
       visible: { opacity: 1, x: 1, y: 1 },
@@ -32,7 +32,7 @@ const slidesData = [
     ],
     link: "bath-remodeling",
     description:
-      "Discover our extensive bathroom remodeling services, including tile installation, cabinetry and storage solutions, lighting and electrical work, plumbing services, flooring installation, and painting. Contact us today to arrange a personalized in-person consultation.",
+      "Discover our extensive bathroom remodeling services, including tile installation, cabinetry and storage solutions, lighting and electrical work, plumbing services, flooring installation, and painting.",
     variants: {
       hidden: { opacity: 0, y: 100 },
       visible: { opacity: 1, y: 0 },
@@ -47,7 +47,7 @@ const slidesData = [
     ],
     link: "painting",
     description:
-      "Discover our  interior and exterior painting services. From detailed surface preparation to expert color selection, we ensure every brushstroke enhances your home’s beauty. Contact us today to arrange a personalized in-person consultation, and bring new life to your surroundings.",
+      "Discover our extensive interior and exterior painting services. From detailed surface preparation to expert color selection, we ensure every brushstroke enhances your home’s beauty. ",
     variants: {
       hidden: { opacity: 0, x: 100, y: 100 },
       visible: { opacity: 1, x: 1, y: 1 },
@@ -62,7 +62,7 @@ const slidesData = [
     ],
     link: "pressure-washing",
     description:
-      "Revitalize your surfaces with our professional pressure washing services. Whether it's your home's exterior, driveway, or deck, we specialize in thorough cleaning to restore beauty and curb appeal. Contact us today to arrange a personalized in-person consultation.",
+      "Revitalize your surfaces with our professional pressure washing services. Whether it's your home's exterior, driveway, or deck, we specialize in thorough cleaning to restore beauty and curb appeal. ",
   },
 
   {
@@ -74,7 +74,7 @@ const slidesData = [
     ],
     link: "kitchen-remodeling",
     description:
-      "Transform your kitchen, from custom cabinetry and counter-top installation to lighting design and flooring solutions, we specialize in creating functional and stylish spaces tailored to your needs. Contact us today to arrange a personalized in-person consultation.",
+      "Transform your kitchen, from custom cabinetry and counter-top installation to lighting design and flooring solutions, we specialize in creating functional and stylish spaces tailored to your needs. ",
   },
 ];
 
@@ -82,11 +82,31 @@ const WhatWeDo = () => {
   const containerRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEndX] = useState(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      nextSlide();
+    }
+
+    if (touchStart - touchEnd < -50) {
+      Prev();
+    }
+  };
+
   const isInView = useInView(containerRef, { once: true });
   const mainControls = useAnimation();
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
-
   const adjustedLength = isMobile ? slidesData.length : slidesData.length - 2;
 
   useEffect(() => {
@@ -111,7 +131,7 @@ const WhatWeDo = () => {
   };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => Math.min(prev + 1, slidesData.length - 3));
+    setCurrentSlide((prev) => Math.min(prev + 1, slidesData.length - 1));
   };
 
   return (
@@ -121,14 +141,31 @@ const WhatWeDo = () => {
           The Top Trusted Remodeling Experts in Atlanta
         </h2>
         <h3 className="w-[60rem] tablet:w-full text-center leading-7 mt-6 text-lg mobile:text-sm tablet:text-base">
-          We are committed to delivering the best home improvement experience of
-          your life. We handle the whole process from start to finish, so you
-          have one point of contact through your entire project.
+          We are dedicated to providing an exceptional home improvement
+          experience from start to finish. With us, you'll enjoy a smooth,
+          hassle-free process with a single point of contact overseeing every
+          aspect of your project.
         </h3>
       </div>
 
       {/* SLIDES CONTAINER SECTION */}
-      <div className="flex flex-row mobile:flex-col justify-center items-center  mobile:px-5 overflow-hidden relative px-10 w-full tablet:px-0  ">
+      <div
+        className="flex 
+      flex-row 
+      mobile:flex-col 
+      justify-center 
+      items-center  
+      mobile:px-5 
+      overflow-hidden 
+      relative px-10 
+      w-full 
+      tablet:px-0 
+      no-scrollbar
+      "
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {/* LEFT BUTTON */}
         <motion.div
           className={`tablet:hidden flex items-center justify-center w-10 px-2 mr-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group bg-white z-[2] h-[41rem] ${

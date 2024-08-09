@@ -63,7 +63,7 @@ const SeeOurWork = () => {
         <div className="bg-black/30 w-full h-full fixed -z-10 "> </div>
         <div className="fixed w-full h-full  -z-20  ">
           <img
-            src="/images/fronthouse.jpeg"
+            src="/images/fronthouse-lg.jpg"
             alt="background"
             className=" w-full h-screen object-cover"
           />

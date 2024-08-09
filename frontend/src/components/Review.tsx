@@ -51,6 +51,27 @@ export const Review = () => {
   const isInView = useInView(containerRef, { once: true });
   const mainControls = useAnimation();
 
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEndX] = useState(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      paginate(1);
+    }
+
+    if (touchStart - touchEnd < -50) {
+      paginate(1);
+    }
+  };
+
   const [[page, direction], setPage] = useState([0, 0]);
   const imageIndex =
     ((page % reviews.length) + reviews.length) % reviews.length; // Wrap around
@@ -76,7 +97,7 @@ export const Review = () => {
 
   return (
     <div
-      className=" flex tablet:flex-col justify-center items-center   bg-white/40 gap-12 py-10  mobile:px-3 mobile:py-1 "
+      className=" flex tablet:flex-col justify-center items-center   bg-white/40 gap-12 py-10  mobile:px-3 mobile:py-1 overflow-x-hidden   "
       ref={containerRef}
     >
       {/* LEFT SIDE - REVIEW */}
@@ -110,9 +131,12 @@ export const Review = () => {
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={1}
             className="absolute flex items-center justify-center  h-full  top-0  "
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             <div
-              className="flex flex-col justify-center items-center bg-white h-full border-2 p-6  gap-4 rounded-lg shadow-lg 
+              className="flex flex-col justify-center items-center   bg-white h-full border-2 p-6  gap-4 rounded-lg shadow-lg 
             mobile:text-sm  mobile:gap-1   "
             >
               <div className="mobile:hidden">

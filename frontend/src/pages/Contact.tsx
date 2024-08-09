@@ -10,7 +10,7 @@ const Contact = () => {
       <div className=" w-full h-full  relative tablet:fixed  ">
         <div className="bg-black/30  h-full   absolute w-full  "> </div>
         <img
-          src="/images/fronthouse.jpeg"
+          src="/images/fronthouse-lg.jpg"
           alt="background"
           className="w-full h-screen tablet:h-full object-cover"
         />

@@ -1,17 +1,15 @@
 import { IoMdClose } from "react-icons/io";
 import ContactForm from "./ContactForm";
-
-// useEffect(() => {
-//   // Block scrolling on body when modal is open
-//   document.body.style.overflow = "hidden";
-
-//   // Reset overflow when component unmounts
-//   return () => {
-//     document.body.style.overflow = "auto";
-//   };
-// }, []); // Empty dependency array to run only on mount and unmount
+import { useEffect } from "react";
 
 const PopUp = ({ handleShowModal }: { handleShowModal: () => void }) => {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
   return (
     <div
       className=" flex fixed justify-center  items-center w-full h-full top-0  bg-black/55 backdrop-filter backdrop-brightness-75 backdrop-blur-md z-10 tablet:p-8 tablet:px-2"

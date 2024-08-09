@@ -13,7 +13,7 @@ const Home = () => {
       <div className=" relative flex flex-row mobile:flex-col h-full  ">
         <div className=" w-full h-[60rem]   bg-black/90  ">
           <img
-            src="/images/fronthouse.jpeg"
+            src="/images/fronthouse-lg.jpg"
             alt="background"
             className=" w-full h-screen tablet:h-full  object-cover"
           />
@@ -30,22 +30,31 @@ const Home = () => {
             initial={{ opacity: 0, x: mobile ? 0 : -100, y: lg ? 0 : -100 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{
-              duration: 1,
+              duration: 0.7,
               ease: [0.4, 0.3, 0.8, 1.01],
-              delay: 0.4,
+              delay: 0.2,
             }}
-            className="flex flex-col justify-center   items-center h-auto w-full  bg-black/30 px-8 mobile:px-4 z-2"
+            className="
+            flex
+             flex-col
+             justify-center
+             items-center 
+             h-auto
+             w-full 
+          bg-black/30
+              px-8
+              mobile:px-4
+              z-2"
           >
             <h1 className=" text-center pt-1 tablet:pt-[5rem]  mb-4   text-white scroll-m-20  font-extrabold tracking-wider text-5xl mobile:text-lg tablet:text-xl ">
               Atlanta's Top Remodeling Experts
             </h1>
-            <h2 className="w-full text-white text-center leading-7 mt-6 text-lg mobile:text-sm mobile:pb-10 tablet:text-base tablet:pb-1  ">
-              Experience the ultimate in home improvement with ABJ Painting &
-              Remodeling. Our dedicated team oversees every aspect, ensuring
-              seamless progress from beginning to end. Enjoy peace of mind with
-              a single point of contact throughout your project. Sit back,
-              unwind, and watch as your dream home takes shape, all without
-              lifting a finger.
+            <h2 className="w-4/5 text-white text-center leading-7 mt-6 text-xl mobile:text-sm mobile:pb-10 tablet:text-base tablet:pb-1 tablet:w-full  ">
+              Discover top-notch home improvement with ABJ Painting &
+              Remodeling. Our expert team manages every detail from start to
+              finish, ensuring a smooth and stress-free experience. Enjoy peace
+              of mind with a single point of contact while your dream home
+              becomes a reality—no effort required on your part.
             </h2>
           </motion.div>
 
@@ -89,12 +98,13 @@ const Home = () => {
       <div>
         <div className=" flex flex-col justify-center items-center w-full h-[25rem]  px-4 mobile:h-[20rem]   ">
           <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider text-4xl  mobile:text-lg tablet:text-xl">
-            The Top Trusted Remodeling Experts in Atlanta
+            Atlanta's Premier Remodeling Experts
           </h2>
           <h3 className="w-[60rem] mobile:w-full tablet:w-[40rem] text-center leading-7 [&:not(:first-child)]:mt-6 text-lg  mobile:text-sm tablet:text-base ">
-            We are committed to delivering the best home improvement experience
-            of your life. We handle the whole process from start to finish, so
-            you have one point of contact through your entire project.
+            Experience the best home improvements with our dedicated team. We
+            manage every detail from beginning to end, ensuring a seamless
+            process with a single point of contact for your entire project.
+            Plus, enjoy 20% off your next renovation with our special promotion!
           </h3>
         </div>
         <Review />
