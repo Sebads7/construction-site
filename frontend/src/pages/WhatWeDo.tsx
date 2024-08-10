@@ -10,9 +10,10 @@ const slidesData = [
   {
     title: "CUSTOM CARPENTRY",
     images: [
-      "/images/carpentry/Carpentry.JPG",
+      "/images/carpentry/Cabinets5.jpeg",
+      "/images/carpentry/Cabinets2.jpeg",
+      "/images/carpentry/Cabinets3.jpeg",
       "/images/carpentry/Carpentry2.JPG",
-      "/images/carpentry/Carpentry3.JPG",
     ],
     link: "carpentry",
     description:
@@ -26,9 +27,11 @@ const slidesData = [
   {
     title: "BATHROOM REMODELING",
     images: [
-      "/images/bath-remodeling/bth1.JPG",
-      "/images/bath-remodeling/bth2.JPG",
-      "/images/bath-remodeling/bth3.JPG",
+      "/images/bath-remodeling/bath-remodeling1.jpeg",
+      "/images/bath-remodeling/bath-remodeling2.jpeg",
+      "/images/bath-remodeling/bath-remodeling3.jpeg",
+
+      "/images/bath-remodeling/bath-remodeling5.jpeg",
     ],
     link: "bath-remodeling",
     description:
@@ -41,9 +44,11 @@ const slidesData = [
   {
     title: "INTERIOR AND EXTERIOR PAINTING",
     images: [
-      "/images/painting/painting1.jpg",
-      "/images/painting/painting2.jpg",
-      "/images/painting/painting3.jpg",
+      "/images/painting/InteriorPainting1.jpg",
+      "/images/painting/InteriorPainting2.jpeg",
+      "/images/painting/InteriorPainting3.jpeg",
+      "/images/painting/InteriorPainting5.jpeg",
+      "/images/painting/InteriorPainting6.jpeg",
     ],
     link: "painting",
     description:
@@ -56,8 +61,8 @@ const slidesData = [
   {
     title: "PRESSURE WASHING",
     images: [
-      "/images/pressure washing/house-pressure-wash.jpeg",
-      "/images/pressure washing/back-house.jpeg",
+      "/images/pressure washing/pressure-washing4.jpg",
+      "/images/pressure washing/pressure-washing5.jpg",
       "/images/pressure washing/pressure-washing-deck.jpg",
     ],
     link: "pressure-washing",
