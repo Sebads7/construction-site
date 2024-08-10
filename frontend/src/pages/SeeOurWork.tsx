@@ -85,7 +85,21 @@ const SeeOurWork = () => {
 
         {sections[activeSection] && (
           <div className="w-[60vw] text-white  flex-col tablet:w-full mobile:text-xs hidden tablet:flex tablet:mb-10">
-            <h1 className="mb-4 scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left mobile:text-base  mobile:px-5 tablet:text-center tablet:pt-10 tablet:text-xl">
+            <h1
+              className="mb-4 
+            w-3/4 
+            
+            scroll-m-20 
+            text-4xl 
+            font-extrabold 
+            tracking-wider 
+            text-center
+            lg:text-5xl 
+            mobile:text-base  
+            mobile:px-5  
+            tablet:pt-10 
+            tablet:text-xl"
+            >
               {sections[activeSection].title}
             </h1>
             <div className="flex flex-row mt-14 ml-5 tablet:ml-0 mobile:px-4 tablet:px-3 tablet:mt-5 ">
@@ -118,17 +132,19 @@ const SeeOurWork = () => {
 
         <div className="flex h-full justify-center items-center w-full bg-black/30  px-10 tablet:px-0 ">
           {sections[activeSection] && (
-            <div className="h-full mx-5 tablet:mx-0  tablet:w-full ">
-              <div className="flex flex-row h-full py-10 justify-center  tablet:flex-col mobile:py-0 mobile:pb-1  ">
-                <div className="w-[60vw] text-white flex flex-col tablet:w-full  mobile:text-xs tablet:hidden tablet:mb-10">
-                  <h1 className="mb-4 scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl text-left tablet:text-center mobile:text-base  tablet:px-5 mobile:text-center tablet:pt-10 tablet:text-xl ">
-                    {sections[activeSection].title}
-                  </h1>
-                  <div className="flex flex-row mt-14 ml-5 mobile:ml-0 tablet:px-4 mobile:mt-5  ">
-                    <div className="w-2 bg-white mr-10 mobile:mr-2 "></div>
-                    <h2 className="w-[34vw] leading-8 text-xl tablet:w-full mobile:text-sm ">
-                      {sections[activeSection].description}
-                    </h2>
+            <div className="  h-full mx-5 tablet:mx-0  tablet:w-full ">
+              <div className="relative  flex flex-row h-full py-10 justify-center  tablet:flex-col mobile:py-0 mobile:pb-1  ">
+                <div className="relative w-[50%] text-white flex flex-col tablet:w-full  mobile:text-xs tablet:hidden tablet:mb-10">
+                  <div className="sticky top-28">
+                    <h1 className=" mb-4 scroll-m-20   text-4xl font-extrabold tracking-wider lg:text-5xl text-center  tablet:text-center mobile:text-base  tablet:px-5 mobile:text-center tablet:pt-10 tablet:text-xl ">
+                      {sections[activeSection].title}
+                    </h1>
+                    <div className=" flex flex-row mt-14 ml-5 mobile:ml-0 tablet:px-4 mobile:mt-5  ">
+                      <div className="w-2 bg-white mr-10 mobile:mr-2 "></div>
+                      <h2 className="w-[34vw] leading-8 text-xl tablet:w-full mobile:text-sm ">
+                        {sections[activeSection].description}
+                      </h2>
+                    </div>
                   </div>
                 </div>
 

@@ -15,11 +15,10 @@ const Footer = () => {
       text-slate-200 
       text-sm
       z-[2]
-    py-5
     
       "
     >
-      <div className="flex tablet:flex-col flex-row  justify-between px-28 p-5   mobile:gap-10 mobile:z-[2] h-full w-full  mobile:justify-center mobile:items-center tablet:px-0 mobile:text-xs">
+      <div className="flex tablet:flex-col flex-row  justify-between px-28 p-5   mobile:gap-10 mobile:z-[2] h-full w-full  mobile:justify-center mobile:items-center tablet:px-0 mobile:text-xs bg-[#1a1920] py-5 ">
         {/* LOGO AND SOCIAL MEDIA */}
         <div className=" flex flow-row tablet:flex-col justify-center items-center  ">
           <a href="/" className="flex justify-center items-center p-2 ">

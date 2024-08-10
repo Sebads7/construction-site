@@ -1,52 +1,66 @@
 {
   "bath": {
     "title": "Transform Your Bathroom into a Luxurious Oasis",
-    "description": "Embark on a journey of transformation with our exquisite bathroom remodeling gallery, showcasing the epitome of craftsmanship and innovation. Explore a symphony of design possibilities, from contemporary marvels to timeless classics, each image a testament to our dedication to excellence. ",
+    "description": "Transform your bathroom into a luxurious retreat with our expert remodeling services. Whether you envision a spa-like oasis with modern fixtures and serene aesthetics or a practical space with functional upgrades, we turn your dreams into reality. Our team specializes in designing and executing complete bathroom renovations, including custom vanities, elegant tiling, and state-of-the-art showers and bathtubs. We handle every detail with care, from layout optimization to high-quality finishes, ensuring a beautiful and functional space tailored to your needs. Experience the perfect blend of style and comfort with our comprehensive bathroom remodeling services.",
     "images": [
-      "/images/bath-remodeling/Bathroom Remodeling1.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling2.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling3.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling4.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling5.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling6.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling7.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling8.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling9.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling10.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling11.jpeg"
+      "/images/bath-remodeling/bath-remodeling1.jpeg",
+      "/images/bath-remodeling/bath-remodeling2.jpeg",
+      "/images/bath-remodeling/bath-remodeling3.jpeg",
+      "/images/bath-remodeling/bath-remodeling4.jpeg",
+      "/images/bath-remodeling/bath-remodeling5.jpeg",
+      "/images/bath-remodeling/bath-remodeling6.jpeg",
+      "/images/bath-remodeling/bath-remodeling7.jpeg",
+      "/images/bath-remodeling/bath-remodeling8.jpeg",
+      "/images/bath-remodeling/bath-remodeling9.jpeg"
     ]
   },
   "kitchen": {
-    "title": "Transform Your Kitchen Lorem ipsum",
-    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit, doloremque non nihil sapiente nulla vero aperiam nostrum sint suscipit ducimus magni magnam accusantium. Ipsum earum porro architecto pariatur itaque libero.",
+    "title": "Transform Your Kitchen with Expert Remodeling",
+    "description": "Revitalize your kitchen with our professional remodeling services. Whether you’re dreaming of a modern, sleek design or a classic, cozy space, our expert team will bring your vision to life. We specialize in creating functional, beautiful kitchens that fit your style and needs. From custom cabinetry and elegant counter-tops to innovative storage solutions and high-end appliances, we handle every detail with precision. Trust us to deliver exceptional craftsmanship and quality, turning your kitchen into the heart of your home.",
     "images": [
-      "/images/bath-remodeling/Bathroom Remodeling1.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling2.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling3.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling4.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling5.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling6.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling7.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling8.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling9.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling10.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling11.jpeg"
+      "/images/kitchen remodeling/kitch-rem.webp",
+      "/images/kitchen remodeling/kitch-rem2.webp",
+      "/images/kitchen remodeling/kitchen-remodeling1.jpeg",
+      "/images/kitchen remodeling/kitchen-remodeling2.jpeg",
+      "/images/kitchen remodeling/kitchen-remodeling3.jpeg",
+      "/images/kitchen remodeling/kitchen-remodeling4.jpeg",
+      "/images/kitchen remodeling/kitchen-remodeling5.jpeg",
+      "/images/kitchen remodeling/kitch-rem3.jpeg",
+      "/images/kitchen remodeling/kitch-rem4.jpg"
     ]
   },
   "carpentry": {
-    "title": "Custom Carpentry, Cabinets, Furniture Lorem ipsum",
-    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit, doloremque non nihil sapiente nulla vero aperiam nostrum sint suscipit ducimus magni magnam accusantium. Ipsum earum porro architecto pariatur itaque libero.",
+    "title": "Exceptional Custom Carpentry for Your Home",
+    "description": "Elevate your living space with our bespoke carpentry services. Our expert craftsmen specialize in custom solutions that enhance both functionality and aesthetics. Whether you need beautiful, handcrafted cabinets, stunning floor refinishing, or unique built-ins tailored to your needs, we deliver precision and excellence. Our carpentry services are designed to transform your home with high-quality materials and meticulous attention to detail. From designing custom cabinetry that perfectly fits your space to refinishing floors that bring out their natural beauty, we provide craftsmanship that stands the test of time. Let us create a personalized touch that reflects your style and enhances your home’s charm.",
     "images": [
-      "/images/bath-remodeling/Bathroom Remodeling1.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling2.jpeg"
+      "/images/carpentry/Cabinets1.jpeg",
+      "/images/carpentry/Cabinets2.jpeg",
+      "/images/carpentry/Cabinets3.jpeg",
+      "/images/carpentry/Cabinets4.jpeg",
+      "/images/carpentry/Cabinets5.jpeg",
+      "/images/carpentry/Cabinets6.jpeg",
+      "/images/carpentry/Cabinets7.jpeg",
+      "/images/carpentry/Cabinets8.jpeg",
+      "/images/carpentry/Cabinets9.jpeg",
+      "/images/carpentry/Cabinets10.jpeg",
+      "/images/carpentry/Carpentry2.JPG",
+      "/images/carpentry/refinish5.jpeg",
+      "/images/carpentry/refinish6.jpeg"
     ]
   },
   "painting": {
-    "title": "Painting, Drywall, and Finishing Services Lorem ipsum",
-    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit, doloremque non nihil sapiente nulla vero aperiam nostrum sint suscipit ducimus magni magnam accusantium. Ipsum earum porro architecto pariatur itaque libero.",
+    "title": "Premier Interior and Exterior Painting Services",
+    "description": "Refresh and revitalize your home with our top-notch interior and exterior painting services. Whether you're looking to brighten up your living spaces with a fresh coat of paint or enhance your home’s curb appeal with a new exterior finish, our skilled team delivers exceptional results. We use high-quality paints and advanced techniques to ensure a smooth, durable finish that looks stunning and lasts for years. From precise interior detailing to robust exterior applications that withstand the elements, our painting services are designed to elevate your home's aesthetic and value. Trust us to bring vibrant colors and flawless finishes to every corner of your home.",
     "images": [
-      "/images/bath-remodeling/Bathroom Remodeling1.jpeg",
-      "/images/bath-remodeling/Bathroom Remodeling2.jpeg"
+      "/images/painting/InteriorPainting1.jpg",
+      "/images/painting/InteriorPainting2.jpeg",
+      "/images/painting/InteriorPainting3.jpeg",
+      "/images/painting/InteriorPainting5.jpeg",
+      "/images/painting/InteriorPainting6.jpeg",
+      "/images/painting/InteriorPainting7.jpeg",
+      "/images/painting/InteriorPainting8.jpeg",
+      "/images/painting/InteriorPainting9.jpeg",
+      "/images/painting/InteriorPainting10.jpeg"
     ]
   }
 }

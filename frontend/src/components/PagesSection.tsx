@@ -4,7 +4,6 @@ import { TbPointFilled } from "react-icons/tb";
 
 import { useEffect, useRef } from "react";
 
-import slide from "@/assets/SlideImages.json";
 import Review from "@/components/Review";
 import GridGallery from "@/components/GridGallery";
 
@@ -18,6 +17,8 @@ type PagesSectionProps = {
     imageBackground: string;
     ourServices: string;
     WhyChooseUsTitle: string;
+    galleryTitle: string;
+    images: [];
   };
 };
 
@@ -136,7 +137,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
         <div className="flex flex-col  w-[53%] tablet:w-full ">
           <div className="flex tablet:flex-col ">
             <Carrousel
-              images={slide.kitchenRemodeling}
+              images={content.images}
               className="border-none w-[22rem] h-[46.5rem] tablet:w-full mobile:h-[25rem] tablet:mt-3"
             />
             {/* RIGHT  TEXT */}
@@ -209,7 +210,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
       >
         <motion.div className="bg-[#272829] w-full h-full  py-20 px-10 bg-opacity-80 shadow-xl tablet:px-5 ">
           <h3 className=" text-2xl font-semibold tracking-tight text-center pb-20 text-white mobile:text-sm  ">
-            VIEW OUR RECENT KITCHEN REMODELING PROJECTS
+            {content.galleryTitle}
           </h3>
           <motion.div
             animate={mainControls2}
@@ -224,7 +225,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
               ease: [0.5, 0.71, 0.9, 1.01],
             }}
           >
-            <GridGallery images={slide.kitchenRemodeling} imageLength={3} />
+            <GridGallery images={content.images} imageLength={3} />
           </motion.div>
         </motion.div>
       </motion.div>

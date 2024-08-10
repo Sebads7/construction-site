@@ -19,12 +19,24 @@
       "Flooring",
       "Plumbing and Fixtures",
       "Painting and Wall Treatments"
+    ],
+    "galleryTitle": "  VIEW OUR RECENT KITCHEN REMODELING PROJECTS",
+    "images": [
+      "/images/kitchen remodeling/kitch-rem.webp",
+      "/images/kitchen remodeling/kitch-rem2.webp",
+      "/images/kitchen remodeling/kitchen-remodeling1.jpeg",
+      "/images/kitchen remodeling/kitchen-remodeling2.jpeg",
+      "/images/kitchen remodeling/kitchen-remodeling3.jpeg",
+      "/images/kitchen remodeling/kitchen-remodeling4.jpeg",
+      "/images/kitchen remodeling/kitchen-remodeling5.jpeg",
+      "/images/kitchen remodeling/kitch-rem3.jpeg",
+      "/images/kitchen remodeling/kitch-rem4.jpg"
     ]
   },
   "bathroomRemodeling": {
     "pageName": "Bathroom Remodeling",
     "title": "Transform Your Bathroom into a Luxurious Oasis",
-    "imageBackground": " /images/bath-remodeling/15-top-bathroom-remodeling-features-01.webp",
+    "imageBackground": " /images/bath-remodeling/bathroom-remodeling-bg.jpg",
     "description": "At ABJ Painting & Remodeling, we specialize in creating breathtaking bathroom renovations that combine functionality with aesthetics. Whether you're dreaming of a spa-like retreat or seeking to maximize space in a small bathroom, our team of skilled craftsmen is here to bring your vision to life..",
     "WhyChooseUsTitle": "  Why choose us for your bathroom remodeling project?",
     "whyChooseUs": [
@@ -41,6 +53,18 @@
       "Flooring",
       "Plumbing and Fixtures",
       "Wall Treatments"
+    ],
+    "galleryTitle": "  VIEW OUR RECENT PAINTING PROJECTS",
+    "images": [
+      "/images/bath-remodeling/bath-remodeling1.jpeg",
+      "/images/bath-remodeling/bath-remodeling2.jpeg",
+      "/images/bath-remodeling/bath-remodeling3.jpeg",
+      "/images/bath-remodeling/bath-remodeling4.jpeg",
+      "/images/bath-remodeling/bath-remodeling5.jpeg",
+      "/images/bath-remodeling/bath-remodeling6.jpeg",
+      "/images/bath-remodeling/bath-remodeling7.jpeg",
+      "/images/bath-remodeling/bath-remodeling8.jpeg",
+      "/images/bath-remodeling/bath-remodeling9.jpeg"
     ]
   },
   "pressureWashing": {
@@ -63,6 +87,14 @@
       "Fence and Wall Cleaning",
       "Roof and Gutter Cleaning",
       "Graffiti Removal"
+    ],
+    "galleryTitle": "  VIEW OUR RECENT PRESSURE WASHING PROJECTS",
+    "images": [
+      "/images/pressure washing/pressure-washing4.jpg",
+      "/images/pressure washing/pressure-washing5.jpg",
+      "/images/pressure washing/pressure-washing-deck.jpg",
+      "/images/pressure washing/house-pressure-wash.jpeg",
+      "/images/pressure washing/back-house.jpeg"
     ]
   },
   "interiorExterior": {
@@ -85,6 +117,18 @@
       "Exterior Painting",
       "Epoxy Flooring",
       "Deck and Fence Staining or Painting"
+    ],
+    "galleryTitle": "  VIEW OUR RECENT PAINTING PROJECTS",
+    "images": [
+      "/images/painting/InteriorPainting1.jpg",
+      "/images/painting/InteriorPainting2.jpeg",
+      "/images/painting/InteriorPainting3.jpeg",
+      "/images/painting/InteriorPainting5.jpeg",
+      "/images/painting/InteriorPainting6.jpeg",
+      "/images/painting/InteriorPainting7.jpeg",
+      "/images/painting/InteriorPainting8.jpeg",
+      "/images/painting/InteriorPainting9.jpeg",
+      "/images/painting/InteriorPainting10.jpeg"
     ]
   },
   "customCarpentry": {
@@ -107,6 +151,22 @@
       "Trim installation",
       "Bookcases and shelving",
       "General Carpentry."
+    ],
+    "galleryTitle": "  VIEW OUR RECENT CARPENTRY PROJECTS",
+    "images": [
+      "/images/carpentry/Cabinets1.jpeg",
+      "/images/carpentry/Cabinets2.jpeg",
+      "/images/carpentry/Cabinets3.jpeg",
+      "/images/carpentry/Cabinets4.jpeg",
+      "/images/carpentry/Cabinets5.jpeg",
+      "/images/carpentry/Cabinets6.jpeg",
+      "/images/carpentry/Cabinets7.jpeg",
+      "/images/carpentry/Cabinets8.jpeg",
+      "/images/carpentry/Cabinets9.jpeg",
+      "/images/carpentry/Cabinets10.jpeg",
+      "/images/carpentry/Carpentry2.JPG",
+      "/images/carpentry/refinish5.jpeg",
+      "/images/carpentry/refinish6.jpeg"
     ]
   }
 }
