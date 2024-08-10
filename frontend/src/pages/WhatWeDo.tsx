@@ -106,12 +106,12 @@ const WhatWeDo = () => {
   const isInView = useInView(containerRef, { once: true });
   const mainControls = useAnimation();
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1279);
   const adjustedLength = isMobile ? slidesData.length : slidesData.length - 2;
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024); // Adjust the breakpoint as needed
+      setIsMobile(window.innerWidth < 1279); // Adjust the breakpoint as needed
     };
 
     window.addEventListener("resize", handleResize);
@@ -135,12 +135,22 @@ const WhatWeDo = () => {
   };
 
   return (
-    <div className="w-full  ">
-      <div className="flex flex-col justify-center items-center w-full h-[25rem] px-4 mobile:h-[15rem] mobile:mt-10">
+    <div className="w-full   ">
+      <div className="flex flex-col justify-center items-center w-full h-[25rem] px-4 mobile:h-[15rem] mobile:mt-10 ">
         <h2 className="text-center mb-4 scroll-m-20 font-extrabold tracking-wider text-4xl mobile:text-lg tablet:text-xl">
           The Top Trusted Remodeling Experts in Atlanta
         </h2>
-        <h3 className="w-[60rem] tablet:w-full text-center leading-7 mt-6 text-lg mobile:text-sm tablet:text-base">
+        <h3
+          className="w-[60rem] 
+        text-center 
+        leading-7 
+        mt-6 
+        text-lg 
+        mobile:text-sm 
+        tablet:text-base
+        tablet:w-full
+         lg:w-[50rem] "
+        >
           We are dedicated to providing an exceptional home improvement
           experience from start to finish. With us, you'll enjoy a smooth,
           hassle-free process with a single point of contact overseeing every
@@ -168,7 +178,7 @@ const WhatWeDo = () => {
       >
         {/* LEFT BUTTON */}
         <motion.div
-          className={`tablet:hidden flex items-center justify-center w-10 px-2 mr-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group bg-white z-[2] h-[41rem] ${
+          className={`lg:hidden flex items-center justify-center w-10 px-2 mr-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group bg-white z-[2] h-[41rem] ${
             currentSlide === 0
               ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none"
               : ""
@@ -196,10 +206,21 @@ const WhatWeDo = () => {
         </motion.div>
 
         {/* SLIDES */}
-        <div className="flex justify-center items-center  w-[90%] tablet:w-full  ">
-          <div className="grid overflow-hidden w-full  mobile:translate-x-3    ">
+        <div className="flex justify-center items-center  w-[90%] tablet:w-full   ">
+          <div
+            className="grid
+           overflow-hidden 
+           w-full  
+           mobile:w-[20rem] 
+           tablet:w-[23rem]
+           lg:w-[47rem]
+         
+           
+           
+               "
+          >
             <motion.div
-              className="grid grid-flow-col  gap-12 transition-all duration-700 ease-in-out mobile:mx-0  w-auto  p-2 "
+              className="grid grid-flow-col  gap-12 transition-all duration-700 ease-in-out mobile:mx-0  w-auto  p-2 mobile:gap-3 tablet:gap-5 lg:gap-5 "
               ref={containerRef}
               style={{
                 transform: `translateX(-${
@@ -221,12 +242,19 @@ const WhatWeDo = () => {
                   key={index}
                 >
                   <motion.div
-                    className="grid grid-rows-3 place-items-center shadow-md border-2 w-[26vw] h-[42rem] 
+                    className="grid 
+                  grid-rows-3 
+                  place-items-center
+                  shadow-md border-2 
+                  w-[26vw] 
+                  h-[42rem] 
                   pb-5 
-                  mobile:w-[78vw] 
-                  mobile:h-[70vh]  
-                  tablet:w-[40rem] 
-                  tablet:h-[30rem]
+                  mobile:w-[19rem] 
+                  mobile:h-[35rem]  
+                
+                  lg:w-[22rem] 
+               
+                
                  
                   
                   "
@@ -238,7 +266,8 @@ const WhatWeDo = () => {
                     <div className="flex h-full w-full">
                       <Carrousel
                         images={slide.images}
-                        className="flex w-full h-[17rem] mobile:h-[13rem] tablet:h-[10rem] tablet:w-[39.8rem] mobile:w-full border-none p-0 m-0"
+                        className="flex w-full h-[17rem] mobile:h-[13rem] tablet:h-[13rem] 
+                       mobile:w-full border-none p-0 m-0"
                       />
                     </div>
 
@@ -272,7 +301,7 @@ const WhatWeDo = () => {
 
         {/* RIGHT BUTTON */}
         <motion.div
-          className={`tablet:hidden flex items-center px-2 ml-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group  z-[2] h-[41rem]  ${
+          className={`lg:hidden flex items-center px-2 ml-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group  z-[2] h-[41rem]  ${
             currentSlide === slidesData.length - 3
               ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none"
               : ""

@@ -201,7 +201,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
       {/* Mobile Menu */}
       <div
-        className={`relative    bg-black    ${
+        className={`relative      bg-black    ${
           isMobileMenuOpen ? "block" : "hidden"
         }`}
       >
@@ -214,9 +214,9 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
           />
         </div>
 
-        <div className="fixed top-0 w-full bg-black/90 h-full   ">
+        <div className="fixed flex flex-col  top-0 w-full bg-black/90 h-full   ">
           {/* Close Button */}
-          <div className="flex flex-row-reverse p-4 mobile:w-full  ">
+          <div className="flex  flex-row-reverse p-4 mobile:w-full  ">
             <button
               onClick={() => setMobileMenuOpen(false)}
               className=" flex  text-white text-4xl "
@@ -225,163 +225,165 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
             </button>
           </div>
 
-          <div className="flex tablet:flex-row mobile:flex-col w-full   ">
-            {/* Menu Items */}
-            <div className="flex flex-col-reverse justify-center  mobile:w-full tablet:w-2/4 mobile:px-5 tablet:ml-28 mobile:ml-0 gap-5   z-10 ">
-              {/* Request Appointment Button */}
-              <div className=" flex  w-full justify-center items-center ">
-                <Button
-                  className="bg-red-600 py-2 px-4 rounded-md hover:bg-red-500 text-white text-sm mobile:text-xs"
-                  onClick={handleShowModal}
-                >
-                  <p className="flex lg:flex-row gap-1">
-                    Request An<span> Appointment</span>
-                  </p>
-                </Button>
-              </div>
-
-              {/* Logo and Title */}
-              <div className=" flex w-full justify-center items-center ">
-                <a
-                  href="/"
-                  className="flex items-center text-white/80 border-[2px] border-white/80"
-                >
-                  <div className="flex items-center gap-2 text-center px-3 py-1">
-                    <p className=" mobile:text-base">
-                      ABJ Painting & Remodeling
+          <div className="flex tablet:flex-row justify-center items-center   mobile:flex-col w-full   ">
+            <div className="flex mobile:flex-col w-full  ">
+              {/* Menu Items */}
+              <div className="flex flex-col-reverse justify-center  mobile:w-full tablet:w-2/4 mobile:px-5 tablet:ml-28 mobile:ml-0 gap-5   z-10 ">
+                {/* Request Appointment Button */}
+                <div className=" flex  w-full justify-center items-center ">
+                  <Button
+                    className="bg-red-600 py-2 px-4 rounded-md hover:bg-red-500 text-white text-sm mobile:text-xs"
+                    onClick={handleShowModal}
+                  >
+                    <p className="flex lg:flex-row gap-1">
+                      Request An<span> Appointment</span>
                     </p>
-                  </div>
-                </a>
+                  </Button>
+                </div>
+
+                {/* Logo and Title */}
+                <div className=" flex w-full justify-center items-center ">
+                  <a
+                    href="/"
+                    className="flex items-center text-white/80 border-[2px] border-white/80"
+                  >
+                    <div className="flex items-center gap-2 text-center px-3 py-3">
+                      <p className=" mobile:text-lg">
+                        ABJ Painting & Remodeling
+                      </p>
+                    </div>
+                  </a>
+                </div>
               </div>
-            </div>
 
-            {/* MENU SECTION */}
-            <div className="flex  mobile:justify-center mobile:pt-10 tablet:ml-4 mobile:ml-0 w-full  z-10">
-              <div className="w-2   bg-white mr-2 "></div>
-              <NavigationMenu className="flex   ">
-                <NavigationMenuList className="flex flex-col  text-left gap-5  items-start     ">
-                  {/* HOME */}
-                  <NavigationMenuItem className=" pl-1">
-                    <NavigationMenuLink>
-                      <Link
-                        to="/"
-                        className="text-white font-medium text-sm  "
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        HOME
-                      </Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
+              {/* MENU SECTION */}
+              <div className="flex  mobile:justify-center mobile:pt-10 tablet:ml-4 mobile:ml-0 w-full  z-10">
+                <div className="w-2   bg-white mr-2 "></div>
+                <NavigationMenu className="flex   ">
+                  <NavigationMenuList className="flex flex-col  text-left gap-5  items-start     ">
+                    {/* HOME */}
+                    <NavigationMenuItem className=" pl-1">
+                      <NavigationMenuLink>
+                        <Link
+                          to="/"
+                          className="text-white font-medium text-sm  "
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          HOME
+                        </Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
 
-                  {/* CONTACT */}
-                  <NavigationMenuItem className="">
-                    <NavigationMenuLink>
-                      <Link
-                        to="/contact"
-                        className="text-white text-sm font-medium"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        CONTACT
-                      </Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
+                    {/* CONTACT */}
+                    <NavigationMenuItem className="">
+                      <NavigationMenuLink>
+                        <Link
+                          to="/contact"
+                          className="text-white text-sm font-medium"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          CONTACT
+                        </Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
 
-                  {/* SEE OUR WORK */}
-                  <NavigationMenuItem>
-                    <NavigationMenuLink>
-                      <Link
-                        to="/see-our-work"
-                        className="text-white text-sm font-medium"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        SEE OUR WORK
-                      </Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
+                    {/* SEE OUR WORK */}
+                    <NavigationMenuItem>
+                      <NavigationMenuLink>
+                        <Link
+                          to="/see-our-work"
+                          className="text-white text-sm font-medium"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          SEE OUR WORK
+                        </Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
 
-                  {/* WHAT WE DO */}
-                  <NavigationMenuItem className="flex px-0">
-                    <NavigationMenuTrigger className="  bg-red-600  px-2  text-white text-sm  ">
-                      WHAT WE DO
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent className=" flex  ">
-                      <div className="flex justify-center  border-none bg-white     ">
-                        <ul className="flex justify-center items-center flex-col  bg-white w-[12rem] mobile:text-[0.85rem] tablet:text-xs ">
-                          {/* Kitchen Remodeling */}
+                    {/* WHAT WE DO */}
+                    <NavigationMenuItem className="flex px-0">
+                      <NavigationMenuTrigger className="  bg-red-600  px-2  text-white text-sm  ">
+                        WHAT WE DO
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className=" flex  ">
+                        <div className="flex justify-center  border-none bg-white     ">
+                          <ul className="flex justify-center items-center flex-col  bg-white w-[12rem] mobile:text-[0.85rem] tablet:text-xs ">
+                            {/* Kitchen Remodeling */}
 
-                          <li className="flex justify-center  p-3 w-full ">
-                            <NavigationMenuLink asChild>
-                              <Link
-                                to="/kitchen-remodeling"
-                                onClick={() => setMobileMenuOpen(false)}
-                              >
-                                Kitchen Remodeling
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
+                            <li className="flex justify-center  p-3 w-full ">
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to="/kitchen-remodeling"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                >
+                                  Kitchen Remodeling
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
 
-                          <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                            <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
 
-                          {/* Bathroom Remodeling */}
-                          <li className="flex justify-center  p-3  w-full">
-                            <NavigationMenuLink asChild>
-                              <Link
-                                to="/bath-remodeling"
-                                onClick={() => setMobileMenuOpen(false)}
-                              >
-                                Bathroom Remodeling
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
+                            {/* Bathroom Remodeling */}
+                            <li className="flex justify-center  p-3  w-full">
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to="/bath-remodeling"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                >
+                                  Bathroom Remodeling
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
 
-                          <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                            <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
 
-                          {/* Pressure Washing */}
-                          <li className="flex justify-center  p-3  w-full">
-                            <NavigationMenuLink asChild>
-                              <Link
-                                to="/pressure-washing"
-                                onClick={() => setMobileMenuOpen(false)}
-                              >
-                                Pressure Washing
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
+                            {/* Pressure Washing */}
+                            <li className="flex justify-center  p-3  w-full">
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to="/pressure-washing"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                >
+                                  Pressure Washing
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
 
-                          <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                            <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
 
-                          {/* Painting */}
-                          <li className="flex justify-center p-3  w-full">
-                            <NavigationMenuLink asChild>
-                              <Link
-                                to="/painting"
-                                onClick={() => setMobileMenuOpen(false)}
-                              >
-                                Interior & Exterior Painting
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
+                            {/* Painting */}
+                            <li className="flex justify-center p-3  w-full">
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to="/painting"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                >
+                                  Interior & Exterior Painting
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
 
-                          <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                            <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
 
-                          {/* Carpentry */}
-                          <li className="flex justify-center  p-3 w-full">
-                            <NavigationMenuLink asChild>
-                              <Link
-                                onClick={() => setMobileMenuOpen(false)}
-                                to="/carpentry"
-                              >
-                                Custom Carpentry
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        </ul>
-                      </div>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                  {/* END DIV */}
-                </NavigationMenuList>
-              </NavigationMenu>
+                            {/* Carpentry */}
+                            <li className="flex justify-center  p-3 w-full">
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  to="/carpentry"
+                                >
+                                  Custom Carpentry
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          </ul>
+                        </div>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                    {/* END DIV */}
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </div>
             </div>
           </div>
         </div>

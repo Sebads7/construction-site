@@ -57,7 +57,7 @@ const SeeOurWork = () => {
   };
   return (
     <div>
-      <div className="bg-black opacity-50 w-full h-[65px] flex fixed tablet:hidden"></div>
+      <div className="bg-black opacity-50 w-full h-[80px] flex fixed tablet:hidden"></div>
 
       <div className="w-full  h-[30rem]  flex tablet:h-[20rem] ">
         <div className="bg-black/30 w-full h-full fixed -z-10 "> </div>

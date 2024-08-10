@@ -21,7 +21,7 @@ const reviews = [
   },
   {
     id: 3,
-    text: "When it comes to exceptional home renovation, ABJ Painting & Remodeling is a standout choice. Their team delivered an outstanding performance, handling every detail with skill and precision. From the initial consultation to the final touches, their professionalism and commitment were evident. The transformation they achieved was remarkable, revitalizing our home beyond our expectations. If you're looking for superior craftsmanship and a stress-free experience, ABJ Painting & Remodeling is the go-to company. Highly recommended!",
+    text: "When it comes to exceptional home renovation, ABJ Painting & Remodeling is a standout choice. Their team delivered an outstanding performance, handling every detail with skill and precision. From the initial consultation to the final touches, their professionalism and commitment were evident. If you're looking for superior craftsmanship and a stress-free experience, ABJ Painting & Remodeling is the go-to company. Highly recommended!",
     name: "Logan D.",
   },
 ];
@@ -97,12 +97,40 @@ export const Review = () => {
 
   return (
     <div
-      className=" flex tablet:flex-col justify-center items-center   bg-white/40 gap-12 py-10  mobile:px-3 mobile:py-1 overflow-x-hidden   "
+      className=" flex 
+      lg:flex-col 
+      justify-center 
+      items-center   
+      bg-white/40 
+      gap-12 
+      py-10  
+      mobile:px-3 
+      mobile:py-1 
+      overflow-x-hidden "
       ref={containerRef}
     >
       {/* LEFT SIDE - REVIEW */}
       <motion.div
-        className="relative flex items-center justify-center mobile:flex-col  w-3/4 pl-20 tablet:w-[90%]  h-[20rem] mobile:h-[25rem] tablet:pl-0  "
+        className="relative 
+        flex 
+        items-center 
+        justify-center 
+        w-3/4 
+        pl-20 
+        h-[20rem] 
+      
+        
+
+        mobile:flex-col  
+        mobile:h-[25rem] 
+
+        lg:pl-0 
+        lg:w-[90%]  
+
+      
+       
+      
+        "
         animate={mainControls}
         initial="hidden"
         variants={{
@@ -130,14 +158,26 @@ export const Review = () => {
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={1}
-            className="absolute flex items-center justify-center  h-full  top-0  "
+            className="absolute flex items-center justify-center  h-full py-2 top-0  "
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
             <div
-              className="flex flex-col justify-center items-center   bg-white h-full border-2 p-6  gap-4 rounded-lg shadow-lg 
-            mobile:text-sm  mobile:gap-1   "
+              className="flex 
+              flex-col 
+              justify-center 
+              items-center   
+              bg-white 
+              h-full 
+              border-2 
+              p-6  
+              gap-4 
+              rounded-lg 
+              shadow-lg 
+
+              mobile:text-sm  
+              mobile:gap-1   "
             >
               <div className="mobile:hidden">
                 <Rating value={5} name="read-only" size="large" readOnly />
@@ -159,7 +199,7 @@ export const Review = () => {
           </motion.div>
         </AnimatePresence>
         {/* Navigation Dots */}
-        <div className="flex  justify-center items-center gap-2 absolute bottom-[-2rem] left-1/2 transform -translate-x-1/2 mobile:bottom-[-3rem] mobile:gap-3">
+        <div className="flex  justify-center items-center gap-2 absolute bottom-[-2rem]  mobile:bottom-[-3rem] mobile:gap-3">
           {reviews.map((_, index) => (
             <div
               key={index}
@@ -174,7 +214,7 @@ export const Review = () => {
 
       {/* RIGHT SIDE - CONTACT PROMOTION */}
       <motion.div
-        className="flex  justify-center h-full w-7/12 tablet:w-full mobile:mt-10  z-[8]  bg-white tablet:px-20 mobile:px-1 tablet:mt-10  "
+        className="flex  justify-center h-full w-7/12 lg:w-full mobile:mt-10 py-5  z-[8]  bg-white tablet:px-20 mobile:px-1 tablet:mt-10  tablet:py-16 "
         animate={mainControls}
         initial="hidden"
         variants={{

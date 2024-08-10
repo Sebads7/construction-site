@@ -11,18 +11,18 @@ const Home = () => {
   return (
     <div className="w-full h-full ">
       <div className=" relative flex flex-row mobile:flex-col h-full  ">
-        <div className=" w-full h-[60rem]   bg-black/90  ">
+        <div className=" w-full h-[60rem] tablet:h-[65rem] lg:h-[80rem]   bg-black/90  ">
           <img
             src="/images/fronthouse-lg.jpg"
             alt="background"
-            className=" w-full h-screen tablet:h-full  object-cover"
+            className=" w-full h-screen lg:h-full  object-cover"
           />
         </div>
 
         <div
           className="flex w-full h-full flex-row   bg-black/20  absolute mobile:items-center 
         
-        tablet:flex-col mobile:h-2/4 
+        lg:flex-col mobile:h-2/4 
         
         "
         >
@@ -41,20 +41,48 @@ const Home = () => {
              items-center 
              h-auto
              w-full 
-          bg-black/30
+          bg-black/50
               px-8
               mobile:px-4
-              z-2"
+              z-2
+              lg:pb-[5rem]"
           >
-            <h1 className=" text-center pt-1 tablet:pt-[5rem]  mb-4   text-white scroll-m-20  font-extrabold tracking-wider text-5xl mobile:text-lg tablet:text-xl ">
+            <h1
+              className=" 
+            text-center
+             pt-1 
+              mb-4   
+              text-white
+               scroll-m-20  
+               font-extrabold
+                tracking-wider 
+                text-5xl 
+                mobile:text-lg 
+                tablet:text-xl 
+                tablet:pt-[5rem] 
+                lg:pt-[10rem]
+                "
+            >
               Atlanta's Top Remodeling Experts
             </h1>
-            <h2 className="w-4/5 text-white text-center leading-7 mt-6 text-xl mobile:text-sm mobile:pb-10 tablet:text-base tablet:pb-1 tablet:w-full  ">
+            <h2
+              className="w-4/5
+             text-white 
+             text-center 
+             leading-7 
+             mt-6 
+             text-xl 
+             mobile:text-sm 
+             mobile:pb-10 
+             tablet:text-base 
+             tablet:pb-1 
+             lg:w-full  "
+            >
               Discover top-notch home improvement with ABJ Painting &
               Remodeling. Our expert team manages every detail from start to
               finish, ensuring a smooth and stress-free experience. Enjoy peace
               of mind with a single point of contact while your dream home
-              becomes a reality—no effort required on your part.
+              becomes a reality.
             </h2>
           </motion.div>
 
@@ -80,8 +108,8 @@ const Home = () => {
             mobile:px-2
             mobile:mt-10
             tablet:mt-0
-            tablet:w-full
-            tablet:px-24
+            lg:w-full
+            lg:px-24
             
             "
           >
@@ -97,10 +125,20 @@ const Home = () => {
 
       <div>
         <div className=" flex flex-col justify-center items-center w-full h-[25rem]  px-4 mobile:h-[20rem]   ">
-          <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider text-4xl  mobile:text-lg tablet:text-xl">
+          <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider text-4xl  mobile:text-lg lg:text-xl">
             Atlanta's Premier Remodeling Experts
           </h2>
-          <h3 className="w-[60rem] mobile:w-full tablet:w-[40rem] text-center leading-7 [&:not(:first-child)]:mt-6 text-lg  mobile:text-sm tablet:text-base ">
+          <h3
+            className="w-[60rem] 
+          text-center 
+          leading-7 [&:not(:first-child)]:mt-6 
+          text-lg  
+          mobile:w-full 
+          mobile:text-sm
+          tablet:w-[40rem]
+          tablet:text-base
+          lg:w-[50rem] "
+          >
             Experience the best home improvements with our dedicated team. We
             manage every detail from beginning to end, ensuring a seamless
             process with a single point of contact for your entire project.

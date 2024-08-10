@@ -28,19 +28,20 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
   const isInView = useInView(containerRef);
   const isInView2 = useInView(containerRef2);
   const mainControls = useAnimation();
+  const mainControls2 = useAnimation();
 
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");
     }
     if (isInView2) {
-      mainControls.start("visible");
+      mainControls2.start("visible");
     }
-  }, [isInView, isInView2, mainControls]);
+  }, [isInView, isInView2, mainControls, mainControls2]);
 
   return (
     <div className=" z-0">
-      <div className="bg-black opacity-50 w-full h-[65px] flex fixed z-1 tablet:hidden"></div>
+      <div className="bg-black opacity-50 w-full h-[76px] flex fixed z-[9] tablet:hidden"></div>
       <div className="w-full h-[60rem] flex  tablet:h-[40rem]   ">
         {/* BACKGROUND IMAGE */}
         <div className="relative  h-full -z-10 bg-gray-900 opacity-70  ">
@@ -75,7 +76,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
           <motion.div
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 2, ease: "easeOut", delay: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
             className="flex flex-col justify-center items-center  w-full h-2/4 bg-gray-900/10 tablet:p-2 tablet:h-2/5 "
           >
             <h1 className="mb-4 text-white scroll-m-20 text-4xl font-extrabold tracking-wider lg:text-5xl  mobile:text-lg  tablet:text-center tablet:text-3xl">
@@ -211,7 +212,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
             VIEW OUR RECENT KITCHEN REMODELING PROJECTS
           </h3>
           <motion.div
-            animate={mainControls}
+            animate={mainControls2}
             initial="hidden"
             variants={{
               hidden: { opacity: 0, y: 100 },
@@ -219,7 +220,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
             }}
             transition={{
               duration: 1,
-              delay: 0.2,
+              delay: 0.5,
               ease: [0.5, 0.71, 0.9, 1.01],
             }}
           >
