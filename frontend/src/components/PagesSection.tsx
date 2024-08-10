@@ -18,7 +18,7 @@ type PagesSectionProps = {
     ourServices: string;
     WhyChooseUsTitle: string;
     galleryTitle: string;
-    images: [];
+    images: string[];
   };
 };
 
