@@ -24,9 +24,8 @@ import { useState } from "react";
 type ContactFormProps = {
   showTextInput?: boolean;
   showSelectOption?: boolean;
-  secondButton?: boolean;
-  contactButton?: boolean;
   modalButton?: boolean;
+  secondButton?: boolean;
   checkBox?: boolean;
 };
 
@@ -35,15 +34,14 @@ type ContactFormProps = {
 const ContactForm: React.FC<ContactFormProps> = ({
   showTextInput = false,
   showSelectOption = false,
-  secondButton = false,
-  contactButton = false,
   modalButton = false,
+  secondButton = false,
   checkBox = false,
 }) => {
   //states declarations
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
-
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -76,6 +74,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
     ...(showTextInput && {
       textarea: z.string().min(2, {
         message: "Please enter your message.",
+      }),
+    }),
+    ...(checkBox && {
+      checkbox: z.boolean().refine((value) => value === true, {
+        message: "You must agree to the terms.",
       }),
     }),
   });
@@ -124,6 +127,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       );
       if (response.ok) {
         console.log("Email sent successfully");
+        setShowSuccessModal(true);
         form.reset();
         setSubmitting(false);
       } else {
@@ -255,52 +259,56 @@ const ContactForm: React.FC<ContactFormProps> = ({
               />
             )}
 
-            {modalButton && (
-              <Button
-                type="submit"
-                disabled={submitting}
-                onClick={() => {
-                  onSubmit(form.getValues());
-                }}
-              >
-                {submitting ? "Form Submited" : "Submit"}
-              </Button>
-            )}
-
-            {contactButton && (
-              <Button
-                type="submit"
-                className="h-[50px] col-span-2 "
-                disabled={submitting}
-                onClick={() => {
-                  onSubmit(form.getValues());
-                }}
-              >
-                {submitting ? "Form Submited" : "Submit"}
-              </Button>
-            )}
-
-            {secondButton && (
-              <Button
-                type="submit"
-                className=" bg-red-600 hover:bg-red-800 rounded-none"
-                disabled={submitting}
-                onClick={() => {
-                  onSubmit(form.getValues());
-                }}
-              >
-                {submitting ? "Form Submited" : "  Start Saving Today"}
-              </Button>
-            )}
+            <Button
+              type="submit"
+              className={` ${
+                secondButton
+                  ? "bg-red-600 hover:bg-red-800 rounded-none"
+                  : modalButton
+                  ? ""
+                  : "h-[50px] col-span-2 relative"
+              } ${submitting ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={submitting}
+            >
+              {submitting && (
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              )}
+              {submitting
+                ? "Sending..."
+                : secondButton
+                ? "Start Saving Today"
+                : "Submit"}
+            </Button>
           </div>
 
           {checkBox && (
             <div className="flex justify-center  w-full px-10 mt-10 ">
-              <Checkbox
-                className=" mr-2 w-[1rem] h-[1rem]"
-                required
-                id="checkbox"
-              />
+              <FormControl>
+                <Checkbox
+                  className=" mr-2 w-[1rem] h-[1rem]"
+                  required
+                  id="checkbox"
+                />
+              </FormControl>
               <a
                 className=" hidden tablet:flex mobile:text-xs underline "
                 onClick={openModal}
@@ -332,6 +340,58 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 <button
                   className="mt-4 px-4 py-2 bg-blue-950 text-white rounded"
                   onClick={closeModal}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Success Modal Component */}
+          {showSuccessModal && (
+            <div className="fixed w-full h-full top-0 -translate-y-3 inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+              <div className="flex flex-col bg-white p-8 py-14 gap-5 rounded shadow-lg max-w-lg mx-4 mt-0">
+                <div className="flex flex-col justify-center items-center gap-3">
+                  {" "}
+                  <svg
+                    width="60px"
+                    height="60px"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 130.2 130.2"
+                  >
+                    <circle
+                      className="path circle"
+                      fill="none"
+                      stroke="#73AF55"
+                      stroke-width="6"
+                      stroke-miterlimit="10"
+                      cx="65.1"
+                      cy="65.1"
+                      r="62.1"
+                    />
+                    <polyline
+                      className="path check"
+                      fill="none"
+                      stroke="#73AF55"
+                      stroke-width="6"
+                      stroke-linecap="round"
+                      stroke-miterlimit="10"
+                      points="100.2,40.2 51.5,88.8 29.8,67.5 "
+                    />
+                  </svg>
+                  <h2 className="text-xl font-bold mb-4 text-center text-[#73AF55]">
+                    Thank you!
+                  </h2>
+                </div>
+
+                <p className="text-center">
+                  Your form has been submitted successfully. We will contact you
+                  shortly!
+                </p>
+                <button
+                  className="w-2/4 mx-auto mt-4 px-4 py-2 text-white rounded bg-black"
+                  onClick={() => setShowSuccessModal(false)}
                 >
                   Close
                 </button>

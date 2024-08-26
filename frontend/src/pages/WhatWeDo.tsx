@@ -225,7 +225,7 @@ const WhatWeDo = () => {
                "
           >
             <motion.div
-              className="grid grid-flow-col  gap-12 transition-all duration-700 ease-in-out mobile:mx-0  w-auto  p-2 mobile:gap-3 tablet:gap-5 lg:gap-5 "
+              className="grid grid-flow-col  gap-8 transition-all duration-700 ease-in-out mobile:mx-0  w-auto  p-2 mobile:gap-3 tablet:gap-5 lg:gap-5 "
               ref={containerRef}
               style={{
                 transform: `translateX(-${

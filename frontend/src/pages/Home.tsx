@@ -10,6 +10,7 @@ const lg = window.innerWidth > 1024;
 const Home = () => {
   return (
     <div className="w-full h-full ">
+      <div className="bg-black opacity-50 w-full h-[5rem] flex fixed z-[9] tablet:hidden"></div>
       <div className=" relative flex flex-row mobile:flex-col h-full  ">
         <div className=" w-full h-[60rem] tablet:h-[65rem] lg:h-[80rem]   bg-black/90  ">
           <img
@@ -20,10 +21,14 @@ const Home = () => {
         </div>
 
         <div
-          className="flex w-full h-full flex-row   bg-black/20  absolute mobile:items-center 
-        
-        lg:flex-col mobile:h-2/4 
-        
+          className="flex
+           w-full 
+           h-full 
+           flex-row   
+           bg-black/20  
+           absolute 
+           mobile:items-center 
+           lg:flex-col mobile:h-2/4  
         "
         >
           <motion.div
@@ -49,9 +54,9 @@ const Home = () => {
           >
             <h1
               className=" 
-            text-center
-             pt-1 
-              mb-4   
+               text-center
+               pt-1 
+               mb-4   
               text-white
                scroll-m-20  
                font-extrabold
@@ -59,7 +64,7 @@ const Home = () => {
                 text-5xl 
                 mobile:text-lg 
                 tablet:text-xl 
-                tablet:pt-[5rem] 
+                tablet:pt-[6rem] 
                 lg:pt-[10rem]
                 "
             >
@@ -74,6 +79,7 @@ const Home = () => {
              text-xl 
              mobile:text-sm 
              mobile:pb-10 
+             mobile:mt-0
              tablet:text-base 
              tablet:pb-1 
              lg:w-full  "

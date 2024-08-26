@@ -140,6 +140,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
               images={content.images}
               className="border-none w-[22rem] h-[46.5rem] tablet:w-full mobile:h-[25rem] tablet:mt-3"
             />
+
             {/* RIGHT  TEXT */}
             <div className="bg-black/10  flex h-[45rem] w-full   justify-center items-center  ">
               <motion.div
