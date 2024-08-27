@@ -76,10 +76,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
         message: "Please enter your message.",
       }),
     }),
+
     ...(checkBox && {
-      checkbox: z.boolean().refine((value) => value === true, {
-        message: "You must agree to the terms.",
-      }),
+      checkbox: z
+        .boolean()
+        .refine((val) => val === true, "You must agree to the terms."),
     }),
   });
 
@@ -93,13 +94,14 @@ const ContactForm: React.FC<ContactFormProps> = ({
       emailAddress: "",
       ...(showSelectOption && { selectOption: "" }),
       ...(showTextInput && { textarea: "" }),
+      ...(checkBox && { checkbox: false }),
     },
   });
 
   // Define a submit handler.
   const onSubmit = async (value: z.infer<typeof formSchema>) => {
     // console.log(value);
-    console.log(form.getValues());
+    // console.log(form.getValues());
     // Send the data.
     setSubmitting(true);
 
@@ -108,23 +110,20 @@ const ContactForm: React.FC<ContactFormProps> = ({
     console.log(isValid);
 
     if (!isValid) {
-      // console.log(form.formState.errors);
+      console.log(form.formState.errors);
       setSubmitting(false);
       // setSubmitError("Please fill out all required fields.");
       return;
     }
 
     try {
-      const response = await fetch(
-        "https://construction-site-1qd6.onrender.com/send-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(value),
-        }
-      );
+      const response = await fetch("http://localhost:8000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(value),
+      });
       if (response.ok) {
         console.log("Email sent successfully");
         setShowSuccessModal(true);
@@ -302,20 +301,32 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
           {checkBox && (
             <div className="flex justify-center  w-full px-10 mt-10 ">
-              <FormControl>
-                <Checkbox
-                  className=" mr-2 w-[1rem] h-[1rem]"
-                  required
-                  id="checkbox"
-                />
-              </FormControl>
+              <FormField
+                control={form.control}
+                name="checkbox"
+                render={({ field: { onChange, value } }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Checkbox
+                        className=" mr-2 w-[1rem] h-[1rem]"
+                        required
+                        onCheckedChange={onChange}
+                        checked={value as boolean}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              ></FormField>
               <a
                 className=" hidden tablet:flex mobile:text-xs underline "
                 onClick={openModal}
               >
                 Click to check agreement
               </a>
-              <label htmlFor="terms1" className=" text-xs tablet:hidden flex ">
+              <label
+                htmlFor="checkbox"
+                className=" text-xs tablet:hidden flex "
+              >
                 I’m interested in learning more about ABJ Remodeling and its
                 services. By checking this box, I consent and authorize ABJ
                 Remodeling to contact me via phone call or text message. ABJ
