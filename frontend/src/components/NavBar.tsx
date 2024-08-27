@@ -208,7 +208,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
         {/* BACKGROUND IMAGE */}
         <div className="fixed w-full h-full top-0  bg-black/60 -z-1 ">
           <img
-            src="/images/fronthouse-lg.jpg"
+            src="/images/fronthouse-md.webp"
             alt="background"
             className=" w-full h-full  object-cover"
           />

@@ -1,11 +1,10 @@
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { Carrousel } from "./Carrousel";
 import { TbPointFilled } from "react-icons/tb";
 
-import { useEffect, useRef } from "react";
-
 import Review from "@/components/Review";
 import GridGallery from "@/components/GridGallery";
+import useInViewAnimation from "./hooks/useInView";
 
 type PagesSectionProps = {
   content: {
@@ -23,22 +22,9 @@ type PagesSectionProps = {
 };
 
 const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
-  const containerRef = useRef(null);
-  const containerRef2 = useRef(null);
-
-  const isInView = useInView(containerRef);
-  const isInView2 = useInView(containerRef2);
-  const mainControls = useAnimation();
-  const mainControls2 = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      mainControls.start("visible");
-    }
-    if (isInView2) {
-      mainControls2.start("visible");
-    }
-  }, [isInView, isInView2, mainControls, mainControls2]);
+  const { ref, mainControls } = useInViewAnimation();
+  const { ref: containerRef2, mainControls: mainControls2 } =
+    useInViewAnimation();
 
   return (
     <div className=" z-0">
@@ -96,7 +82,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
 
       <motion.div
         className="flex tablet:flex-col  w-full h-full   bg-white  "
-        ref={containerRef}
+        ref={ref}
       >
         {/* LEFT  TEXT */}
         <motion.div

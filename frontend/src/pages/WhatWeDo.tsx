@@ -1,90 +1,14 @@
 import { Carrousel } from "@/components/Carrousel";
-import { motion, useAnimation, useInView } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useScreenSizes from "@/components/hooks/useScreenSize";
 
-const tablet = window.innerWidth < 900;
-
-const slidesData = [
-  {
-    title: "CUSTOM CARPENTRY",
-    images: [
-      "/images/carpentry/Cabinets5.jpeg",
-      "/images/carpentry/Cabinets2.jpeg",
-      "/images/carpentry/Cabinets3.jpeg",
-      "/images/carpentry/Carpentry2.JPG",
-    ],
-    link: "carpentry",
-    description:
-      "From custom cabinets and elegant trim work to personalized furniture and intricate woodworking projects, we bring creativity and precision to every detail.",
-    variants: {
-      hidden: { opacity: 0, x: tablet ? 0 : -100, y: tablet ? 100 : 100 },
-      visible: { opacity: 1, x: 1, y: 1 },
-    },
-  },
-
-  {
-    title: "BATHROOM REMODELING",
-    images: [
-      "/images/bath-remodeling/bath-remodeling1.jpeg",
-      "/images/bath-remodeling/bath-remodeling2.jpeg",
-      "/images/bath-remodeling/bath-remodeling3.jpeg",
-
-      "/images/bath-remodeling/bath-remodeling5.jpeg",
-    ],
-    link: "bath-remodeling",
-    description:
-      "Discover our extensive bathroom remodeling services, including tile installation, cabinetry and storage solutions, lighting and electrical work, plumbing services, flooring installation, and painting.",
-    variants: {
-      hidden: { opacity: 0, y: 100 },
-      visible: { opacity: 1, y: 0 },
-    },
-  },
-  {
-    title: "INTERIOR AND EXTERIOR PAINTING",
-    images: [
-      "/images/painting/InteriorPainting1.jpg",
-      "/images/painting/InteriorPainting2.jpeg",
-      "/images/painting/InteriorPainting3.jpeg",
-      "/images/painting/InteriorPainting5.jpeg",
-      "/images/painting/InteriorPainting6.jpeg",
-    ],
-    link: "painting",
-    description:
-      "Discover our extensive interior and exterior painting services. From detailed surface preparation to expert color selection, we ensure every brushstroke enhances your home’s beauty. ",
-    variants: {
-      hidden: { opacity: 0, x: 100, y: 100 },
-      visible: { opacity: 1, x: 1, y: 1 },
-    },
-  },
-  {
-    title: "PRESSURE WASHING",
-    images: [
-      "/images/pressure washing/pressure-washing4.jpg",
-      "/images/pressure washing/pressure-washing5.jpg",
-      "/images/pressure washing/pressure-washing-deck.jpg",
-    ],
-    link: "pressure-washing",
-    description:
-      "Revitalize your surfaces with our professional pressure washing services. Whether it's your home's exterior, driveway, or deck, we specialize in thorough cleaning to restore beauty and curb appeal. ",
-  },
-
-  {
-    title: "KITCHEN REMODELING",
-    images: [
-      "/images/kitchen remodeling/kitch-rem.webp",
-      "/images/kitchen remodeling/kitch-rem2.webp",
-      "/images/kitchen remodeling/kitch-rem3.jpeg",
-    ],
-    link: "kitchen-remodeling",
-    description:
-      "Transform your kitchen, from custom cabinetry and counter-top installation to lighting design and flooring solutions, we specialize in creating functional and stylish spaces tailored to your needs. ",
-  },
-];
+import { slidesData } from "@/constants/index";
+import useInViewAnimation from "@/components/hooks/useInView";
 
 const WhatWeDo = () => {
-  const containerRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const [touchStart, setTouchStart] = useState(0);
@@ -108,36 +32,28 @@ const WhatWeDo = () => {
     }
   };
 
-  const isInView = useInView(containerRef, { once: true });
-  const mainControls = useAnimation();
+  // Hook to animate the slides
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1279);
-  const adjustedLength = isMobile ? slidesData.length : slidesData.length - 2;
+  const { ref, mainControls } = useInViewAnimation();
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1279); // Adjust the breakpoint as needed
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isInView) {
-      mainControls.start("visible");
-    }
-  }, [isInView, mainControls]);
-
+  // Function to handle the previous slide
   const Prev = () => {
     setCurrentSlide((prev) => Math.max(prev - 1, 0));
   };
-
+  // Function to handle the next slide
   const nextSlide = () => {
     setCurrentSlide((prev) => Math.min(prev + 1, slidesData.length - 1));
   };
+
+  // Hook to handle screen sizes
+  const { isMobile } = useScreenSizes();
+
+  if (isMobile === null) {
+    return null;
+  }
+
+  // Adjust the length of the slides based on the screen size
+  const adjustedLength = isMobile ? slidesData.length : slidesData.length - 2;
 
   return (
     <div className="w-full   ">
@@ -226,7 +142,7 @@ const WhatWeDo = () => {
           >
             <motion.div
               className="grid grid-flow-col  gap-8 transition-all duration-700 ease-in-out mobile:mx-0  w-auto  p-2 mobile:gap-3 tablet:gap-5 lg:gap-5 "
-              ref={containerRef}
+              ref={ref}
               style={{
                 transform: `translateX(-${
                   currentSlide * (100 / slidesData.length)

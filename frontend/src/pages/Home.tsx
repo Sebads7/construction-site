@@ -1,20 +1,22 @@
 import WhatWeDo from "./WhatWeDo";
+import useScreenSizes from "@/components/hooks/useScreenSize";
 
 import Review from "@/components/Review";
 import Promotion from "@/components/Promotion";
 import { motion } from "framer-motion";
 
-const mobile = window.innerWidth < 900;
-const lg = window.innerWidth > 1024;
-
 const Home = () => {
+  const { isMobile, isLarge } = useScreenSizes();
+  if (isLarge === null || isMobile === null) {
+    return null;
+  }
   return (
     <div className="w-full h-full ">
       <div className="bg-black opacity-50 w-full h-[5rem] flex fixed z-[9] tablet:hidden"></div>
       <div className=" relative flex flex-row mobile:flex-col h-full  ">
         <div className=" w-full h-[60rem] tablet:h-[65rem] lg:h-[80rem]   bg-black/90  ">
           <img
-            src="/images/fronthouse-lg.jpg"
+            src="/images/fronthouse-lg.webp"
             alt="background"
             className=" w-full h-screen lg:h-full  object-cover"
           />
@@ -32,7 +34,11 @@ const Home = () => {
         "
         >
           <motion.div
-            initial={{ opacity: 0, x: mobile ? 0 : -100, y: lg ? 0 : -100 }}
+            initial={{
+              opacity: 0,
+              x: isMobile ? 0 : -100,
+              y: isLarge ? 0 : -100,
+            }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{
               duration: 0.7,

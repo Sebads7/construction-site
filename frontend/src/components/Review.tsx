@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useInView,
-  useAnimation,
-} from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Rating } from "@mui/material";
 import Promotion from "./Promotion";
+import useScreenSizes from "@/components/hooks/useScreenSize";
+import useInViewAnimation from "./hooks/useInView";
 
 const reviews = [
   {
@@ -43,14 +40,7 @@ const variants = {
   }),
 };
 
-const mobile = window.innerWidth < 640;
-const lg = window.innerWidth > 1024;
-
 export const Review = () => {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true });
-  const mainControls = useAnimation();
-
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEndX] = useState(0);
 
@@ -89,11 +79,18 @@ export const Review = () => {
     return () => clearInterval(interval); // Cleanup on component unmount
   }, [page]);
 
-  useEffect(() => {
-    if (isInView) {
-      mainControls.start("visible");
-    }
-  }, [isInView]);
+  const { ref, mainControls } = useInViewAnimation();
+
+  const { isMobile, isLarge } = useScreenSizes();
+  // // Conditional check to avoid applying animations before the state is set
+  if (isLarge === null || isMobile === null) {
+    return null;
+  }
+
+  const variants2 = {
+    hidden: { opacity: 0, x: isMobile ? 0 : 100, y: isLarge ? 0 : 100 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
 
   return (
     <div
@@ -107,7 +104,7 @@ export const Review = () => {
       mobile:px-3 
       mobile:py-1 
       overflow-x-hidden "
-      ref={containerRef}
+      ref={ref}
     >
       {/* LEFT SIDE - REVIEW */}
       <motion.div
@@ -217,10 +214,7 @@ export const Review = () => {
         className="flex  justify-center h-full w-7/12 lg:w-full mobile:mt-10 py-5  z-[8]  bg-white tablet:px-20 mobile:px-1 tablet:mt-10  tablet:py-16 "
         animate={mainControls}
         initial="hidden"
-        variants={{
-          hidden: { opacity: 0, x: mobile ? 0 : 100, y: lg ? 0 : 100 },
-          visible: { opacity: 1, x: 0, y: 0 },
-        }}
+        variants={variants2}
         transition={{ duration: 0.8, delay: 0.8, ease: [0, 0.71, 0.2, 1.01] }}
       >
         <Promotion />

@@ -28,7 +28,7 @@ export const Carrousel: React.FC<CarrouselProps> = ({ images, className }) => {
                   <img
                     src={image}
                     alt={`Image ${index} `}
-                    className="w-full h-full  object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </CardContent>
               </div>

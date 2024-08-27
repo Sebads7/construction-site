@@ -1,11 +1,11 @@
-import PageContent from "@/assets/pageContent.json";
+import { page_data } from "@/constants/index";
 
 import PagesSection from "@/components/PagesSection";
 
 const Painting = () => {
   return (
     <div>
-      <PagesSection content={PageContent.interiorExterior} />
+      <PagesSection content={page_data.interiorExterior} />
     </div>
   );
 };

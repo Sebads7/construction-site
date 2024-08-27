@@ -1,11 +1,10 @@
 import ButtonUp from "@/components/ButtonUp";
-
+import useScreenSizes from "@/components/hooks/useScreenSize";
 import GridGallery from "@/components/GridGallery";
-import sectionData from "@/assets/SeeOurWork.json";
-
+import { work_data } from "@/constants/index";
 import { Button } from "@/components/ui/button";
-import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface Section {
   title: string;
@@ -21,33 +20,8 @@ const SeeOurWork = () => {
   const [activeSection, setActiveSection] = useState<string>("bath");
   const [sections, setSections] = useState<SectionsData>({});
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
-  const [isLarge, setIsLarge] = useState(window.innerWidth > 1024);
-
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 640);
-      setIsLarge(window.innerWidth > 1024);
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Initial check
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true });
-  const mainControls = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      mainControls.start("visible");
-    }
-  }, [isInView, mainControls]);
-
-  useEffect(() => {
-    setSections(sectionData);
+    setSections(work_data);
   }, []);
 
   const handleSectionChange = (section: string) => {
@@ -55,6 +29,12 @@ const SeeOurWork = () => {
       setActiveSection(section);
     }, 300);
   };
+
+  const { isMobile, isLarge } = useScreenSizes();
+  if (isLarge === null || isMobile === null) {
+    return null;
+  }
+
   return (
     <div>
       <div className="bg-black opacity-50 w-full h-[80px] flex fixed tablet:hidden"></div>
@@ -63,7 +43,7 @@ const SeeOurWork = () => {
         <div className="bg-black/30 w-full h-full fixed -z-10 "> </div>
         <div className="fixed w-full h-full  -z-20  ">
           <img
-            src="/images/fronthouse-lg.jpg"
+            src="/images/fronthouse-lg.webp"
             alt="background"
             className=" w-full h-screen object-cover"
           />
@@ -168,20 +148,6 @@ const SeeOurWork = () => {
           )}
         </div>
       </div>
-
-      {/* <div className="w-full h-full pb-20 bg-white/95">
-        <div className=" flex flex-col justify-center items-center w-full h-[25rem] ">
-          <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider lg:text-4xl  ">
-            The Top Trusted Remodeling Experts in Atlanta
-          </h2>
-          <h3 className="w-[60rem]  text-center leading-7 [&:not(:first-child)]:mt-6 text-lg ">
-            We are committed to delivering the best home improvement experience
-            of your life. We handle the whole process from start to finish, so
-            you have one point of contact through your entire project.
-          </h3>
-        </div>
-        <Review />
-      </div> */}
 
       <div className="w-full  h-[30rem] tablet:h-[10rem]  flex border-white/40 border-t-8 ">
         <div className="bg-black/30 w-full h-full fixed -z-10 "> </div>

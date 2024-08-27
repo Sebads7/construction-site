@@ -1,11 +1,11 @@
-import PageContent from "@/assets/pageContent.json";
+import { page_data } from "@/constants/index";
 
 import PagesSection from "@/components/PagesSection";
 
 const PressureWashing = () => {
   return (
     <div>
-      <PagesSection content={PageContent.pressureWashing} />
+      <PagesSection content={page_data.pressureWashing} />
     </div>
   );
 };

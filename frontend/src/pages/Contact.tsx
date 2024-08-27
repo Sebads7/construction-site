@@ -10,7 +10,7 @@ const Contact = () => {
       <div className=" w-full h-full  relative tablet:fixed  ">
         <div className="bg-black/30  h-full   absolute w-full  "> </div>
         <img
-          src="/images/fronthouse-lg.jpg"
+          src="/images/fronthouse-md.webp"
           alt="background"
           className="w-full h-screen tablet:h-full object-cover"
         />
@@ -41,7 +41,7 @@ const Contact = () => {
 
           {/* CONTACT FORM */}
           <div className="flex h-full  pb-10  tablet:bg-white/85  ">
-            <ContactForm showTextInput={true} contactButton={true} />
+            <ContactForm showTextInput={true} />
           </div>
         </div>
       </div>

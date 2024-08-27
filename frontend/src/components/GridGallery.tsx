@@ -102,12 +102,15 @@ const GridGallery: React.FC<GridGalleryProps> = ({
         {images
           .slice(0, showAllImages ? images.length : imageLength)
           .map((image, index) => (
-            <div key={index} className={`relative`}>
+            <div
+              key={index}
+              className={`relative h-[220px] w-auto flex items-center justify-center overflow-hidden`}
+            >
               <motion.div variants={gridSquareVariants}>
                 <img
                   src={image}
                   alt="gallery"
-                  className={`h-[220px] w-full object-cover  cursor-pointer border-solid border-1 border-white/55    `}
+                  className={` w-auto h-auto max-w-full max-h-full object-cover  cursor-pointer border-solid border-1 border-white/55    `}
                 />
               </motion.div>
 
