@@ -76,6 +76,7 @@ const Home = () => {
             >
               Atlanta's Top Remodeling Experts
             </h1>
+            {/* <h1> {JSON.stringify(import.meta.env)}</h1> */}
             <h2
               className="w-4/5
              text-white 

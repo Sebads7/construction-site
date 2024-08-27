@@ -20,6 +20,8 @@ import { Textarea } from "@/components/ui/textarea";
 import SelectInput from "./SelectInput";
 import { useState } from "react";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 //  COMPONENTS type.
 type ContactFormProps = {
   showTextInput?: boolean;
@@ -28,8 +30,6 @@ type ContactFormProps = {
   secondButton?: boolean;
   checkBox?: boolean;
 };
-
-// const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const ContactForm: React.FC<ContactFormProps> = ({
   showTextInput = false,
@@ -117,7 +117,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     }
 
     try {
-      const response = await fetch("http://localhost:8000/send-email", {
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
