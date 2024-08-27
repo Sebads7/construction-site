@@ -22,6 +22,10 @@ import { useState } from "react";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
+if (!apiUrl) {
+  console.error("API URL is not defined");
+}
+
 //  COMPONENTS type.
 type ContactFormProps = {
   showTextInput?: boolean;
