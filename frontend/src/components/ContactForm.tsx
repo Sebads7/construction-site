@@ -121,7 +121,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     }
 
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch(`${apiUrl}/send-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
