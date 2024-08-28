@@ -22,9 +22,9 @@ import { useState } from "react";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-if (!apiUrl) {
-  console.error("API URL is not defined");
-}
+// if (!apiUrl) {
+//   console.error("API URL is not defined");
+// }
 
 //  COMPONENTS type.
 type ContactFormProps = {
@@ -121,7 +121,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     }
 
     try {
-      const response = await fetch(`${apiUrl}/send-email`, {
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
