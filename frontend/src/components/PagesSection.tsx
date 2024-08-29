@@ -33,9 +33,10 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
     useInViewAnimation();
 
   return (
-    <div className=" z-0">
+    <div className="   ">
+      <div className="fixed top-0 left-0 w-full h-full bg-black opacity-70 -z-50"></div>
       <div className="bg-black opacity-50 w-full h-[76px] flex fixed z-[9] tablet:hidden"></div>
-      <div className="w-full h-[60rem] flex  tablet:h-[40rem]   ">
+      <div className="w-full h-[60rem] flex  tablet:h-[40rem] z-10  ">
         {/* BACKGROUND IMAGE */}
         <div className="relative  h-full -z-10 bg-gray-900 opacity-70  ">
           <div className="fixed  h-full w-full -z-20  ">
@@ -50,7 +51,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
         {imageLoaded && (
           <motion.div
             className="w-full h-[60rem]  tablet:h-[40rem]  left-0 flex  flex-col items-center  
-        bg-black/50 py-10 tablet:pt-24 absolute  "
+        bg-black/10 py-10 tablet:pt-24 absolute  "
           >
             {/* PAGE NAME */}
             <div className=" w-full h-1/3 flex justify-center items-center   tablet:h-1/4 tablet:mb-10 ">
@@ -62,10 +63,10 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
             </div>
             {/* TITLE AND SUBTITLE */}
             <motion.div
-              initial={{ opacity: 0, y: -100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-              className="flex flex-col justify-center items-center  w-full h-2/4 bg-gray-900/10 tablet:p-2 tablet:h-2/5 "
+              initial={{ opacity: 0, height: "0%", filter: "blur(5px)" }}
+              animate={{ opacity: 1, height: "55%", filter: "blur(0px)" }}
+              transition={{ duration: 0.9, ease: "easeIn", delay: 0.5 }}
+              className="flex flex-col justify-center items-center  w-full h-2/4 bg-black/30  tablet:p-2 tablet:h-2/5 "
             >
               <h1 className="mb-4 text-white scroll-m-20 text-4xl font-extrabold tracking-wider mobile:text-lg  lg:text-center xl:text-3xl lg:px-2">
                 {content.title}
