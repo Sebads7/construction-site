@@ -1,5 +1,3 @@
-const tablet = window.innerWidth < 900;
-
 export const work_data = {
   bath: {
     title: "Transform Your Bathroom into a Luxurious Oasis",
@@ -85,10 +83,6 @@ export const slidesData = [
     link: "carpentry",
     description:
       "From custom cabinets and elegant trim work to personalized furniture and intricate woodworking projects, we bring creativity and precision to every detail.",
-    variants: {
-      hidden: { opacity: 0, x: tablet ? 0 : -100, y: tablet ? 100 : 100 },
-      visible: { opacity: 1, x: 1, y: 1 },
-    },
   },
   //bath remodeling
   {
@@ -102,10 +96,6 @@ export const slidesData = [
     link: "bath-remodeling",
     description:
       "Discover our extensive bathroom remodeling services, including tile installation, cabinetry and storage solutions, lighting and electrical work, plumbing services, flooring installation, and painting.",
-    variants: {
-      hidden: { opacity: 0, y: 100 },
-      visible: { opacity: 1, y: 0 },
-    },
   },
   //painting
   {
@@ -120,10 +110,6 @@ export const slidesData = [
     link: "painting",
     description:
       "Discover our extensive interior and exterior painting services. From detailed surface preparation to expert color selection, we ensure every brushstroke enhances your home’s beauty. ",
-    variants: {
-      hidden: { opacity: 0, x: 100, y: 100 },
-      visible: { opacity: 1, x: 1, y: 1 },
-    },
   },
   //pressure washing
   {

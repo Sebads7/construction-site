@@ -26,6 +26,8 @@ module.exports = {
 
       mobile: { max: "639px" },
       // => @media (max-width: 639px) { ... }
+      xs: { max: "450px" },
+      // => @media (max-width: 300px) { ... }
     },
     container: {
       center: true,

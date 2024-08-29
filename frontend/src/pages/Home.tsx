@@ -14,7 +14,7 @@ const Home = () => {
     <div className="w-full h-full ">
       <div className="bg-black opacity-50 w-full h-[5rem] flex fixed z-[9] tablet:hidden"></div>
       <div className=" relative flex flex-row mobile:flex-col h-full  ">
-        <div className=" w-full h-[60rem] tablet:h-[65rem] lg:h-[80rem]   bg-black/90  ">
+        <div className=" w-full 2xl:3/4 h-[60rem] tablet:h-[65rem] lg:h-[80rem]   bg-black/90  ">
           <img
             src="/images/fronthouse-lg.webp"
             alt="background"
@@ -25,6 +25,7 @@ const Home = () => {
         <div
           className="flex
            w-full 
+         
            h-full 
            flex-row   
            bg-black/20  
@@ -109,22 +110,9 @@ const Home = () => {
               ease: [0.1, 0.2, 0.6, 1.01],
               delay: 1.4,
             }}
-            className="
-            flex 
-            justify-center
-             items-center  
-             h-full 
-             w-3/4 
-             mt-5
-            
-            mobile:w-11/12 
-            mobile:px-2
-            mobile:mt-10
-            tablet:mt-0
-            lg:w-full
-            lg:px-24
-            
-            "
+            className="flex  justify-center items-center   h-full xs:w-full mobile:w-4/5 mx-auto w-3/4
+             mt-5  mobile:px-2 mobile:mt-10tablet:mt-0
+            2xl:w-full lg:px-24 "
           >
             <Promotion />
           </motion.div>

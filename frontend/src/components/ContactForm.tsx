@@ -149,7 +149,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     <div className=" w-full ">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8   ">
-          <div className="grid grid-cols-2 mobile:flex mobile:flex-col pb-3 gap-5 px-10 m-0 w-full   ">
+          <div className="grid grid-cols-2 mobile:flex tablet:flex-col pb-3 gap-5 px-10 m-0 w-full   ">
             <FormField
               control={form.control}
               name="fullname"

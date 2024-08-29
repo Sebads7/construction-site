@@ -42,8 +42,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
         `}
     >
       {/* Mobile Menu Button */}
-      <div className="hidden tablet:flex  bg-red-500 h-full p-4 rounded-lg mr-2   ">
+      <div className="hidden tablet:flex   bg-red-500 h-full p-4 rounded-lg mr-2   ">
         <button
+          type="button"
+          title="Open Menu"
           onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
           className="text-white focus:outline-none"
         >
@@ -65,7 +67,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
       </div>
 
       {/* Logo and Title */}
-      <div className="tablet:hidden flex items-center">
+      <div className="lg:hidden flex items-center">
         <a
           href="/"
           className="flex items-center text-white/80 border-[2px] border-white/80"
@@ -79,7 +81,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
       </div>
 
       {/* Menu for larger screens */}
-      <div className="flex ">
+      <div className="flex mx-auto ">
         <NavigationMenu>
           <NavigationMenuList className="tablet:hidden flex space-x-4 tablet:space-x-2">
             {/* HOME */}

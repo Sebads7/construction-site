@@ -81,24 +81,14 @@ const WhatWeDo = () => {
 
       {/* SLIDES CONTAINER SECTION */}
       <div
-        className="flex 
-      flex-row 
-      mobile:flex-col 
-      justify-center 
-      items-center  
-      mobile:px-5 
-      overflow-hidden 
-      relative px-10 
-      w-full 
-      tablet:px-0 
-      no-scrollbar
+        className="flex flex-row mobile:flex-col  justify-center items-center  overflow-hidden relative  tablet:px-0 lg:px-2 px-28 container  no-scrollbar
       "
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
         {/* LEFT BUTTON */}
-        <motion.div
+        {/* <motion.div
           className={`lg:hidden flex items-center justify-center w-10 px-2 mr-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group bg-white z-[2] h-[41rem] ${
             currentSlide === 0
               ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none"
@@ -124,10 +114,10 @@ const WhatWeDo = () => {
                 : ""
             }`}
           />
-        </motion.div>
+        </motion.div> */}
 
         {/* SLIDES */}
-        <div className="flex justify-center items-center  w-[90%] tablet:w-full   ">
+        <div className="flex mx-auto justify-center items-center container    ">
           <div
             className="grid
            overflow-hidden 
@@ -172,17 +162,8 @@ const WhatWeDo = () => {
                   pb-5 
                   mobile:w-[19rem] 
                   mobile:h-[35rem]  
-                
                   lg:w-[22rem] 
-               
-                
-                 
-                  
                   "
-                    animate={mainControls}
-                    initial="hidden"
-                    variants={slide.variants}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                   >
                     <div className="flex h-full w-full">
                       <Carrousel
@@ -221,7 +202,7 @@ const WhatWeDo = () => {
         </div>
 
         {/* RIGHT BUTTON */}
-        <motion.div
+        {/* <motion.div
           className={`lg:hidden flex items-center px-2 ml-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group  z-[2] h-[41rem]  ${
             currentSlide === slidesData.length - 3
               ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none"
@@ -247,7 +228,7 @@ const WhatWeDo = () => {
                 : ""
             }`}
           />
-        </motion.div>
+        </motion.div> */}
       </div>
 
       {/* Dots */}

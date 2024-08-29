@@ -95,7 +95,7 @@ export const Review = () => {
   return (
     <div
       className=" flex 
-      lg:flex-col 
+      xl:flex-col 
       justify-center 
       items-center   
       bg-white/40 
@@ -115,14 +115,12 @@ export const Review = () => {
         w-3/4 
         pl-20 
         h-[20rem] 
-      
-        
-
         mobile:flex-col  
         mobile:h-[25rem] 
 
         lg:pl-0 
         lg:w-[90%]  
+
 
       
        
@@ -211,7 +209,7 @@ export const Review = () => {
 
       {/* RIGHT SIDE - CONTACT PROMOTION */}
       <motion.div
-        className="flex  justify-center h-full w-7/12 lg:w-full mobile:mt-10 py-5  z-[8]  bg-white tablet:px-20 mobile:px-1 tablet:mt-10  tablet:py-16 "
+        className="flex  justify-center h-full w-8/12 xs:w-full mobile:w-full tablet:w-[75%]  lg:w-[80%] xl:w-[70%] mobile:mt-10 py-5  z-[8]  bg-white xs:px-0 mobile:px-20  tablet:mt-10  tablet:py-16 "
         animate={mainControls}
         initial="hidden"
         variants={variants2}
