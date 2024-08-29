@@ -20,7 +20,7 @@ import { Textarea } from "@/components/ui/textarea";
 import SelectInput from "./SelectInput";
 import { useState } from "react";
 
-// const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 // if (!apiUrl) {
 //   console.error("API URL is not defined");
@@ -121,7 +121,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     }
 
     try {
-      const response = await fetch("/.netlify/functions/sendEmailFunction", {
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
