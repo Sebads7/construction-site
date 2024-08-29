@@ -42,12 +42,12 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
         `}
     >
       {/* Mobile Menu Button */}
-      <div className="hidden tablet:flex   bg-red-500 h-full p-4 rounded-lg mr-2   ">
-        <button
+      <div className="hidden tablet:flex  mr-5 h-full rounded-xl mobile-shadow">
+        <Button
           type="button"
           title="Open Menu"
           onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-white focus:outline-none"
+          className="text-white focus:outline-none bg-black rounded-xl  mobile-shadow py-6"
         >
           <svg
             className="w-6 h-6"
@@ -63,7 +63,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
               d="M4 6h16M4 12h16m-7 6h7"
             />
           </svg>
-        </button>
+        </Button>
       </div>
 
       {/* Logo and Title */}
@@ -259,16 +259,15 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
               </div>
 
               {/* MENU SECTION */}
-              <div className="flex  mobile:justify-center mobile:pt-10 tablet:ml-4 mobile:ml-0 w-full  z-10">
-                <div className="w-2   bg-white mr-2 "></div>
-                <NavigationMenu className="flex   ">
-                  <NavigationMenuList className="flex flex-col  text-left gap-5  items-start     ">
+              <div className="flex  mobile:justify-center xs:pt-20 mobile:pt-10 tablet:ml-4 mobile:ml-0 w-full  z-10">
+                <NavigationMenu className="flex  ">
+                  <NavigationMenuList className="flex flex-col   w-[20rem] gap-5      ">
                     {/* HOME */}
                     <NavigationMenuItem className=" pl-1">
                       <NavigationMenuLink>
                         <Link
                           to="/"
-                          className="text-white font-medium text-sm  "
+                          className="text-white font-medium text-base  "
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           HOME
@@ -276,40 +275,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                       </NavigationMenuLink>
                     </NavigationMenuItem>
 
-                    {/* CONTACT */}
-                    <NavigationMenuItem className="">
-                      <NavigationMenuLink>
-                        <Link
-                          to="/contact"
-                          className="text-white text-sm font-medium"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          CONTACT
-                        </Link>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-
-                    {/* SEE OUR WORK */}
-                    <NavigationMenuItem>
-                      <NavigationMenuLink>
-                        <Link
-                          to="/see-our-work"
-                          className="text-white text-sm font-medium"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          SEE OUR WORK
-                        </Link>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-
                     {/* WHAT WE DO */}
                     <NavigationMenuItem className="flex px-0">
-                      <NavigationMenuTrigger className="  bg-red-600  px-2  text-white text-sm  ">
+                      <NavigationMenuTrigger className=" bg-transparent    px-2  text-white text-base  ">
                         WHAT WE DO
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className=" flex  ">
+                      <NavigationMenuContent className=" flex ">
                         <div className="flex justify-center  border-none bg-white     ">
-                          <ul className="flex justify-center items-center flex-col  bg-white w-[12rem] mobile:text-[0.85rem] tablet:text-xs ">
+                          <ul className="flex justify-center items-center flex-col   bg-white w-[15rem] text-sm   ">
                             {/* Kitchen Remodeling */}
 
                             <li className="flex justify-center  p-3 w-full ">
@@ -381,6 +354,32 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                           </ul>
                         </div>
                       </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+                    {/* SEE OUR WORK */}
+                    <NavigationMenuItem>
+                      <NavigationMenuLink>
+                        <Link
+                          to="/see-our-work"
+                          className="text-white text-base font-medium"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          SEE OUR WORK
+                        </Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+
+                    {/* CONTACT */}
+                    <NavigationMenuItem className="">
+                      <NavigationMenuLink>
+                        <Link
+                          to="/contact"
+                          className="text-white text-base font-medium"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          CONTACT
+                        </Link>
+                      </NavigationMenuLink>
                     </NavigationMenuItem>
                     {/* END DIV */}
                   </NavigationMenuList>

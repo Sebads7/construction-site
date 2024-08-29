@@ -119,12 +119,7 @@ export const Review = () => {
         mobile:h-[25rem] 
 
         lg:pl-0 
-        lg:w-[90%]  
-
-
-      
-       
-      
+        xl:w-[90%]  
         "
         animate={mainControls}
         initial="hidden"
@@ -159,20 +154,8 @@ export const Review = () => {
             onTouchEnd={handleTouchEnd}
           >
             <div
-              className="flex 
-              flex-col 
-              justify-center 
-              items-center   
-              bg-white 
-              h-full 
-              border-2 
-              p-6  
-              gap-4 
-              rounded-lg 
-              shadow-lg 
-
-              mobile:text-sm  
-              mobile:gap-1   "
+              className="flex  flex-col   justify-center   items-center    bg-white   h-full 
+              border-2  p-6  gap-4  rounded-lg  shadow-lg  mobile:text-sm  mobile:gap-1   "
             >
               <div className="mobile:hidden">
                 <Rating value={5} name="read-only" size="large" readOnly />

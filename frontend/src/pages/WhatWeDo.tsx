@@ -81,57 +81,20 @@ const WhatWeDo = () => {
 
       {/* SLIDES CONTAINER SECTION */}
       <div
-        className="flex flex-row mobile:flex-col  justify-center items-center  overflow-hidden relative  tablet:px-0 lg:px-2 px-28 container  no-scrollbar
+        className="flex flex-row mobile:flex-col  justify-center items-center  overflow-hidden relative  tablet:px-0  xl:px-14  2xl:px-16   px-28 container no-scrollbar
       "
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* LEFT BUTTON */}
-        {/* <motion.div
-          className={`lg:hidden flex items-center justify-center w-10 px-2 mr-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group bg-white z-[2] h-[41rem] ${
-            currentSlide === 0
-              ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none"
-              : ""
-          }`}
-          animate={mainControls}
-          onClick={Prev}
-          initial="hidden"
-          variants={{
-            hidden: { opacity: 0, scale: 0.8 },
-            visible: { opacity: 1, scale: 1 },
-          }}
-          transition={{
-            duration: 0.8,
-            delay: 1.5,
-            ease: [0.3, 0.71, 0.9, 1.0],
-          }}
-        >
-          <FaAngleLeft
-            className={`fill-slate-500 group-hover:fill-white ${
-              currentSlide === 0
-                ? "fill-slate-500/20 group-hover:fill-slate-500/20"
-                : ""
-            }`}
-          />
-        </motion.div> */}
-
         {/* SLIDES */}
-        <div className="flex mx-auto justify-center items-center container    ">
+        <div className="flex mx-auto justify-center items-center container ">
           <div
-            className="grid
-           overflow-hidden 
-           w-full  
-           mobile:w-[20rem] 
-           tablet:w-[23rem]
-           lg:w-[47rem]
-         
-           
-           
-               "
+            className="grid overflow-hidden  w-full   mobile:-translate-x-2
+           mobile:w-[26rem]  tablet:w-[30rem] lg:w-[47rem] scale-95 "
           >
             <motion.div
-              className="grid grid-flow-col  gap-8 transition-all duration-700 ease-in-out mobile:mx-0  w-auto  p-2 mobile:gap-3 tablet:gap-5 lg:gap-5 "
+              className="grid grid-flow-col  gap-8 transition-all duration-700 ease-in-out mobile:mx-0  w-auto  py-2 mobile:gap-3 tablet:gap-5 lg:gap-5  "
               ref={ref}
               style={{
                 transform: `translateX(-${
@@ -157,12 +120,14 @@ const WhatWeDo = () => {
                   grid-rows-3 
                   place-items-center
                   shadow-md border-2 
-                  w-[26vw] 
+                  w-[25.5vw] 
                   h-[42rem] 
                   pb-5 
                   mobile:w-[19rem] 
                   mobile:h-[35rem]  
-                  lg:w-[22rem] 
+                  tablet:w-[23rem]
+                  lg:w-[24rem] 
+                  2xl:w-[25rem] 
                   "
                   >
                     <div className="flex h-full w-full">
@@ -200,16 +165,62 @@ const WhatWeDo = () => {
             </motion.div>
           </div>
         </div>
+      </div>
+
+      <div className="flex w-full h-full pt-5 justify-center items-center">
+        {/* LEFT BUTTON */}
+        <motion.div
+          className={` flex items-center justify-center w-10 px-2  mr-3 transition-all cursor-pointer group   ${
+            currentSlide === 0 ? " pointer-events-none" : ""
+          }`}
+          animate={mainControls}
+          onClick={Prev}
+          onMouseEnter={Prev}
+          initial="hidden"
+          variants={{
+            hidden: { opacity: 0, scale: 0.8 },
+            visible: { opacity: 1, scale: 1 },
+          }}
+          transition={{
+            duration: 0.8,
+            delay: 1.5,
+            ease: [0.3, 0.71, 0.9, 1.0],
+          }}
+        >
+          <FaAngleLeft
+            className={`fill-slate-500  ${
+              currentSlide === 0
+                ? "fill-slate-500/20 group-hover:fill-slate-500/20"
+                : ""
+            }`}
+          />
+        </motion.div>
+
+        {/* Dots */}
+        <div className="flex flex-row gap-2   mobile:gap-3">
+          {Array.from({
+            length: Math.ceil(adjustedLength),
+          }).map((_, index) => (
+            <div
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-4 h-4 rounded-full cursor-pointer transition-all ease-out mobile:w-5 mobile:h-5 ${
+                currentSlide === index
+                  ? "bg-gray-700 scale-110"
+                  : "bg-gray-300 scale-95"
+              }`}
+            />
+          ))}
+        </div>
 
         {/* RIGHT BUTTON */}
-        {/* <motion.div
-          className={`lg:hidden flex items-center px-2 ml-7 border-2 border-gray-200 hover:bg-gray-200 transition-all cursor-pointer group  z-[2] h-[41rem]  ${
-            currentSlide === slidesData.length - 3
-              ? "border-opacity-20 hover:bg-gray-200/[1%] pointer-events-none"
-              : ""
+        <motion.div
+          className={`flex items-center justify-center ml-3 w-10 px-2  transition-all cursor-pointer group   ${
+            currentSlide === slidesData.length - 3 ? " pointer-events-none" : ""
           }`}
           animate={mainControls}
           onClick={nextSlide}
+          onMouseEnter={nextSlide}
           initial="hidden"
           variants={{
             hidden: { opacity: 0, scale: 0.8 },
@@ -222,30 +233,13 @@ const WhatWeDo = () => {
           }}
         >
           <FaAngleRight
-            className={`fill-slate-500 group-hover:fill-white ${
+            className={`fill-slate-500  ${
               currentSlide === slidesData.length - 3
                 ? "fill-slate-500/20 group-hover:fill-slate-500/20 pointer-events-none"
                 : ""
             }`}
           />
-        </motion.div> */}
-      </div>
-
-      {/* Dots */}
-      <div className="flex flex-row gap-2 justify-center pt-5 mobile:gap-3">
-        {Array.from({
-          length: Math.ceil(adjustedLength),
-        }).map((_, index) => (
-          <div
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-4 h-4 rounded-full cursor-pointer transition-all ease-out mobile:w-5 mobile:h-5 ${
-              currentSlide === index
-                ? "bg-gray-700 scale-110"
-                : "bg-gray-300 scale-95"
-            }`}
-          />
-        ))}
+        </motion.div>
       </div>
     </div>
   );

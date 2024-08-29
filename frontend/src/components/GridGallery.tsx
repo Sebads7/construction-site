@@ -8,12 +8,16 @@ type GridGalleryProps = {
   images: string[];
   imageLength: number;
   className?: string;
+  viewmoreBorder?: string;
+  viewmoreButton?: string;
 };
 
 const GridGallery: React.FC<GridGalleryProps> = ({
   images,
   imageLength,
   className,
+  viewmoreBorder,
+  viewmoreButton,
 }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
     null
@@ -104,7 +108,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({
           .map((image, index) => (
             <div
               key={index}
-              className={`relative h-[220px] w-auto flex items-center justify-center overflow-hidden`}
+              className={`relative border h-[220px] w-auto flex items-center justify-center overflow-hidden`}
             >
               <motion.div variants={gridSquareVariants}>
                 <img
@@ -124,12 +128,13 @@ const GridGallery: React.FC<GridGalleryProps> = ({
           ))}
       </AnimatePresence>
       <motion.div
-        className="flex justify-center items-center w-full h-full border-2 border-white/55 tablet:py-14 "
+        className={`flex justify-center items-center w-full h-full py-20 tablet:py-14 ${viewmoreBorder} `}
         whileTap={{ scale: 0.95 }}
         variants={gridSquareVariants}
         transition={{ duration: 1, ease: "easeIn", delay: 2 }}
       >
         <Button
+          className={`${viewmoreButton}`}
           variant="custom"
           onClick={() => {
             setShowAllImages(!showAllImages);
@@ -146,6 +151,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({
             <div className="flex flex-row-reverse  bg-black  ">
               <button
                 type="button"
+                title="Close"
                 onClick={handleCloseModal}
                 className="flex justify-center items-center text-white pr-6 py-6 mobile:py-3 tablet:py-0 tablet:pt-4  "
               >
