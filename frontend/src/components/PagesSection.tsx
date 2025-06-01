@@ -5,7 +5,7 @@ import { Carrousel } from './Carrousel'
 import Review from '@/components/Review'
 import GridGallery from '@/components/GridGallery'
 import useInViewAnimation from './hooks/useInView'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { CheckCircle } from 'lucide-react'
 import {
   Carousel,
@@ -59,18 +59,6 @@ const PagesSection: React.FC<PagesSectionProps> = ({
   const handleImageLoaded = () => {
     setImageLoaded(true)
   }
-
-  useEffect(() => {
-    if (selectedImageIndex !== null) {
-      document.body.style.overflowY = 'hidden'
-    } else {
-      document.body.style.overflowY = 'auto'
-    }
-    // Clean up the effect when the component is unmounted
-    return () => {
-      document.body.style.overflowY = 'auto'
-    }
-  }, [selectedImageIndex])
 
   const handleImageClick = (index: number) => {
     setSelectedImageIndex(index)
@@ -158,18 +146,18 @@ const PagesSection: React.FC<PagesSectionProps> = ({
                     a dedication to quality craftsmanship.
                   </p>
 
-                  <ul className="mt-28 flex gap-6 pb-5 text-base tracking-tight xl:text-sm tablet:hidden mobile:text-xs">
+                  <ul className="mt-28 flex gap-6 pb-5 text-base tracking-tight xl:text-sm lg:grid lg:grid-cols-2 lg:grid-rows-2 mobile:hidden mobile:text-xs">
                     {content.whyChooseUs.map((item, index) => (
                       <li
                         key={index}
-                        className="flex max-w-xs flex-col items-center justify-center rounded-md border bg-white px-4 py-2 shadow-2xl transition-all duration-200 hover:bg-neutral-100"
+                        className="mx-auto flex max-w-xs flex-col items-center justify-center rounded-md border bg-white px-4 py-2 shadow-2xl transition-all duration-200 hover:bg-neutral-100 lg:mx-2"
                       >
                         <img
                           src={item.icon}
                           alt="check icon"
                           className="mr-2 inline-block h-10 w-10"
                         />{' '}
-                        <span className="flex h-28 flex-col pt-2 text-center">
+                        <span className="flex h-28 flex-col pt-2 text-center xl:h-32 lg:h-24">
                           <strong className="text-lg">{item.span}</strong>
                           {item.text}
                         </span>
@@ -177,12 +165,12 @@ const PagesSection: React.FC<PagesSectionProps> = ({
                     ))}
                   </ul>
 
-                  <div className="mt-28 hidden gap-6 text-base tracking-tight xl:text-sm tablet:mt-10 tablet:flex mobile:text-xs">
-                    <Carousel>
+                  <div className="mx-auto mt-28 hidden max-w-sm gap-6 text-base tracking-tight xl:text-sm tablet:mt-10 mobile:flex mobile:text-xs">
+                    <Carousel className="max-w-sm">
                       <CarouselContent>
                         {content.whyChooseUs.map((item, index) => (
                           <CarouselItem key={index} className="pb-16 pt-5">
-                            <p className="flex max-w-xs flex-col items-center justify-center rounded-md border bg-white px-4 py-2 shadow-2xl transition-all duration-200 hover:bg-neutral-100">
+                            <p className="flex max-w-xs flex-col items-center justify-center rounded-md border bg-white px-4 py-2 shadow-lg transition-all duration-200 hover:bg-neutral-100">
                               <img
                                 src={item.icon}
                                 alt="check icon"
@@ -206,7 +194,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({
             </motion.div>
 
             <motion.div
-              className="mx-auto mt-28 flex w-full flex-row justify-center gap-20 tablet:flex-col tablet:px-4"
+              className="mx-auto mt-28 flex w-full flex-row justify-center gap-20 lg:flex-col tablet:px-4"
               animate={mainControls}
               initial="hidden"
               variants={{
@@ -219,7 +207,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({
                 ease: easeIn,
               }}
             >
-              <div className="h-[30rem] w-[30rem] max-w-lg overflow-x-hidden rounded-md shadow-lg">
+              <div className="mx-auto h-[30rem] w-[30rem] max-w-lg overflow-x-auto rounded-md shadow-lg mobile:max-w-xs">
                 <Carrousel
                   images={content.images}
                   className="h-[30rem] w-full rounded-md object-cover"
