@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -6,51 +6,48 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+} from '@/components/ui/navigation-menu'
 
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        document.querySelector(".scroll")?.classList.add("bg-opacity-80");
+        document.querySelector('.scroll')?.classList.add('bg-opacity-80')
       } else {
-        document.querySelector(".scroll")?.classList.remove("bg-opacity-80");
+        document.querySelector('.scroll')?.classList.remove('bg-opacity-80')
       }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     // Block scrolling on body when mobile menu is open
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto'
     return () => {
-      document.body.style.overflow = "auto"; // Reset overflow when component unmounts or menu closes
-    };
-  }, [isMobileMenuOpen]);
+      document.body.style.overflow = 'auto' // Reset overflow when component unmounts or menu closes
+    }
+  }, [isMobileMenuOpen])
 
   return (
-    <div
-      className={` flex fixed  justify-between items-center  w-full   h-auto bg-black p-5  scroll  mobile:text-xs  tablet:ml-0 tablet:mt-5 tablet:p-0 tablet:bg-transparent tablet:flex-row-reverse  z-10 
-       
-        
-        `}
+    <header
+      className={`scroll fixed z-50 flex h-auto w-full items-center justify-between bg-black p-5 tablet:ml-0 tablet:mt-5 tablet:flex-row-reverse tablet:bg-transparent tablet:p-0 mobile:text-xs`}
     >
       {/* Mobile Menu Button */}
-      <div className="hidden tablet:flex  mr-5 h-full rounded-xl mobile-shadow">
+      <div className="mobile-shadow mr-5 hidden h-full rounded-xl tablet:flex">
         <Button
           type="button"
           title="Open Menu"
           onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-white focus:outline-none bg-black rounded-xl  mobile-shadow py-6"
+          className="mobile-shadow rounded-xl bg-black py-6 text-white focus:outline-none"
         >
           <svg
-            className="w-6 h-6"
+            className="h-6 w-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -67,12 +64,12 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
       </div>
 
       {/* Logo and Title */}
-      <div className="lg:hidden flex items-center">
+      <div className="flex items-center lg:hidden">
         <a
           href="/"
-          className="flex items-center text-white/80 border-[2px] border-white/80"
+          className="flex items-center border-[2px] border-white/80 text-white/80"
         >
-          <div className="flex items-center gap-2 text-center px-3 py-1">
+          <div className="flex items-center gap-2 px-3 py-1 text-center">
             <p className="tablet:text-sm mobile:text-xs">
               ABJ Painting & Remodeling
             </p>
@@ -81,11 +78,11 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
       </div>
 
       {/* Menu for larger screens */}
-      <div className="flex mx-auto ">
+      <div className="mx-auto flex">
         <NavigationMenu>
-          <NavigationMenuList className="tablet:hidden flex space-x-4 tablet:space-x-2">
+          <NavigationMenuList className="flex space-x-4 tablet:hidden tablet:space-x-2">
             {/* HOME */}
-            <NavigationMenuItem className="px-4 lg:text-sm ">
+            <NavigationMenuItem className="px-4 lg:text-sm">
               <NavigationMenuLink>
                 <Link to="/" className="bg-transparent text-white">
                   HOME
@@ -95,14 +92,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
             {/* WHAT WE DO */}
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-transparent text-white md:text-sm sm:text-xs">
+              <NavigationMenuTrigger className="md:text-sm sm:text-xs bg-transparent text-white">
                 WHAT WE DO
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="flex justify-center items-center md:w-[200px] w-[300px] lg:grid-cols-[.75fr_1fr] bg-white">
-                  <ul className="flex flex-col justify-center items-center w-full">
+                <div className="md:w-[200px] flex w-[300px] items-center justify-center bg-white lg:grid-cols-[.75fr_1fr]">
+                  <ul className="flex w-full flex-col items-center justify-center">
                     {/* Kitchen Remodeling */}
-                    <li className="flex justify-center transition duration-100 ease-in-out hover:bg-slate-800 p-3 w-full hover:text-white">
+                    <li className="flex w-full justify-center p-3 transition duration-100 ease-in-out hover:bg-slate-800 hover:text-white">
                       <NavigationMenuLink asChild>
                         <Link
                           className="flex items-center justify-center"
@@ -113,10 +110,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                       </NavigationMenuLink>
                     </li>
 
-                    <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                    <li className="flex w-24 items-center justify-center border-b border-gray-300"></li>
 
                     {/* Bathroom Remodeling */}
-                    <li className="flex justify-center transition duration-100 ease-in-out hover:bg-slate-800 p-3 hover:text-white w-full">
+                    <li className="flex w-full justify-center p-3 transition duration-100 ease-in-out hover:bg-slate-800 hover:text-white">
                       <NavigationMenuLink asChild>
                         <Link
                           className="flex items-center justify-center"
@@ -127,10 +124,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                       </NavigationMenuLink>
                     </li>
 
-                    <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                    <li className="flex w-24 items-center justify-center border-b border-gray-300"></li>
 
                     {/* Pressure Washing */}
-                    <li className="flex justify-center transition duration-100 ease-in-out hover:bg-slate-800 p-3 hover:text-white w-full">
+                    <li className="flex w-full justify-center p-3 transition duration-100 ease-in-out hover:bg-slate-800 hover:text-white">
                       <NavigationMenuLink asChild>
                         <Link
                           className="flex items-center justify-center"
@@ -141,10 +138,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                       </NavigationMenuLink>
                     </li>
 
-                    <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                    <li className="flex w-24 items-center justify-center border-b border-gray-300"></li>
 
                     {/* Painting */}
-                    <li className="flex justify-center transition duration-100 ease-in-out hover:bg-slate-800 p-3 hover:text-white w-full">
+                    <li className="flex w-full justify-center p-3 transition duration-100 ease-in-out hover:bg-slate-800 hover:text-white">
                       <NavigationMenuLink asChild>
                         <Link
                           className="flex items-center justify-center"
@@ -157,10 +154,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                       </NavigationMenuLink>
                     </li>
 
-                    <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                    <li className="flex w-24 items-center justify-center border-b border-gray-300"></li>
 
                     {/* Carpentry */}
-                    <li className="flex justify-center transition duration-100 ease-in-out hover:bg-slate-800 p-3 hover:text-white w-full">
+                    <li className="flex w-full justify-center p-3 transition duration-100 ease-in-out hover:bg-slate-800 hover:text-white">
                       <NavigationMenuLink asChild>
                         <Link
                           className="flex items-center justify-center"
@@ -179,7 +176,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
               <NavigationMenuLink>
                 <Link
                   to="/see-our-work"
-                  className="bg-transparent text-white md:text-sm sm:text-xs"
+                  className="md:text-sm sm:text-xs bg-transparent text-white"
                 >
                   SEE OUR WORK
                 </Link>
@@ -191,7 +188,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
               <NavigationMenuLink>
                 <Link
                   to="/contact"
-                  className="bg-transparent text-white md:text-sm sm:text-xs"
+                  className="md:text-sm sm:text-xs bg-transparent text-white"
                 >
                   CONTACT
                 </Link>
@@ -203,54 +200,40 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
       {/* Mobile Menu */}
       <div
-        className={`relative      bg-black    ${
-          isMobileMenuOpen ? "block" : "hidden"
-        }`}
+        className={`relative bg-black ${isMobileMenuOpen ? 'block' : 'hidden'}`}
       >
         {/* BACKGROUND IMAGE */}
-        <div className="fixed w-full h-full top-0  bg-black/60 -z-1 ">
+        <div className="-z-1 fixed top-0 h-full w-full bg-black/60">
           <img
             src="/images/fronthouse-md.webp"
             alt="background"
-            className=" w-full h-full  object-cover"
+            className="h-full w-full object-cover"
           />
         </div>
 
-        <div className="fixed flex flex-col  top-0 w-full bg-black/90 h-full   ">
+        <div className="fixed top-0 flex h-full w-full flex-col bg-black/90">
           {/* Close Button */}
-          <div className="flex  flex-row-reverse p-4 mobile:w-full  ">
+          <div className="flex flex-row-reverse p-4 mobile:w-full">
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className=" flex  text-white text-4xl "
+              className="flex text-4xl text-white"
             >
               &times;
             </button>
           </div>
 
-          <div className="flex tablet:flex-row justify-center items-center   mobile:flex-col w-full   ">
-            <div className="flex mobile:flex-col w-full  ">
+          <div className="flex w-full flex-col items-center justify-center">
+            <div className="flex w-full flex-col">
               {/* Menu Items */}
-              <div className="flex flex-col-reverse justify-center  mobile:w-full tablet:w-2/4 mobile:px-5 tablet:ml-28 mobile:ml-0 gap-5   z-10 ">
-                {/* Request Appointment Button */}
-                <div className=" flex  w-full justify-center items-center ">
-                  <Button
-                    className="bg-red-600 py-2 px-4 rounded-md hover:bg-red-500 text-white text-sm mobile:text-xs"
-                    onClick={handleShowModal}
-                  >
-                    <p className="flex lg:flex-row gap-1">
-                      Request An<span> Appointment</span>
-                    </p>
-                  </Button>
-                </div>
-
+              <div className="z-10 flex w-full flex-col-reverse justify-center gap-5 px-5">
                 {/* Logo and Title */}
-                <div className=" flex w-full justify-center items-center ">
+                <div className="flex w-full items-center justify-center">
                   <a
                     href="/"
-                    className="flex items-center text-white/80 border-[2px] border-white/80"
+                    className="flex items-center border-[2px] border-white/80 text-white/80"
                   >
-                    <div className="flex items-center gap-2 text-center px-3 py-3">
-                      <p className=" mobile:text-lg">
+                    <div className="flex items-center gap-2 px-3 py-3 text-center">
+                      <p className="mobile:text-lg">
                         ABJ Painting & Remodeling
                       </p>
                     </div>
@@ -259,15 +242,15 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
               </div>
 
               {/* MENU SECTION */}
-              <div className="flex  mobile:justify-center xs:pt-20 mobile:pt-10 tablet:ml-4 mobile:ml-0 w-full  z-10">
-                <NavigationMenu className="flex  ">
-                  <NavigationMenuList className="flex flex-col   w-[20rem] gap-5      ">
+              <nav className="z-10 flex w-full justify-center pt-10">
+                <NavigationMenu className="flex">
+                  <NavigationMenuList className="flex w-[20rem] flex-col gap-5">
                     {/* HOME */}
-                    <NavigationMenuItem className=" pl-1">
+                    <NavigationMenuItem className="pl-1">
                       <NavigationMenuLink>
                         <Link
                           to="/"
-                          className="text-white font-medium text-base  "
+                          className="text-base font-medium text-white"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           HOME
@@ -277,15 +260,15 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
                     {/* WHAT WE DO */}
                     <NavigationMenuItem className="flex px-0">
-                      <NavigationMenuTrigger className=" bg-transparent    px-2  text-white text-base  ">
+                      <NavigationMenuTrigger className="bg-transparent px-2 text-base text-white">
                         WHAT WE DO
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className=" flex ">
-                        <div className="flex justify-center  border-none bg-white     ">
-                          <ul className="flex justify-center items-center flex-col   bg-white w-[15rem] text-sm   ">
+                      <NavigationMenuContent className="flex">
+                        <div className="flex justify-center border-none bg-white">
+                          <ul className="flex w-[15rem] flex-col items-center justify-center bg-white text-sm">
                             {/* Kitchen Remodeling */}
 
-                            <li className="flex justify-center  p-3 w-full ">
+                            <li className="flex w-full justify-center p-3">
                               <NavigationMenuLink asChild>
                                 <Link
                                   to="/kitchen-remodeling"
@@ -296,10 +279,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                               </NavigationMenuLink>
                             </li>
 
-                            <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                            <li className="flex w-24 items-center justify-center border-b border-gray-300"></li>
 
                             {/* Bathroom Remodeling */}
-                            <li className="flex justify-center  p-3  w-full">
+                            <li className="flex w-full justify-center p-3">
                               <NavigationMenuLink asChild>
                                 <Link
                                   to="/bath-remodeling"
@@ -310,10 +293,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                               </NavigationMenuLink>
                             </li>
 
-                            <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                            <li className="flex w-24 items-center justify-center border-b border-gray-300"></li>
 
                             {/* Pressure Washing */}
-                            <li className="flex justify-center  p-3  w-full">
+                            <li className="flex w-full justify-center p-3">
                               <NavigationMenuLink asChild>
                                 <Link
                                   to="/pressure-washing"
@@ -324,10 +307,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                               </NavigationMenuLink>
                             </li>
 
-                            <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                            <li className="flex w-24 items-center justify-center border-b border-gray-300"></li>
 
                             {/* Painting */}
-                            <li className="flex justify-center p-3  w-full">
+                            <li className="flex w-full justify-center p-3">
                               <NavigationMenuLink asChild>
                                 <Link
                                   to="/painting"
@@ -338,10 +321,10 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                               </NavigationMenuLink>
                             </li>
 
-                            <li className="border-b border-gray-300 w-24 flex justify-center items-center"></li>
+                            <li className="flex w-24 items-center justify-center border-b border-gray-300"></li>
 
                             {/* Carpentry */}
-                            <li className="flex justify-center  p-3 w-full">
+                            <li className="flex w-full justify-center p-3">
                               <NavigationMenuLink asChild>
                                 <Link
                                   onClick={() => setMobileMenuOpen(false)}
@@ -361,7 +344,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                       <NavigationMenuLink>
                         <Link
                           to="/see-our-work"
-                          className="text-white text-base font-medium"
+                          className="text-base font-medium text-white"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           SEE OUR WORK
@@ -374,7 +357,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                       <NavigationMenuLink>
                         <Link
                           to="/contact"
-                          className="text-white text-base font-medium"
+                          className="text-base font-medium text-white"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           CONTACT
@@ -384,6 +367,32 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     {/* END DIV */}
                   </NavigationMenuList>
                 </NavigationMenu>
+              </nav>
+
+              {/* Request Appointment Button */}
+              <div className="mt-10 flex w-full items-center justify-center">
+                <Button
+                  className="rounded-md bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-500 mobile:text-xs"
+                  onClick={handleShowModal}
+                >
+                  <p className="flex gap-1 lg:flex-row">
+                    Request An<span> Appointment</span>
+                  </p>
+                </Button>
+              </div>
+
+              <div className="mx-auto mt-10 flex flex-col items-center justify-center gap-2 text-sm text-white">
+                <p className="max-w-xs text-center">
+                  Do you need to speak with someone right away? we&apos;re happy
+                  to help!
+                </p>
+                <div className="flex items-center gap-2">
+                  {' '}
+                  <p>Call us</p>
+                  <a href="tel:6797795280" className="font-semibold underline">
+                    (679) 779-5280
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -391,18 +400,18 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
       </div>
 
       {/* Request Appointment Button */}
-      <div className="tablet:hidden flex ">
+      <div className="flex tablet:hidden">
         <Button
-          className="bg-red-600 py-2 px-4 rounded-md hover:bg-red-500 text-white text-sm mobile:text-xs  "
+          className="rounded-md bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-500 mobile:text-xs"
           onClick={handleShowModal}
         >
-          <p className="flex lg:flex-row gap-1">
+          <p className="flex gap-1 lg:flex-row">
             Request An<span> Appointment</span>
           </p>
         </Button>
       </div>
-    </div>
-  );
-};
+    </header>
+  )
+}
 
-export default NavBar;
+export default NavBar

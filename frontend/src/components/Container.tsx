@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
 interface ContainerProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const Container: React.FC<ContainerProps> = ({ children }) => {
-  return <div className="w-full h-full  ">{children}</div>;
-};
+  return <div className="h-full w-full">{children}</div>
+}
 
-export default Container;
+export default Container

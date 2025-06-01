@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
 type SlidesProps = {
-  images: string[];
-};
+  images: string[]
+}
 
 const NavSlides: React.FC<SlidesProps> = ({ images }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-    }, 3000);
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length)
+    }, 3000)
 
-    return () => clearInterval(interval);
-  }, [images.length]);
+    return () => clearInterval(interval)
+  }, [images.length])
   return (
-    <div className="flex flex-row overflow-hidden after:clear-both after:block after:content-[''] w-[200px] h-[200px] ">
+    <div className="flex h-[200px] w-[200px] flex-row overflow-hidden after:clear-both after:block after:content-['']">
       {images.map((image, index) => (
         <div
           key={index}
           className={`flex flex-row ${
-            index === currentSlide ? "bock" : "hidden"
+            index === currentSlide ? 'bock' : 'hidden'
           }`}
         >
-          <div className="flex flex-row  justify-center  ">
-            <div className=" flex-row relative  ">
+          <div className="flex flex-row justify-center">
+            <div className="relative flex-row">
               <img
                 src={image}
                 alt={`Image ${index} `}
-                className="object-cover w-[200px] h-[200px] blur-[1px] rounded-lg shadow-lg"
+                className="h-[200px] w-[200px] rounded-lg object-cover shadow-lg blur-[1px]"
               />
             </div>
           </div>
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default NavSlides;
+export default NavSlides

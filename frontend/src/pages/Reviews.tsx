@@ -1,31 +1,31 @@
-import Container from "@/components/Container";
-import Review from "@/components/Review";
+import Container from '@/components/Container'
+import Review from '@/components/Review'
 
-import { Rating } from "@mui/material";
-import { useState } from "react";
+import { Rating } from '@mui/material'
+import { useState } from 'react'
 
 const Reviews = () => {
-  const [value] = useState<number | null>(5);
+  const [value] = useState<number | null>(5)
   return (
     <Container>
-      <div className="bg-black opacity-80 w-full h-[65px] flex fixed"></div>
+      <div className="fixed flex h-[65px] w-full bg-black opacity-80"></div>
 
       {/* TITLE SECTION */}
-      <div className="w-full h-[30rem]  left-0 flex  flex-col items-center justify-center  py-10 ">
-        <div className=" w-full h-[300px]  flex justify-center items-center  ">
-          <div className=" bg-zinc-800/85 h-[5.5rem] w-[22rem] flex justify-center items-center   ">
-            <h1 className="flex text-xl  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[30rem]  ">
+      <div className="left-0 flex h-[30rem] w-full flex-col items-center justify-center py-10">
+        <div className="flex h-[300px] w-full items-center justify-center">
+          <div className="flex h-[5.5rem] w-[22rem] items-center justify-center bg-zinc-800/85">
+            <h1 className="flex w-[30rem] justify-center text-center text-xl font-semibold text-white outline outline-offset-8 outline-gray-300">
               See Our Work
             </h1>
           </div>
         </div>
       </div>
 
-      <div className="w-full h-full px-[8rem] my-[10rem] ">
+      <div className="my-[10rem] h-full w-full px-[8rem]">
         {/* first review */}
-        <div className="border-2 rounded-lg w-[60rem] h-[10rem]">
-          <div className="p-4  ">
-            <div className="flex flex-row gap-2 items-center ">
+        <div className="h-[10rem] w-[60rem] rounded-lg border-2">
+          <div className="p-4">
+            <div className="flex flex-row items-center gap-2">
               <p>2024/2/15</p>
               <Rating
                 value={value}
@@ -43,9 +43,9 @@ const Reviews = () => {
           </div>
         </div>
         {/* second review */}
-        <div className="mt-10 border-2 rounded-lg w-[60rem] h-[10rem]">
-          <div className="p-4  ">
-            <div className="flex flex-row gap-2 items-center ">
+        <div className="mt-10 h-[10rem] w-[60rem] rounded-lg border-2">
+          <div className="p-4">
+            <div className="flex flex-row items-center gap-2">
               <p>2024/2/15</p>
               <Rating
                 value={value}
@@ -65,9 +65,9 @@ const Reviews = () => {
 
         {/* third review */}
 
-        <div className="mt-10 border-2 rounded-lg w-[60rem] h-[10rem]">
-          <div className="p-4  ">
-            <div className="flex flex-row gap-2 items-center ">
+        <div className="mt-10 h-[10rem] w-[60rem] rounded-lg border-2">
+          <div className="p-4">
+            <div className="flex flex-row items-center gap-2">
               <p>2024/2/15</p>
               <Rating
                 value={value}
@@ -85,11 +85,11 @@ const Reviews = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center ">
+      <div className="flex justify-center">
         <Review />
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default Reviews;
+export default Reviews

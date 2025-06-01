@@ -1,79 +1,103 @@
-import { easeIn, motion } from "framer-motion";
-import { Carrousel } from "./Carrousel";
-import { TbPointFilled } from "react-icons/tb";
+'use client'
+import { easeIn, motion } from 'framer-motion'
+import { Carrousel } from './Carrousel'
 
-import Review from "@/components/Review";
-import GridGallery from "@/components/GridGallery";
-import useInViewAnimation from "./hooks/useInView";
-import { useState } from "react";
+import Review from '@/components/Review'
+import GridGallery from '@/components/GridGallery'
+import useInViewAnimation from './hooks/useInView'
+import { useState } from 'react'
+import { CheckCircle } from 'lucide-react'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselDots,
+  CarouselItem,
+} from './ui/EmblaCarousel'
 
 type PagesSectionProps = {
   content: {
-    pageName: string;
-    title: string;
-    description: string;
-    whyChooseUs: string[];
-    servicesInclude: string[];
-    imageBackground: string;
-    ourServices: string;
-    WhyChooseUsTitle: string;
-    galleryTitle: string;
-    images: string[];
-  };
-};
+    pageName: string
+    title: string
+    description: string
+    whyChooseUs: { text: string; span: string; icon: string }[]
+    servicesInclude: string[]
+    imageBackground: string
+    ourServices: string
+    WhyChooseUsTitle: string
+    galleryTitle: string
+    images: string[]
+  }
+}
 
-const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
+const QualityData = [
+  {
+    text: 'Quality Craftsmanship',
+    span: 'Experienced pros delivering top-notch results.',
+    icon: '/images/quality2.png',
+  },
+  {
+    text: 'Customer Satisfaction',
+    span: 'Your needs come first — we ensure you’re happy with the outcome.',
+    icon: '/images/customer-experience.png',
+  },
+  {
+    text: 'Timely Completion',
+    span: 'Projects done on time, without cutting corners.',
+    icon: '/images/calendar.png',
+  },
+]
+
+const PagesSection: React.FC<PagesSectionProps> = ({
+  content,
+}: PagesSectionProps) => {
+  const [imageLoaded, setImageLoaded] = useState(false)
 
   const handleImageLoaded = () => {
-    setImageLoaded(true);
-  };
-  const { ref, mainControls } = useInViewAnimation();
+    setImageLoaded(true)
+  }
+  const { ref, mainControls } = useInViewAnimation()
   const { ref: containerRef2, mainControls: mainControls2 } =
-    useInViewAnimation();
+    useInViewAnimation()
 
   return (
-    <div className="   ">
-      <div className="fixed top-0 left-0 w-full h-full bg-black opacity-70 -z-50"></div>
-      <div className="bg-black opacity-50 w-full h-[76px] flex fixed z-[9] tablet:hidden"></div>
-      <div className="w-full h-[60rem] flex  tablet:h-[40rem] z-10  ">
+    <section className=" ">
+      <div className="fixed left-0 top-0 -z-50 h-full w-full bg-black opacity-70"></div>
+      <div className="fixed z-[9] flex h-[76px] w-full bg-black opacity-50 tablet:hidden"></div>
+      <div className="relative h-[40rem] w-full tablet:h-[40rem]">
         {/* BACKGROUND IMAGE */}
-        <div className="relative  h-full -z-10 bg-gray-900 opacity-70  ">
-          <div className="fixed  h-full w-full -z-20  ">
+        <div className="relative z-[-1] h-full bg-gray-900 opacity-70">
+          <div className="fixed h-full w-full">
             <img
               src={content.imageBackground}
               alt="background"
-              className=" w-full h-screen object-cover "
+              className="h-full w-full object-cover"
               onLoad={handleImageLoaded}
             />
           </div>
         </div>
         {imageLoaded && (
-          <motion.div
-            className="w-full h-[60rem]  tablet:h-[40rem]  left-0 flex  flex-col items-center  
-        bg-black/10 py-10 tablet:pt-24 absolute  "
-          >
+          <motion.div className="absolute left-0 top-0 flex h-full w-full flex-col items-center bg-neutral-200/90 py-10 tablet:h-[40rem] tablet:w-full tablet:pt-24">
             {/* PAGE NAME */}
-            <div className=" w-full h-1/3 flex justify-center items-center   tablet:h-1/4 tablet:mb-10 ">
-              <div className=" bg-zinc-700/80 h-[5.5rem] w-[22rem] flex justify-center items-center mobile:w-[17rem]  ">
-                <h1 className="flex text-xl  text-center justify-center text-white font-semibold outline  outline-offset-8 outline-gray-300 w-[30rem]  mobile:text-sm lg:text-lg ">
+            <div className="mt-20 tablet:mb-10 tablet:mt-10">
+              <div className="flex h-[5.5rem] w-[22rem] items-center justify-center border border-zinc-700 shadow-md mobile:h-[5rem] mobile:w-[17rem]">
+                <p className="w-[30rem] text-center text-xl font-semibold text-zinc-700 outline outline-offset-8 outline-zinc-400 mobile:text-lg">
                   {content.pageName}
-                </h1>
+                </p>
               </div>
             </div>
             {/* TITLE AND SUBTITLE */}
             <motion.div
-              initial={{ opacity: 0, height: "0%", filter: "blur(5px)" }}
-              animate={{ opacity: 1, height: "55%", filter: "blur(0px)" }}
-              transition={{ duration: 0.9, ease: "easeIn", delay: 0.5 }}
-              className="flex flex-col justify-center items-center  w-full h-2/4 bg-black/30  tablet:p-2 tablet:h-2/5 "
+              initial={{ opacity: 0, height: '0%', filter: 'blur(5px)' }}
+              animate={{ opacity: 1, height: '55%', filter: 'blur(0px)' }}
+              transition={{ duration: 0.9, ease: 'easeIn', delay: 0.5 }}
+              className="flex h-full w-full max-w-5xl translate-y-8 flex-col items-center justify-center p-4 lg:translate-y-0 tablet:p-2 mobile:px-3"
             >
-              <h1 className="mb-4 text-white scroll-m-20 text-4xl font-extrabold tracking-wider mobile:text-lg  lg:text-center xl:text-3xl lg:px-2">
+              <h1 className="mb-7 max-w-2xl text-center text-5xl font-extrabold tracking-wider text-zinc-700 xl:text-3xl lg:px-2 tablet:mb-4 mobile:max-w-xs mobile:text-2xl">
                 {content.title}
               </h1>
-              <h2 className="w-[70rem] lg:w-[80%] xl:w-full text-white text-center leading-7 [&:not(:first-child)]:mt-6 text-xl  mobile:text-sm lg:text-lg">
+              <h3 className="max-w-4xl pl-5 text-center text-2xl leading-7 text-zinc-700 lg:text-lg tablet:text-start mobile:text-base">
                 {content.description}
-              </h2>
+              </h3>
             </motion.div>
           </motion.div>
         )}
@@ -82,109 +106,156 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
       {imageLoaded && (
         <div>
           {/* FIRST SECTION */}
-          <div className="w-full tablet:py-5 lg:py-10 xl:py-32 bg-white">
-            <motion.div
-              className="container flex lg:flex-col lg:space-y-5 justify-center items-center w-full lg:px-20 tablet:px-0 py-32  "
-              ref={ref}
-            >
-              {/* LEFT  TEXT */}
-              <motion.div className="w-[45%] 2xl:w-[50rem] xl:w-[42rem] lg:w-full  mx-auto">
-                <div className="bg-black/10  flex flex-col h-[50rem] lg:h-[43rem] tablet:h-[50rem] justify-center items-center w-full py-5 px-9">
-                  <motion.div
-                    className=" flex justify-center "
-                    animate={mainControls}
-                    initial="hidden"
-                    variants={{
-                      hidden: { opacity: 0, scale: 0.7 },
-                      visible: { opacity: 1, scale: 1 },
-                    }}
-                    transition={{
-                      duration: 1,
 
-                      ease: easeIn,
-                    }}
-                  >
-                    <div className=" flex flex-col  justify-center items-center   py-10 bg-white shadow-2xl   ">
-                      <h3 className="text-xl font-semibold tracking-tight text-center py-5  w-3/4 mobile:w-full mobile:text-sm xl:text-base  ">
-                        {content.WhyChooseUsTitle}
-                      </h3>
-                      <ul className="flex flex-col gap-6 text-base tracking-tight  px-10 pb-5 mobile:text-xs  xl:text-sm text-center  ">
+          <motion.div
+            className="container z-10 flex w-full flex-col bg-white py-20 pb-32 lg:space-y-5 lg:px-20 tablet:px-0"
+            ref={ref}
+          >
+            {/* LEFT  TEXT */}
+            <motion.div className="mx-auto">
+              <div className="flex w-full flex-col items-center justify-center">
+                <motion.div
+                  className=""
+                  animate={mainControls}
+                  initial="hidden"
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.7 },
+                    visible: { opacity: 1, scale: 1 },
+                  }}
+                  transition={{
+                    duration: 1,
+
+                    ease: easeIn,
+                  }}
+                >
+                  <h3 className="py-5 text-center text-4xl font-semibold tracking-tight xl:text-base tablet:py-0 mobile:text-xl">
+                    {content.WhyChooseUsTitle}
+                  </h3>
+                  <p className="mx-auto max-w-3xl px-4 text-center text-xl font-medium tablet:mt-5 mobile:text-base">
+                    We&apos;re committed to delivering exceptional results that
+                    exceed your expectations, backed by years of experience and
+                    a dedication to quality craftsmanship.
+                  </p>
+
+                  <ul className="mt-28 flex gap-6 pb-5 text-base tracking-tight xl:text-sm tablet:hidden mobile:text-xs">
+                    {content.whyChooseUs.map((item, index) => (
+                      <li
+                        key={index}
+                        className="flex max-w-xs flex-col items-center justify-center rounded-md border bg-white px-4 py-2 shadow-2xl transition-all duration-200 hover:bg-neutral-100"
+                      >
+                        <img
+                          src={item.icon}
+                          alt="check icon"
+                          className="mr-2 inline-block h-10 w-10"
+                        />{' '}
+                        <span className="flex h-28 flex-col pt-2 text-center">
+                          <strong className="text-lg">{item.span}</strong>
+                          {item.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-28 hidden gap-6 text-base tracking-tight xl:text-sm tablet:mt-10 tablet:flex mobile:text-xs">
+                    <Carousel>
+                      <CarouselContent>
                         {content.whyChooseUs.map((item, index) => (
-                          <li key={index}>
-                            {item}
-                            {index !== content.whyChooseUs.length - 1 && (
-                              <hr className="w-48 h-1 mx-auto mt-4 bg-gray-300 border-0 rounded"></hr>
-                            )}
-                          </li>
+                          <CarouselItem key={index} className="pb-16 pt-5">
+                            <p className="flex max-w-xs flex-col items-center justify-center rounded-md border bg-white px-4 py-2 shadow-2xl transition-all duration-200 hover:bg-neutral-100">
+                              <img
+                                src={item.icon}
+                                alt="check icon"
+                                className="mr-2 inline-block h-10 w-10"
+                              />
+                              <span className="flex h-28 flex-col pt-2 text-center">
+                                <strong className="text-lg">{item.span}</strong>
+                                {item.text}
+                              </span>
+                            </p>{' '}
+                          </CarouselItem>
                         ))}
-                      </ul>
+                      </CarouselContent>
+                      <div className="-translate-y-14">
+                        <CarouselDots />
+                      </div>
+                    </Carousel>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="mx-auto mt-28 flex w-full flex-row justify-center gap-20 tablet:flex-col tablet:px-4"
+              animate={mainControls}
+              initial="hidden"
+              variants={{
+                hidden: { opacity: 0, scale: 0.7 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              transition={{
+                duration: 1,
+
+                ease: easeIn,
+              }}
+            >
+              <div className="h-[30rem] w-[30rem] max-w-lg rounded-md shadow-lg">
+                <Carrousel
+                  images={content.images}
+                  className="h-[30rem] w-full rounded-md object-cover"
+                />
+              </div>
+
+              <div className="w-full max-w-2xl">
+                <p className="mb-5 max-w-lg text-2xl font-bold tablet:max-w-sm">
+                  {content.ourServices}
+                </p>
+                <div className="grid grid-cols-2 grid-rows-3 gap-5 text-lg">
+                  {content.servicesInclude.map((service, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <CheckCircle className="h-7 w-7 text-red-500 mobile:h-5 mobile:w-5" />
+                      <p className="flex items-center gap-2 mobile:w-[9rem] mobile:text-sm">
+                        {service}
+                      </p>
                     </div>
-                  </motion.div>
+                  ))}
                 </div>
-              </motion.div>
-
-              {/* RIGHT CONTAINER */}
-              <div className="flex 2xl:flex-col  w-[60rem] h-[50rem]  2xl:w-[40rem]  xl:w-[30rem]  lg:w-full    lg:space-x-0 space-x-6 2xl:space-y-5  overflow-hidden  mx-auto">
-                {/* MIDDLE IMAGE */}
-                <div className=" 2xl:h-[15rem]  h-[50rem] w-[26vw] 2xl:w-[42rem] xl:w-[32rem] lg:w-[90vw] lg:h-[20rem] overflow-hidden lg:translate-x-[-22px] tablet:translate-x-0 tablet:h-[25rem] tablet:w-full ">
-                  <Carrousel
-                    images={content.images}
-                    className="border-none rounded-none 2xl:w-full w-[25rem]   2xl:h-[15rem] xl:w-[33rem] lg:w-[60rem] lg:h-[20rem] tablet:w-full tablet:h-[25rem] h-[51.5rem] "
-                  />
-                </div>
-                {/* RIGHT  TEXT */}
-                <div className=" bg-gray-200  h-full 2xl:w-[41vw] xl:w-[37vw] lg:w-full  w-full relative ">
-                  <motion.div
-                    className=" w-full h-full  justify-center items-center flex absolute p-10 "
-                    animate={mainControls}
-                    initial="hidden"
-                    variants={{
-                      hidden: { opacity: 0, scale: 0.7 },
-                      visible: { opacity: 1, scale: 1 },
-                    }}
-                    transition={{
-                      duration: 1,
-
-                      ease: easeIn,
-                    }}
-                  >
+                <div className="mt-7 flex gap-20 tablet:flex-col tablet:gap-5">
+                  {QualityData.map((Item, i) => (
                     <div
-                      className="flex  flex-col items-center justify-center w-full  h-4/5 lg:w-[50vw] lg:h-[26rem] tablet:w-[80dvw]  bg-white shadow-2xl 
-                  "
+                      key={i}
+                      className="mx-auto mt-8 flex max-w-xs flex-col items-center justify-center gap-1"
                     >
-                      <h3 className=" text-xl w-5/6 font-semibold tracking-tight pb-10  text-center mobile:text-sm xl:text-base ">
-                        {content.ourServices}
-                      </h3>
-                      <ul className="flex flex-col gap-5  text-lg tracking-tight mobile:text-xs xl:text-sm ">
-                        {content.servicesInclude.map((service, index) => (
-                          <li key={index} className="flex items-center gap-2">
-                            <span className="text-gray-400">
-                              <TbPointFilled />
-                            </span>
-                            {service}
-                          </li>
-                        ))}
-                      </ul>
+                      <img
+                        src={Item.icon}
+                        alt="check icon"
+                        className="mr-2 inline-block h-14 w-14"
+                      />
+                      <p className="max-w-[10rem] text-center text-lg font-semibold">
+                        {Item.text}
+                      </p>
+                      <p className="max-w-[13rem] text-center text-lg leading-7 text-zinc-700 lg:text-base mobile:text-sm">
+                        {Item.span}
+                      </p>
                     </div>
-                  </motion.div>
+                  ))}
                 </div>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* DIVIDER */}
 
-          <div className="w-full  h-[20rem]  flex bg-black/50 tablet:h-[10rem]"></div>
+          <div className="flex h-[10rem] w-full bg-black/40 tablet:h-[10rem]"></div>
 
           {/* REVIEW,  CONTACT */}
 
-          <div className="flex flex-col w-full h-full py-20  bg-white">
-            <div className="flex flex-col  justify-center">
-              <div className=" flex flex-col justify-center items-center w-full h-[25rem] lg:px-0  px-4 tablet:h-[20rem]   ">
-                <h2 className="text-center mb-4  scroll-m-20  font-extrabold tracking-wider text-4xl  mobile:text-lg tablet:text-2xl lg:w-[90%]">
+          <div className="flex h-full w-full flex-col bg-white py-20">
+            <div className="w-full">
+              <div className="mx-auto flex h-[25rem] w-full flex-col items-center justify-center px-4 lg:px-0 tablet:mb-10 tablet:h-full">
+                <h2 className="mb-4 max-w-4xl scroll-m-20 text-center text-5xl font-extrabold tracking-wider lg:w-[90%] tablet:text-2xl mobile:text-xl">
                   The Top Trusted Remodeling Experts in Atlanta
                 </h2>
-                <h3 className="w-[60rem] lg:w-[90%] text-center leading-7 [&:not(:first-child)]:mt-6 text-lg  mobile:text-sm ">
+                <h3 className="mt-4 w-[60rem] max-w-3xl text-center text-lg leading-7 lg:w-[90%] tablet:mt-0 mobile:text-sm">
                   We are committed to delivering the best home improvement
                   experience of your life. We handle the whole process from
                   start to finish, so you have one point of contact through your
@@ -196,16 +267,16 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
             </div>
           </div>
 
-          <div className="w-full  h-[20rem]  mobile:h-[10rem]  flex bg-black/50"></div>
+          <div className="flex h-[10rem] w-full bg-black/40 tablet:h-[10rem]"></div>
 
           {/* GALLERY SECTION */}
 
           <motion.div
             ref={containerRef2}
-            className="px-10 tablet:px-0 w-full h-full bg-white p-44 tablet:pt-20 tablet:pb-0"
+            className="h-full w-full bg-white p-44 px-10 tablet:px-0 tablet:pb-0 tablet:pt-20"
           >
-            <motion.div className="bg-[#272829] w-full h-full  py-20 px-10 bg-opacity-80 shadow-xl tablet:px-5 ">
-              <h3 className=" text-2xl font-semibold tracking-tight text-center pb-20 text-white mobile:text-sm  ">
+            <motion.div className="mx-auto h-full w-full max-w-7xl rounded bg-[#272829] bg-opacity-80 px-10 py-20 shadow-xl tablet:px-5">
+              <h3 className="pb-20 text-center text-2xl font-semibold tracking-tight text-white mobile:text-sm">
                 {content.galleryTitle}
               </h3>
               <motion.div
@@ -225,17 +296,17 @@ const PagesSection: React.FC<PagesSectionProps> = ({ content }) => {
                   images={content.images}
                   imageLength={3}
                   viewmoreBorder="border border-white"
-                  viewmoreButton="border border-white "
+                  viewmoreButton="border border-white"
                 />
               </motion.div>
             </motion.div>
           </motion.div>
 
-          <div className="w-full  h-[16rem] tablet:hidden  flex bg-black/50"></div>
+          <div className="flex h-[10rem] w-full bg-black/40 tablet:h-[10rem]"></div>
         </div>
       )}
-    </div>
-  );
-};
+    </section>
+  )
+}
 
-export default PagesSection;
+export default PagesSection

@@ -1,22 +1,22 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, Variants } from "framer-motion";
-import React from "react";
+import { useEffect, useRef, useState } from 'react'
+import { motion, Variants } from 'framer-motion'
+import React from 'react'
 
 const itemVariants: Variants = {
   open: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 300, damping: 24 },
+    transition: { type: 'spring', stiffness: 300, damping: 24 },
   },
   closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
-};
+}
 
-const HoverList = "py-2 px-3 hover:bg-black/80 hover:text-white cursor-pointer";
+const HoverList = 'py-2 px-3 hover:bg-black/80 hover:text-white cursor-pointer'
 
 interface SelectInputProps {
-  value: string;
-  onChange: (value: string) => void;
-  options: string[];
+  value: string
+  onChange: (value: string) => void
+  options: string[]
 }
 
 const SelectInput: React.FC<SelectInputProps> = ({
@@ -24,14 +24,14 @@ const SelectInput: React.FC<SelectInputProps> = ({
   onChange,
   options,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(value);
-  const selectRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false)
+  const [selected, setSelected] = useState(value)
+  const selectRef = useRef<HTMLDivElement>(null)
   // console.log(selected);
 
   useEffect(() => {
-    setSelected(value);
-  }, [value]);
+    setSelected(value)
+  }, [value])
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -39,45 +39,45 @@ const SelectInput: React.FC<SelectInputProps> = ({
         selectRef.current &&
         !selectRef.current.contains(event.target as Node)
       ) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
-    };
+    }
 
-    document.body.addEventListener("mousedown", handleOutsideClick);
+    document.body.addEventListener('mousedown', handleOutsideClick)
 
     return () => {
-      document.body.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
+      document.body.removeEventListener('mousedown', handleOutsideClick)
+    }
+  }, [])
 
   const handleSelect = (option: string) => {
-    setSelected(option);
-    onChange(option);
-    setIsOpen(false);
-  };
+    setSelected(option)
+    onChange(option)
+    setIsOpen(false)
+  }
 
   return (
     <motion.div
-      className={`flex w-full bg-white border border-gray-300 text-sm rounded-lg text-slate-500 h-[2.5rem] `}
+      className={`flex h-[2.5rem] w-full rounded-lg border border-gray-300 bg-white text-sm text-slate-500`}
       whileTap={{ scale: 0.97 }}
       ref={selectRef}
     >
       <motion.div
-        className=" w-full transition "
+        className="w-full transition"
         initial={true}
-        animate={isOpen ? "open" : "closed"}
+        animate={isOpen ? 'open' : 'closed'}
       >
         {isOpen && (
-          <div className=" relative top-10 mobile:translate-y-0  tablet:translate-y-[-14.4rem] z-[2] ">
+          <div className="relative top-10 z-[2] tablet:translate-y-[-14.4rem]">
             <motion.div
-              className="absolute w-full  mt-1 border bg-white border-gray-300 rounded-lg shadow-2xl  "
+              className="absolute mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-2xl"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
             >
               <motion.ul
-                style={{ pointerEvents: isOpen ? "auto" : "none" }}
-                className="  cursor-pointer  "
+                style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
+                className="cursor-pointer"
               >
                 {options.map((option, index) => (
                   <motion.li
@@ -85,10 +85,10 @@ const SelectInput: React.FC<SelectInputProps> = ({
                     key={option}
                     className={
                       index === 0
-                        ? ` hover:rounded-t-lg ${HoverList}`
+                        ? `hover:rounded-t-lg ${HoverList}`
                         : index === options.length - 1
-                        ? ` hover:rounded-b-lg  ${HoverList}`
-                        : HoverList
+                          ? `hover:rounded-b-lg ${HoverList}`
+                          : HoverList
                     }
                     onClick={() => handleSelect(option)}
                   >
@@ -101,19 +101,19 @@ const SelectInput: React.FC<SelectInputProps> = ({
         )}
 
         <motion.div
-          className="relative flex items-center w-full h-full px-2.5 cursor-pointer focus:border-black focus:border-2 focus:rounded-lg  "
+          className="relative flex h-full w-full cursor-pointer items-center px-2.5 focus:rounded-lg focus:border-2 focus:border-black"
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
-            className={`w-full border-none ring-white  ${
-              selected ? "text-black" : " text-slate-500"
+            className={`w-full border-none ring-white ${
+              selected ? 'text-black' : 'text-slate-500'
             }`}
             // contentEditable={false}
           >
-            {selected ? selected : "Select a Project"}
+            {selected ? selected : 'Select a Project'}
           </div>
           <motion.div
-            className="cursor-pointer "
+            className="cursor-pointer"
             variants={{
               open: { rotate: 180 },
               closed: { rotate: 0 },
@@ -128,7 +128,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
         </motion.div>
       </motion.div>
     </motion.div>
-  );
-};
+  )
+}
 
-export default SelectInput;
+export default SelectInput

@@ -1,5 +1,5 @@
 const ReactForm = () => {
-  return <div></div>;
-};
+  return <div></div>
+}
 
-export default ReactForm;
+export default ReactForm
