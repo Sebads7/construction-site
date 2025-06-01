@@ -58,18 +58,22 @@ const WhatWeDo = () => {
                       {slide.description}
                     </p>
                   </div>
-                  <div className="mb-10 flex h-full w-full items-end tablet:h-2/4">
-                    <Link
-                      to={slide.link}
-                      className="flex h-2/4 w-full items-center justify-center mobile:h-1/4"
+                  <div className="mx-auto mb-10 flex h-full w-fit items-end tablet:h-2/4">
+                    <button
+                      type="button"
+                      className="shadow-light-3 hover:shadow-light-2 focus:shadow-light-2 active:shadow-light-2 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong flex items-center justify-center bg-yellow-400 px-9 py-3 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-yellow-500 focus:bg-neutral-200 focus:outline-none focus:ring-0 active:bg-neutral-200 motion-reduce:transition-none dark:shadow-black/30"
+                      title="Learn more about this service"
+                      aria-label="Learn more about this service"
                     >
-                      <button
-                        type="button"
-                        className="shadow-light-3 hover:shadow-light-2 focus:shadow-light-2 active:shadow-light-2 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong flex items-center justify-center bg-yellow-400 px-9 py-3 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-yellow-500 focus:bg-neutral-200 focus:outline-none focus:ring-0 active:bg-neutral-200 motion-reduce:transition-none dark:shadow-black/30"
+                      <Link
+                        to={slide.link}
+                        className="flex h-2/4 w-full items-center justify-center mobile:h-1/4"
+                        title="Learn more about this service"
+                        aria-label="Learn more about this service"
                       >
                         LEARN MORE
-                      </button>
-                    </Link>
+                      </Link>{' '}
+                    </button>
                   </div>
                 </div>
               </CarouselItem>

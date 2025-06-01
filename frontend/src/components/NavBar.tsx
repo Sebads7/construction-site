@@ -45,6 +45,7 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
           title="Open Menu"
           onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
           className="mobile-shadow rounded-xl bg-black py-6 text-white focus:outline-none"
+          aria-label="Open Menu"
         >
           <svg
             className="h-6 w-6"
@@ -68,6 +69,8 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
         <a
           href="/"
           className="flex items-center border-[2px] border-white/80 text-white/80"
+          title="ABJ Painting & Remodeling"
+          aria-label="ABJ Painting & Remodeling"
         >
           <div className="flex items-center gap-2 px-3 py-1 text-center">
             <p className="tablet:text-sm mobile:text-xs">

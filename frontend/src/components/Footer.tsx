@@ -54,7 +54,7 @@ const Footer = () => {
   }
   return (
     <footer className="z-[2] flex flex-col bg-[#1a1920] py-10 text-sm text-slate-200 lg:px-10">
-      <div className="flex h-full w-full flex-row justify-between p-5 px-28 py-5 2xl:flex-col 2xl:px-10 tablet:px-0 mobile:gap-10 mobile:text-xs">
+      <div className="flex h-full w-full flex-row justify-between p-5 py-5 2xl:flex-col tablet:px-0 mobile:gap-10 mobile:text-sm">
         {/* LOGO AND SOCIAL MEDIA */}
         <div className="flow-row flex items-center justify-center px-4 tablet:flex-col">
           <a href="/" className="flex items-center justify-center p-2">
@@ -72,12 +72,14 @@ const Footer = () => {
             <FaXTwitter size={20} />
           </div>
         </div>
-        <div className="mx-auto flex w-full max-w-4xl justify-between 2xl:mt-5 2xl:max-w-3xl lg:max-w-md tablet:flex-col">
+        <div className="mx-auto flex w-full max-w-5xl justify-between 2xl:mt-5 tablet:flex-col">
           <div className="flex flex-row gap-5 lg:flex-col">
             {/* Quick Links  */}
             <div className="w-[10rem] flex-col gap-2">
-              <p className="text-base font-semibold">Quick Links</p>
-              <div className="flex flex-col space-y-1 text-xs">
+              <p className="text-base font-semibold text-red-400">
+                Quick Links
+              </p>
+              <div className="flex flex-col space-y-1 text-sm">
                 <ul className="space-y-1">
                   {NavigationMenuLinks.map((link, index) =>
                     link.submenu ? (
@@ -85,6 +87,7 @@ const Footer = () => {
                         <button
                           className="font-semibold hover:text-red-600"
                           onClick={handleShowSubmenu}
+                          title={link.label}
                         >
                           {link.label}{' '}
                           <ChevronDown
@@ -98,6 +101,8 @@ const Footer = () => {
                                 <a
                                   href={sublink.to}
                                   className="hover:underline"
+                                  title={sublink.label}
+                                  aria-label={sublink.label}
                                 >
                                   {sublink.label}
                                 </a>
@@ -111,6 +116,8 @@ const Footer = () => {
                         <a
                           href={link.to}
                           className="hover:text-red-600 hover:underline"
+                          title={link.label}
+                          aria-label={link.label}
                         >
                           {link.label}
                         </a>
@@ -122,9 +129,11 @@ const Footer = () => {
             </div>
 
             {/* CONTACT INFO */}
-            <div className="flex flex-col gap-2 mobile:gap-0">
-              <p className="text-base font-semibold">Business Information </p>
-              <div className="space-y-1 text-xs">
+            <div className="flex flex-col gap-1 mobile:gap-0">
+              <p className="text-base font-semibold text-red-400">
+                Business Information{' '}
+              </p>
+              <div className="space-y-1 text-sm">
                 <p>
                   <strong>Call:</strong> (679) 779-5280
                 </p>
@@ -138,26 +147,30 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-row gap-20 xl:gap-10 lg:flex-col tablet:gap-5 mobile:mt-6">
+          <div className="flex flex-row gap-10 xl:gap-10 lg:flex-col tablet:gap-5 mobile:mt-6">
             <div>
-              <p className="text-base font-semibold">Business Hours: </p>
-              <div className="text-xs">
+              <p className="text-base font-semibold text-red-400">
+                Business Hours:{' '}
+              </p>
+              <div className="text-sm">
                 <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
                 <p>Saturday: 9:00 AM - 4:00 PM</p>
                 <p>Sunday: Closed</p>
               </div>
             </div>
             {/* Serving Areas */}
-            <div className="max-w-[18rem]">
-              <p className="text-base font-semibold">Serving Areas</p>
-              <div className="grid grid-cols-2 space-y-1 xl:grid-cols-1 xl:gap-2">
-                <ul className="text-xs">
+            <div className="">
+              <p className="text-base font-semibold text-red-400">
+                Serving Areas
+              </p>
+              <div className="grid grid-cols-2 space-y-1 xl:grid-cols-1">
+                <ul className="w-[7rem] text-sm">
                   <li>Atlanta</li>
                   <li>Marietta</li>
                   <li>Duluth</li>
                   <li>Johns Creek</li>
                 </ul>
-                <ul className="text-xs mobile:-translate-y-3">
+                <ul className="-translate-x-6 -translate-y-1 text-sm xl:translate-x-0">
                   <li>Lawrenceville</li>
                   <li>Alpharetta</li>
                   <li>Buford, GA</li>
