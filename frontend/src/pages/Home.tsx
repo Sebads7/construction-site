@@ -75,7 +75,7 @@ const Home = () => {
       {/* REVIEW  */}
 
       <div className="h-full overflow-x-hidden">
-        <div className="flex h-[25rem] w-full flex-col items-center justify-center px-4 mobile:h-[20rem]">
+        <div className="flex h-[25rem] w-full flex-col items-center justify-center px-4 mobile:mt-5 mobile:h-[15rem]">
           <h2 className="mb-4 max-w-4xl scroll-m-20 text-center text-5xl font-extrabold tracking-wider lg:text-xl mobile:text-2xl">
             Why Homeowners Trust ABJ Remodeling
           </h2>
@@ -85,7 +85,9 @@ const Home = () => {
             homes with us.
           </h3>
         </div>
-        <Review />
+        <div className="-translate-y-10 tablet:translate-y-0">
+          <Review />
+        </div>
       </div>
 
       <div className="mx-auto mt-20 tablet:mt-10 mobile:max-w-xs">

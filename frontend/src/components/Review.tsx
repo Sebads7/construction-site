@@ -102,7 +102,7 @@ export const Review = () => {
         transition={{
           duration: 0.7,
           delay: 0.5,
-          ease: [0, 0.71, 0.2, 1.01],
+          ease: 'linear',
         }}
       >
         <AnimatePresence initial={false} custom={direction}>
@@ -114,7 +114,7 @@ export const Review = () => {
             animate="center"
             exit="exit"
             transition={{
-              x: { type: 'spring', stiffness: 300, damping: 30 },
+              x: { type: 'spring', stiffness: 200, damping: 30 },
               opacity: { duration: 0.1 },
             }}
             drag="x"
@@ -125,7 +125,7 @@ export const Review = () => {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            <div className="flex flex-col items-center justify-center gap-4 rounded-lg border-2 bg-white/80 p-6 shadow-lg lg:h-[22rem] mobile:gap-1 mobile:text-sm">
+            <div className="flex flex-col items-center justify-center gap-4 rounded-lg border-2 bg-white/80 p-6 shadow-lg lg:h-[22rem] lg:max-w-xl mobile:gap-1 mobile:text-sm">
               <p className="text-center text-cyan-600 lg:mb-2">
                 {reviews[imageIndex].name}
               </p>
@@ -145,7 +145,7 @@ export const Review = () => {
           </motion.div>
         </AnimatePresence>
         {/* Navigation Dots */}
-        <div className="relative mx-auto flex h-[20rem] w-full justify-center lg:h-[22rem]">
+        <div className="relative mx-auto flex h-[20rem] w-full -translate-y-2 justify-center lg:h-[22rem] tablet:translate-y-0">
           <div className="absolute bottom-0 flex gap-2 mobile:gap-3">
             {reviews.map((_, index) => (
               <div
