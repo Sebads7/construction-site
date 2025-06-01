@@ -4,6 +4,7 @@ import { work_data } from '@/constants/index'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import GalleryModal from '@/components/GridGallery/GalleryModal'
 
 interface Section {
   title: string
@@ -19,15 +20,35 @@ interface SectionsData {
 const SeeOurWork = () => {
   const [activeSection, setActiveSection] = useState<string>('bath')
   const [sections, setSections] = useState<SectionsData>({})
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+    null,
+  )
 
   useEffect(() => {
     setSections(work_data)
   }, [])
 
+  useEffect(() => {
+    if (selectedImageIndex !== null) {
+      document.body.style.overflowY = 'hidden'
+    } else {
+      document.body.style.overflowY = 'auto'
+    }
+    // Clean up the effect when the component is unmounted
+    return () => {
+      document.body.style.overflowY = 'auto'
+    }
+  }, [selectedImageIndex])
+
   const handleSectionChange = (section: string) => {
     setTimeout(() => {
       setActiveSection(section)
     }, 300)
+  }
+
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index)
+    console.log('click')
   }
 
   const { isMobile, isLarge } = useScreenSizes()
@@ -36,7 +57,7 @@ const SeeOurWork = () => {
   }
 
   return (
-    <section>
+    <section className="relative">
       <div className="fixed z-[5] flex h-[80px] w-full bg-black/80 tablet:hidden"></div>
 
       <div className="flex h-[30rem] w-full tablet:h-[20rem]">
@@ -128,9 +149,10 @@ const SeeOurWork = () => {
                   }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, ease: 'easeOut', delay: 0.4 }}
-                  className="rounded-lg border border-zinc-400 p-9 shadow-2xl tablet:mt-5 tablet:w-full tablet:px-8 tablet:py-10"
+                  className="rounded-lg border border-zinc-400 p-9 shadow-2xl"
                 >
                   <GridGallery
+                    handleImageClick={handleImageClick}
                     images={sections[activeSection].images || []}
                     imageLength={isMobile ? 3 : 7}
                     viewmoreBorder="border border-zinc-700 "
@@ -142,6 +164,14 @@ const SeeOurWork = () => {
           )}
         </div>
       </div>
+      {selectedImageIndex !== null && (
+        <GalleryModal
+          handleImageClick={handleImageClick}
+          images={sections[activeSection].images || []}
+          selectedImageIndex={selectedImageIndex}
+          setSelectedImageIndex={setSelectedImageIndex}
+        />
+      )}
     </section>
   )
 }

@@ -5,7 +5,7 @@ import { Carrousel } from './Carrousel'
 import Review from '@/components/Review'
 import GridGallery from '@/components/GridGallery'
 import useInViewAnimation from './hooks/useInView'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CheckCircle } from 'lucide-react'
 import {
   Carousel,
@@ -13,6 +13,7 @@ import {
   CarouselDots,
   CarouselItem,
 } from './ui/EmblaCarousel'
+import GalleryModal from './GridGallery/GalleryModal'
 
 type PagesSectionProps = {
   content: {
@@ -51,9 +52,29 @@ const PagesSection: React.FC<PagesSectionProps> = ({
   content,
 }: PagesSectionProps) => {
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+    null,
+  )
 
   const handleImageLoaded = () => {
     setImageLoaded(true)
+  }
+
+  useEffect(() => {
+    if (selectedImageIndex !== null) {
+      document.body.style.overflowY = 'hidden'
+    } else {
+      document.body.style.overflowY = 'auto'
+    }
+    // Clean up the effect when the component is unmounted
+    return () => {
+      document.body.style.overflowY = 'auto'
+    }
+  }, [selectedImageIndex])
+
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index)
+    console.log('click')
   }
   const { ref, mainControls } = useInViewAnimation()
   const { ref: containerRef2, mainControls: mainControls2 } =
@@ -198,7 +219,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({
                 ease: easeIn,
               }}
             >
-              <div className="h-[30rem] w-[30rem] max-w-lg rounded-md shadow-lg">
+              <div className="h-[30rem] w-[30rem] max-w-lg overflow-x-hidden rounded-md shadow-lg">
                 <Carrousel
                   images={content.images}
                   className="h-[30rem] w-full rounded-md object-cover"
@@ -249,7 +270,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({
 
           {/* REVIEW,  CONTACT */}
 
-          <div className="flex h-full w-full flex-col bg-white py-20">
+          <div className="flex h-full w-full flex-col overflow-x-hidden bg-white py-20">
             <div className="w-full">
               <div className="mx-auto flex h-[25rem] w-full flex-col items-center justify-center px-4 lg:px-0 tablet:mb-10 tablet:h-full">
                 <h2 className="mb-4 max-w-4xl scroll-m-20 text-center text-5xl font-extrabold tracking-wider lg:w-[90%] tablet:text-2xl mobile:text-xl">
@@ -293,6 +314,7 @@ const PagesSection: React.FC<PagesSectionProps> = ({
                 }}
               >
                 <GridGallery
+                  handleImageClick={handleImageClick}
                   images={content.images}
                   imageLength={3}
                   viewmoreBorder="border border-white"
@@ -301,6 +323,15 @@ const PagesSection: React.FC<PagesSectionProps> = ({
               </motion.div>
             </motion.div>
           </motion.div>
+
+          {selectedImageIndex !== null && (
+            <GalleryModal
+              handleImageClick={handleImageClick}
+              images={content.images || []}
+              selectedImageIndex={selectedImageIndex}
+              setSelectedImageIndex={setSelectedImageIndex}
+            />
+          )}
 
           <div className="flex h-[10rem] w-full bg-black/40 tablet:h-[10rem]"></div>
         </div>

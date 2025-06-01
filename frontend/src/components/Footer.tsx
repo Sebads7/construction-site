@@ -122,7 +122,7 @@ const Footer = () => {
             </div>
 
             {/* CONTACT INFO */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 mobile:gap-0">
               <p className="text-base font-semibold">Business Information </p>
               <div className="space-y-1 text-xs">
                 <p>
@@ -138,7 +138,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-row gap-20 xl:gap-10 lg:flex-col">
+          <div className="flex flex-row gap-20 xl:gap-10 lg:flex-col tablet:gap-5 mobile:mt-6">
             <div>
               <p className="text-base font-semibold">Business Hours: </p>
               <div className="text-xs">
@@ -150,14 +150,14 @@ const Footer = () => {
             {/* Serving Areas */}
             <div className="max-w-[18rem]">
               <p className="text-base font-semibold">Serving Areas</p>
-              <div className="grid grid-cols-2 xl:grid-cols-1 xl:gap-2">
+              <div className="grid grid-cols-2 space-y-1 xl:grid-cols-1 xl:gap-2">
                 <ul className="text-xs">
                   <li>Atlanta</li>
                   <li>Marietta</li>
                   <li>Duluth</li>
                   <li>Johns Creek</li>
                 </ul>
-                <ul className="text-xs">
+                <ul className="text-xs mobile:-translate-y-3">
                   <li>Lawrenceville</li>
                   <li>Alpharetta</li>
                   <li>Buford, GA</li>
