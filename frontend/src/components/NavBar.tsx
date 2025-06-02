@@ -9,7 +9,6 @@ import {
 } from '@/components/ui/navigation-menu'
 
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 
 const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -87,9 +86,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
             {/* HOME */}
             <NavigationMenuItem className="px-4 lg:text-sm">
               <NavigationMenuLink>
-                <Link to="/" className="bg-transparent text-white">
+                <a
+                  href="/"
+                  className="bg-transparent text-white"
+                  title="Home"
+                  aria-label="Home"
+                >
                   HOME
-                </Link>
+                </a>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
@@ -104,12 +108,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     {/* Kitchen Remodeling */}
                     <li className="flex w-full justify-center p-3 transition duration-100 ease-in-out hover:bg-slate-800 hover:text-white">
                       <NavigationMenuLink asChild>
-                        <Link
+                        <a
                           className="flex items-center justify-center"
-                          to="/kitchen-remodeling"
+                          href="/kitchen-remodeling"
+                          title="Kitchen Remodeling"
+                          aria-label="Kitchen Remodeling"
                         >
                           <p className="leading-tight">Kitchen Remodeling</p>
-                        </Link>
+                        </a>
                       </NavigationMenuLink>
                     </li>
 
@@ -118,12 +124,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     {/* Bathroom Remodeling */}
                     <li className="flex w-full justify-center p-3 transition duration-100 ease-in-out hover:bg-slate-800 hover:text-white">
                       <NavigationMenuLink asChild>
-                        <Link
+                        <a
                           className="flex items-center justify-center"
-                          to="/bath-remodeling"
+                          href="/bath-remodeling"
+                          title="Bathroom Remodeling"
+                          aria-label="Bathroom Remodeling"
                         >
                           <p className="leading-tight">Bathroom Remodeling</p>
-                        </Link>
+                        </a>
                       </NavigationMenuLink>
                     </li>
 
@@ -132,12 +140,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     {/* Pressure Washing */}
                     <li className="flex w-full justify-center p-3 transition duration-100 ease-in-out hover:bg-slate-800 hover:text-white">
                       <NavigationMenuLink asChild>
-                        <Link
+                        <a
                           className="flex items-center justify-center"
-                          to="/pressure-washing"
+                          href="/pressure-washing"
+                          title="Pressure Washing"
+                          aria-label="Pressure Washing"
                         >
                           <p className="leading-tight">Pressure Washing</p>
-                        </Link>
+                        </a>
                       </NavigationMenuLink>
                     </li>
 
@@ -146,14 +156,16 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     {/* Painting */}
                     <li className="flex w-full justify-center p-3 transition duration-100 ease-in-out hover:bg-slate-800 hover:text-white">
                       <NavigationMenuLink asChild>
-                        <Link
+                        <a
                           className="flex items-center justify-center"
-                          to="/painting"
+                          href="/painting"
+                          title="Interior & Exterior Painting"
+                          aria-label="Interior & Exterior Painting"
                         >
                           <p className="leading-tight">
                             Interior & Exterior Painting
                           </p>
-                        </Link>
+                        </a>
                       </NavigationMenuLink>
                     </li>
 
@@ -162,12 +174,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     {/* Carpentry */}
                     <li className="flex w-full justify-center p-3 transition duration-100 ease-in-out hover:bg-slate-800 hover:text-white">
                       <NavigationMenuLink asChild>
-                        <Link
+                        <a
                           className="flex items-center justify-center"
-                          to="/carpentry"
+                          href="/carpentry"
+                          title="Custom Carpentry"
+                          aria-label="Custom Carpentry"
                         >
                           <p className="leading-tight">Custom Carpentry</p>
-                        </Link>
+                        </a>
                       </NavigationMenuLink>
                     </li>
                   </ul>
@@ -177,24 +191,28 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
             <NavigationMenuItem className="px-4 text-sm">
               <NavigationMenuLink>
-                <Link
-                  to="/see-our-work"
+                <a
+                  href="/see-our-work"
                   className="md:text-sm sm:text-xs bg-transparent text-white"
+                  title="See Our Work"
+                  aria-label="See Our Work"
                 >
                   SEE OUR WORK
-                </Link>
+                </a>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
             {/* CONTACT */}
             <NavigationMenuItem className="px-4 text-sm">
               <NavigationMenuLink>
-                <Link
-                  to="/contact"
+                <a
+                  href="/contact"
                   className="md:text-sm sm:text-xs bg-transparent text-white"
+                  title="Contact"
+                  aria-label="Contact"
                 >
                   CONTACT
-                </Link>
+                </a>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
@@ -251,13 +269,15 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     {/* HOME */}
                     <NavigationMenuItem className="pl-1">
                       <NavigationMenuLink>
-                        <Link
-                          to="/"
+                        <a
+                          href="/"
                           className="text-base font-medium text-white"
                           onClick={() => setMobileMenuOpen(false)}
+                          title="Home"
+                          aria-label="Home"
                         >
                           HOME
-                        </Link>
+                        </a>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
 
@@ -273,12 +293,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
 
                             <li className="flex w-full justify-center p-3">
                               <NavigationMenuLink asChild>
-                                <Link
-                                  to="/kitchen-remodeling"
+                                <a
+                                  href="/kitchen-remodeling"
                                   onClick={() => setMobileMenuOpen(false)}
+                                  title="Kitchen Remodeling"
+                                  aria-label="Kitchen Remodeling"
                                 >
                                   Kitchen Remodeling
-                                </Link>
+                                </a>
                               </NavigationMenuLink>
                             </li>
 
@@ -287,12 +309,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                             {/* Bathroom Remodeling */}
                             <li className="flex w-full justify-center p-3">
                               <NavigationMenuLink asChild>
-                                <Link
-                                  to="/bath-remodeling"
+                                <a
+                                  href="/bath-remodeling"
                                   onClick={() => setMobileMenuOpen(false)}
+                                  title="Bathroom Remodeling"
+                                  aria-label="Bathroom Remodeling"
                                 >
                                   Bathroom Remodeling
-                                </Link>
+                                </a>
                               </NavigationMenuLink>
                             </li>
 
@@ -301,12 +325,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                             {/* Pressure Washing */}
                             <li className="flex w-full justify-center p-3">
                               <NavigationMenuLink asChild>
-                                <Link
-                                  to="/pressure-washing"
+                                <a
+                                  href="/pressure-washing"
                                   onClick={() => setMobileMenuOpen(false)}
+                                  title="Pressure Washing"
+                                  aria-label="Pressure Washing"
                                 >
                                   Pressure Washing
-                                </Link>
+                                </a>
                               </NavigationMenuLink>
                             </li>
 
@@ -315,12 +341,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                             {/* Painting */}
                             <li className="flex w-full justify-center p-3">
                               <NavigationMenuLink asChild>
-                                <Link
-                                  to="/painting"
+                                <a
+                                  href="/painting"
                                   onClick={() => setMobileMenuOpen(false)}
+                                  title="Interior & Exterior Painting"
+                                  aria-label="Interior & Exterior Painting"
                                 >
                                   Interior & Exterior Painting
-                                </Link>
+                                </a>
                               </NavigationMenuLink>
                             </li>
 
@@ -329,12 +357,14 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                             {/* Carpentry */}
                             <li className="flex w-full justify-center p-3">
                               <NavigationMenuLink asChild>
-                                <Link
+                                <a
                                   onClick={() => setMobileMenuOpen(false)}
-                                  to="/carpentry"
+                                  href="/carpentry"
+                                  title="Custom Carpentry"
+                                  aria-label="Custom Carpentry"
                                 >
                                   Custom Carpentry
-                                </Link>
+                                </a>
                               </NavigationMenuLink>
                             </li>
                           </ul>
@@ -345,26 +375,30 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                     {/* SEE OUR WORK */}
                     <NavigationMenuItem>
                       <NavigationMenuLink>
-                        <Link
-                          to="/see-our-work"
+                        <a
+                          href="/see-our-work"
                           className="text-base font-medium text-white"
                           onClick={() => setMobileMenuOpen(false)}
+                          title="See Our Work"
+                          aria-label="See Our Work"
                         >
                           SEE OUR WORK
-                        </Link>
+                        </a>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
 
                     {/* CONTACT */}
                     <NavigationMenuItem className="">
                       <NavigationMenuLink>
-                        <Link
-                          to="/contact"
+                        <a
+                          href="/contact"
                           className="text-base font-medium text-white"
                           onClick={() => setMobileMenuOpen(false)}
+                          title="Contact"
+                          aria-label="Contact"
                         >
                           CONTACT
-                        </Link>
+                        </a>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
                     {/* END DIV */}
@@ -392,7 +426,12 @@ const NavBar = ({ handleShowModal }: { handleShowModal: () => void }) => {
                 <div className="flex items-center gap-2">
                   {' '}
                   <p>Call us</p>
-                  <a href="tel:6797795280" className="font-semibold underline">
+                  <a
+                    href="tel:6797795280"
+                    className="font-semibold underline"
+                    title="Call ABJ Painting & Remodeling"
+                    aria-label="Call ABJ Painting & Remodeling"
+                  >
                     (679) 779-5280
                   </a>
                 </div>

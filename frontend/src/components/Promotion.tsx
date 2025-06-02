@@ -12,7 +12,7 @@ const Promotion = () => {
             </span>
           </h1>
           <p className="mb-12 mt-2 text-gray-700 tablet:mb-2">
-            ON ALL PRODUCTS
+            ON ALL SERVICES
           </p>
         </div>
         <ContactForm

@@ -321,12 +321,13 @@ const ContactForm: React.FC<ContactFormProps> = ({
                   </FormItem>
                 )}
               ></FormField>
-              <a
+              <button
                 className="hidden underline tablet:flex mobile:text-xs"
                 onClick={openModal}
+                type="button"
               >
                 Click to check agreement
-              </a>
+              </button>
               <label htmlFor="checkbox" className="flex text-xs tablet:hidden">
                 I’m interested in learning more about ABJ Remodeling and its
                 services. By checking this box, I consent and authorize ABJ
